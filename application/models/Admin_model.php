@@ -21,6 +21,26 @@ class Admin_model extends CI_Model
     {
         return $this->db->get('calon')->result_array();
     }
+
+    public function getCalonFakultas($fakultas)
+    {
+        $this->db->where('fakultasketua',$fakultas);
+        $this->db->and('fakultaswakil',$fakultas);
+        return $this->db->get('calon')->result_array();
+    }
+
+    public function calonCari($id)
+    {
+        $this->db->where('id',$id);
+        $this->db->from('calon');
+        return $this->db->get()->result_array();
+    }
     
+    public function bar()
+    {
+        $this->db->select('ketua, wakil , hasil');
+        $this->db->from('calon');
+        return $this->db->get()->result();
+    }
     
 }

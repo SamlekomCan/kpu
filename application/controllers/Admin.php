@@ -18,7 +18,7 @@ class Admin extends CI_Controller
         }
         $this->load->model('Autentifikasi_model','auth');
         $this->load->model('Admin_model','admin');
-        // $this->load->library('excel');
+        $this->load->library('excel');
         
     }
 
@@ -27,7 +27,7 @@ class Admin extends CI_Controller
         $data['title'] = 'Dashboard';
         $data['sidebar'] = 'Administrator';
         $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
-        
+        $data['bar'] = $this->admin->bar();
         $this->load->view('templatesAdmin/header', $data);
         $this->load->view('templatesAdmin/sidebar', $data);
         $this->load->view('templatesAdmin/topbar', $data);
@@ -149,11 +149,18 @@ class Admin extends CI_Controller
         $username = $this->input->post('username');
         $password = $this->input->post('password');
         $mail = $this->input->post('mail');
-
-        $data=['nama' => $nama, 'user' => $username, 'pass' => password_hash($password, PASSWORD_DEFAULT), 'mail' => $mail, 'role'=>1];
-
-        $this->db->insert('admin', $data);
-        redirect('admin/admin');
+        if ($this->auth->cekAdmin($username)==0) {
+            # code...
+             $data=['nama' => $nama, 'user' => $username, 'pass' => password_hash($password, PASSWORD_DEFAULT), 'mail' => $mail, 'role'=>1];
+            $this->db->insert('admin', $data);
+             redirect('admin/admin');
+        }else{
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        Username sudah ada! </div>');
+             redirect('admin/admin');
+        }
+       
+       
     }
 
     public function deleteAdmin($id)
@@ -214,10 +221,81 @@ class Admin extends CI_Controller
         $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
         $data['data'] = $this->admin->getCalon();
         $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/calon', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+    public function detailCalon($id)
+    {
+        $data['title'] = 'Detail Calon';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['data'] = $this->admin->calonCari($id);
+            $this->load->view('templatesAdmin/header', $data);
             $this->load->view('templatesAdmin/sidebar', $data);
             $this->load->view('templatesAdmin/topbar', $data);
-            $this->load->view('admin/calon', $data);
+            $this->load->view('admin/detailCalon', $data);
             $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    public function hapusCalon($id)
+    {
+        $this->db->where('id',$id);
+        $this->db->delete('calon');
+        redirect('admin/calon');
+    }
+
+    public function editCalon($id)
+    {        
+        $data['title'] = 'Edit Calon';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['data'] = $this->admin->calonCari($id);
+        // var_dump( $data['data']);die;
+        $this->form_validation->set_rules('nama1', 'Nama Ketua', 'required|trim');
+        $this->form_validation->set_rules('nama2', 'Nama Wakil', 'required|trim');
+        $this->form_validation->set_rules('fakultas1', 'Fakultas Ketua', 'required|trim');
+        $this->form_validation->set_rules('fakultas2', 'Fakultas Wakil', 'required|trim');
+        $this->form_validation->set_rules('organisasi', 'Organisasi', 'required|trim');
+        $this->form_validation->set_rules('visi', 'Visi', 'required|trim');
+        $this->form_validation->set_rules('misi', 'Misi', 'required|trim');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templatesAdmin/header', $data);
+            $this->load->view('templatesAdmin/sidebar', $data);
+            $this->load->view('templatesAdmin/topbar', $data);
+            $this->load->view('admin/editCalon', $data);
+            $this->load->view('templatesAdmin/footer', $data);
+         }else{
+
+            $ketua = $this->input->post('nama1');
+            $wakil = $this->input->post('nama2');
+            $fakultasketua = $this->input->post('fakultas1');
+            $fakultaswakil = $this->input->post('fakultas2');
+            $organisasi = $this->input->post('organisasi');
+            $visi = $this->input->post('visi');
+            $misi = $this->input->post('misi');            
+            $upload = $_FILES['image']['name'];
+            if ($upload) {
+                $config['upload_path'] = './assets/img/calon';
+                $config['allowed_types'] = 'gif|jpg|png';
+                $config['max_size']     = '2048';   
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('image')) {
+                    $newImage = $this->upload->data('file_name');
+                    $this->db->set('foto', $newImage);
+                } 
+            }
+            $this->db->set('ketua', $ketua);
+            $this->db->set('wakil', $wakil);
+            $this->db->set('fakultasketua', $fakultasketua);
+            $this->db->set('fakultaswakil', $fakultaswakil);
+            $this->db->set('organisasi', $organisasi);
+            $this->db->set('visi', $visi);
+            $this->db->set('misi', $misi);
+            $this->db->update('calon');
+            redirect('admin/calon');
+        }
     }
 
 
@@ -231,8 +309,8 @@ class Admin extends CI_Controller
         
         $this->form_validation->set_rules('nama1', 'Nama Ketua', 'required|trim');
         $this->form_validation->set_rules('nama2', 'Nama Wakil', 'required|trim');
-        $this->form_validation->set_rules('fakultas1', 'Fakultas', 'required|trim');
-        $this->form_validation->set_rules('fakultas2', 'Fakultas', 'required|trim');
+        $this->form_validation->set_rules('fakultas1', 'Fakultas Ketua', 'required|trim');
+        $this->form_validation->set_rules('fakultas2', 'Fakultas Wakil', 'required|trim');
         $this->form_validation->set_rules('organisasi', 'Organisasi', 'required|trim');
         $this->form_validation->set_rules('visi', 'Visi', 'required|trim');
         $this->form_validation->set_rules('misi', 'Misi', 'required|trim');
@@ -246,8 +324,10 @@ class Admin extends CI_Controller
             
         }else{
 
-            $nama = $this->input->post('nama1') .'-'.$this->input->post('nama2');
-            $fakultas = $this->input->post('fakultas1').' - '.$this->input->post('fakultas2');
+            $ketua = $this->input->post('nama1');
+            $wakil = $this->input->post('nama2');
+            $fakultasketua = $this->input->post('fakultas1');
+            $fakultaswakil = $this->input->post('fakultas2');
             $organisasi = $this->input->post('organisasi');
             $visi = $this->input->post('visi');
             $misi = $this->input->post('misi');            
@@ -255,18 +335,21 @@ class Admin extends CI_Controller
             if ($upload) {
                 $config['upload_path'] = './assets/img/calon';
                 $config['allowed_types'] = 'gif|jpg|png';
-                $config['max_size']     = '2048';                
+                $config['max_size']     = '2048';   
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('image')) {
                     $newImage = $this->upload->data('file_name');
                     $this->db->set('foto', $newImage);
                 } 
             }
-            $this->db->set('nama', $nama);
-            $this->db->set('fakultas', $fakultas);
+            $this->db->set('ketua', $ketua);
+            $this->db->set('wakil', $wakil);
+            $this->db->set('fakultasketua', $fakultasketua);
+            $this->db->set('fakultaswakil', $fakultaswakil);
             $this->db->set('organisasi', $organisasi);
             $this->db->set('visi', $visi);
             $this->db->set('misi', $misi);
+            $this->db->set('hasil', 0);
             $this->db->insert('calon');
             redirect('admin/calon');
         }

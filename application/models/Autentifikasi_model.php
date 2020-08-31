@@ -41,6 +41,8 @@ class Autentifikasi_model extends CI_Model
             </div>');
                 redirect('auth');
             }
+        }else{
+            redirect('auth');
         }
     }
 
@@ -65,6 +67,12 @@ class Autentifikasi_model extends CI_Model
                 redirect('auth/blocked');
             };
         };
+    }
+
+    public function cekAdmin($username)
+    {
+        
+        return $this->db->get_where('admin', ['user'=>$username])->num_rows();
     }
 
 }
