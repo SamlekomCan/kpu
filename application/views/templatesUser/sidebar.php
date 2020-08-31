@@ -13,10 +13,16 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item ">
+        <a class="nav-link" href="<?=base_url('user/screening') ?>">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Screening</span></a>
+    </li>
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item ">
         <a class="nav-link" href="<?=base_url('user') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
+            <span>Pemilihan</span></a>
     </li>
 
     <!-- Divider -->

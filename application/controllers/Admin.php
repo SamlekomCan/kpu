@@ -19,7 +19,6 @@ class Admin extends CI_Controller
         $this->load->model('Autentifikasi_model','auth');
         $this->load->model('Admin_model','admin');
         $this->load->library('excel');
-        
     }
 
     public function index()
@@ -194,7 +193,7 @@ class Admin extends CI_Controller
                         if (strlen($nim) == 9) {
                             if ($this->db->get_where('user', ['nim' => $nim])->num_rows() == 0) {
                                 $data[] = array('nim' => $nim, 'nama' => $nama, 'fakultas' => $fakultas, 
-                                'prodi' => $prodi, 'status' => 1, 'password' => password_hash($nim, PASSWORD_DEFAULT,$options));
+                                'prodi' => $prodi, 'status' => 1, 'statusBEMF' => 1, 'statusHM' => 1, 'password' => password_hash($nim, PASSWORD_DEFAULT,$options));
                                 $num++;
                                 
                             }

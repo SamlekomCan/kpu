@@ -1,6 +1,6 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <?php $fakult= ['FST','FKIP','PSIKOLOGI','FARMASI','EKONOMI','TEOLOGI','SASTRA'] ;?>
+    <?php $fakult= ['Sains dan Teknologi','Keguruan dan Ilmu Pendidikan','Psikologi','Farmasi','Ekonomi','Teologi','Sastra'] ;?>
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
     <div class="row">

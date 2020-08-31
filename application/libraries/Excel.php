@@ -14,3 +14,4 @@ if (! defined('BASEPATH'))exit('No direct script access allowed');
 			parent::__construct();
 		}
 	}
+

@@ -5,7 +5,7 @@ class User extends CI_Controller
 {
     public function __construct()
     {
-        parent::__construct();
+        parent::__construct();       
         $this->load->library('form_validation');
         $this->load->model('Admin_model', 'admin');
     }
@@ -128,15 +128,35 @@ class User extends CI_Controller
         }
     }
 
-    public function new()
+    public function pilihBemu($id)
     {
-        $data['title'] = 'Change Passowrd';
-        $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+        $this->db->where('id',$id);
+        $this->db->from('calon');
+        $calon = $this->db->get()->result_array();
+        $org = $calon[0]['organisasi'];
+        
+        $hasil = $calon['hasil'] + 1;
+        
+        $this->db->set('hasil', $hasil);
+        $this->db->where('id',$id);
+        $this->db->update('calon');
+        if (strcasecmp($org, 'BEMU') == 0) {
+            # code...
+            $this->db->set('status',0);
+            $this->db->where('nim',$this->session->userdata('nim'));
+            $this->db->update('user');
+            
+        }elseif (strcasecmp($org, 'BEMF') == 0) {
+            # code...
+            $this->db->set('statusBEMF',0);
+            $this->db->where('nim',$this->session->userdata('nim'));
+            $this->db->update('user');
+        }else{
+            $this->db->set('statusHM',0);
+            $this->db->where('nim',$this->session->userdata('nim'));
+            $this->db->update('user');
 
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('user/new', $data);
-        $this->load->view('templates/footer', $data);
+        }
+        redirect('user');
     }
 }
