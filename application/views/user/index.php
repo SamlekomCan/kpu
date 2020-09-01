@@ -13,8 +13,8 @@
         foreach ($data as $row): ?>
         <?php if($row['organisasi'] == 'BEMU'): ?>
         <div class="col-xs-12 col-md-6 col-lg-3">
-            <center>
-                <div class="panel panel-default">
+            <div class="panel panel-default ">
+                <center>
                     <div class="card">
                         <img class="card-img-top" src="<?= base_url('assets/img/calon/').$row['foto'] ?>"
                             style="height: 200px;">
@@ -33,8 +33,8 @@
                             <?php endif ?>
                         </div>
                     </div>
-                </div>
-            </center>
+                </center>
+            </div>
         </div>
         <?php endif ?>
         <?php endforeach ?>

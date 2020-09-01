@@ -5,14 +5,14 @@ class User extends CI_Controller
 {
     public function __construct()
     {
-        parent::__construct();       
+        parent::__construct();      
         $this->load->library('form_validation');
         $this->load->model('Admin_model', 'admin');
     }
 
     public function index()
     {
-        $data['title'] = 'Pemilihan';
+        $data['title'] = 'E-Vote Sanata Dharma';
         $data['user'] = $this->db->get_where('user', ['nim' => $this->session->userdata('nim')])->row_array();
         $data['data'] = $this->admin->getCalon();
         $data['bemf'] = $this->admin->getCalonFakultas($data['user']['fakultas']);
