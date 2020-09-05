@@ -36,6 +36,18 @@
         </a>
     </li>
     <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/kadidat') ?>">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Kadidat Terpilih</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/screening') ?>">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Screening</span>
+        </a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="<?= base_url('admin/calon') ?>">
             <i class="fas fa-fw fa-users"></i>
             <span>Calon</span>

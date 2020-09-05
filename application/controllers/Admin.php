@@ -129,6 +129,32 @@ class Admin extends CI_Controller
             $this->load->view('templatesAdmin/footer', $data);
     }
 
+    public function kadidat()
+    {
+        $data['title'] = 'Kadidat';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['data'] = $this->admin->kadidat();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/kadidat', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    public function screening()
+    {
+        $data['title'] = 'Screening';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['data'] = $this->admin->screening();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/screening', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
     public function resetPasswordUser($id)
     {
         $options = ['cost' => 10];

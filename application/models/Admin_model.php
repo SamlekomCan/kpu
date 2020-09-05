@@ -42,5 +42,16 @@ class Admin_model extends CI_Model
         $this->db->from('calon');
         return $this->db->get()->result();
     }
+
+    public function kadidat()
+    {
+         return $this->db->get_where('dt_kandidat')->row_array();
+    }
+
+    public function screening()
+    {
+         return $this->db->get_where('screening')->row_array();
+        # code...
+    }
     
 }
