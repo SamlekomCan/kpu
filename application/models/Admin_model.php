@@ -45,12 +45,12 @@ class Admin_model extends CI_Model
 
     public function kadidat()
     {
-         return $this->db->get_where('dt_kandidat')->row_array();
+        return $this->db->get('dt_kandidat')->result_array();
     }
 
     public function screening()
     {
-         return $this->db->get_where('presiden')->row_array();
+        return $this->db->get_where('presiden')->row_array();
         # code...
     }
     

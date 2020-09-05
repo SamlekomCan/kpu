@@ -129,7 +129,7 @@ class Admin extends CI_Controller {
         $this->load->view('admin/kadidat', $data);
         $this->load->view('templatesAdmin/footer', $data);
     }
-
+    
     public function screening() {
         $data['title'] = 'Screening';
         $data['sidebar'] = 'Administrator';
@@ -140,6 +140,7 @@ class Admin extends CI_Controller {
         $this->load->view('admin/screening', $data);
         $this->load->view('templatesAdmin/footer', $data);
     }
+
     public function screeningpresiden() {
         $data['title'] = 'Screening Presiden';
         $data['sidebar'] = 'Administrator';
@@ -151,6 +152,7 @@ class Admin extends CI_Controller {
         $this->load->view('admin/screeningpresiden', $data);
         $this->load->view('templatesAdmin/footer', $data);
     }
+
     public function screeninggubernur() {
         $data['title'] = 'Screening Gubernur';
         $data['sidebar'] = 'Administrator';
@@ -162,6 +164,7 @@ class Admin extends CI_Controller {
         $this->load->view('admin/screeninggubernur', $data);
         $this->load->view('templatesAdmin/footer', $data);
     }
+
     public function screeninghimpunan() {
         $data['title'] = 'Screening Himpunan';
         $data['sidebar'] = 'Administrator';
@@ -173,8 +176,6 @@ class Admin extends CI_Controller {
         $this->load->view('admin/screeninghimpunan', $data);
         $this->load->view('templatesAdmin/footer', $data);
     }
-
-
 
     public function editAdmin($id) {
         $data['title'] = 'Change Password';
@@ -245,14 +246,13 @@ class Admin extends CI_Controller {
         Password ' . $user['nim'] . ' has been reset! </div>');
         redirect('admin/user');
     }
-    public function deleteUser($id)
-    {
-        $this->db->where('id',$id);
+
+    public function deleteUser($id) {
+        $this->db->where('id', $id);
         $this->db->delete('user');
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
         Mahasiswa berhasil dihapus! </div>');
         redirect('admin/user');
-
     }
 
     public function tambahAdmin() {
@@ -459,6 +459,36 @@ class Admin extends CI_Controller {
             $this->db->set('hasil', 0);
             $this->db->insert('calon');
             redirect('admin/calon');
+        }
+    }
+
+    public function addKadidat() {
+
+        $nama = $this->input->post('nama');
+        $nim = $this->input->post('nim');
+        $cek = $this->db->query("SELECT * FROM user WHERE nama LIKE '$nama' AND nim LIKE '$nim'")->num_rows();
+        // print_r($cek);die;
+        if ($cek > 0) {
+            $dataset = ['nama' => $nama,
+                'nim' => $nim,
+                'nowa' => '-',
+                'email' => '',
+                'fakultas' => '',
+                'visi' => '',
+                'misi' => '',
+                'foto' => '',
+                'ukuran' => '',
+                'tipe' => ''
+            ];
+            // print_r($dataset);die;
+            $this->db->insert('dt_kandidat', $dataset);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+                Berhasil! </div>');
+            redirect('admin/kadidat');
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                Nama tidak Tersedia! </div>');
+            redirect('admin/kadidat');
         }
     }
 
