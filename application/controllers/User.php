@@ -187,9 +187,10 @@ class User extends CI_Controller
     
     public function screeningpresiden()
     {
-        $data['title'] = 'Screening Presiden';
-        $data['user'] = $this->db->get_where('user', ['nim' => $this->session->userdata('nim')])->row_array();
-        
+		$data['title'] = 'Screening Presiden';
+		$data['user'] = $this->db->get_where('user', ['nim' => $this->session->userdata('nim')])->row_array();
+		$cek= $this->db->query(" SELECT * FROM presiden WHERE idUser LIKE '".$data['user'][id]."'")->num_rows();
+		if ($cek == 0) {
 		$this->form_validation->set_rules('nama', 'Nama', 'required');
 		$this->form_validation->set_rules('fakultas', 'Fakultas', 'required');
 		$this->form_validation->set_rules('prodi', 'Prodi', 'required');
@@ -221,7 +222,7 @@ class User extends CI_Controller
             // print_r($dataset);die;
                 $this->db->insert('presiden', $dataset);
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-                Derhasil! </div>');
+                Berhasil! </div>');
                 
                 redirect('user/screening');
             }else{
@@ -230,14 +231,19 @@ class User extends CI_Controller
                 
                 redirect('user/screeningpresiden');
             }    
-        }
+		}
+		}else{
+			 redirect('user/screening');
+		}
     }
 
 
     public function screeninggubernur()
     {
-        $data['title'] = 'Screening Gubernur';
+		$data['title'] = 'Screening Gubernur';
         $data['user'] = $this->db->get_where('user', ['nim' => $this->session->userdata('nim')])->row_array();
+		$cek= $this->db->query(" SELECT * FROM presiden WHERE idUser LIKE '".$data['user'][id]."'")->num_rows();
+		if ($cek == 0) {
         
 		$this->form_validation->set_rules('nama', 'Nama', 'required');
 		$this->form_validation->set_rules('fakultas', 'Fakultas', 'required');
@@ -257,20 +263,21 @@ class User extends CI_Controller
             $prodi = $this->input->post('prodi');
             $angkatan = $this->input->post('angkatan');
             $alasan = $this->input->post('alasan');
-
+// print_r($nama);die;
             $cek = $this->db->query("SELECT * FROM user WHERE nama LIKE '$nama' AND fakultas LIKE '$fakultas' AND  prodi LIKE '$prodi' ")->num_rows();
             if ($cek > 0) {
+				
                 $dataset=['nama' => $nama, 
                 'fakultas' => $fakultas, 
                 'prodi' => $prodi, 
                 'angkatan' => $angkatan, 
                 'alasan' => $alasan,
                 'idUser' => $data['user']['id']          
-            ];
-            // print_r($dataset);die;
+			];
+			
                 $this->db->insert('gubernur', $dataset);
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-                Derhasil! </div>');
+                Berhasil! </div>');
                 
                 redirect('user/screening');
             }else{
@@ -279,12 +286,17 @@ class User extends CI_Controller
                 
                 redirect('user/screeninggubernur');
             }    
-        }
+		}
+		}else{
+			 redirect('user/screening');
+		}
     }
     public function screeninghimpunan()
     {
         $data['title'] = 'Screening Himpunan';
         $data['user'] = $this->db->get_where('user', ['nim' => $this->session->userdata('nim')])->row_array();
+        $cek= $this->db->query(" SELECT * FROM presiden WHERE idUser LIKE '".$data['user'][id]."'")->num_rows();
+		if ($cek == 0) {
         
 		$this->form_validation->set_rules('nama', 'Nama', 'required');
 		$this->form_validation->set_rules('fakultas', 'Fakultas', 'required');
@@ -317,7 +329,7 @@ class User extends CI_Controller
             // print_r($dataset);die;
                 $this->db->insert('himpunan', $dataset);
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-                Derhasil! </div>');
+                Berhasil! </div>');
                 
                 redirect('user/screening');
             }else{
@@ -326,14 +338,16 @@ class User extends CI_Controller
                 
                 redirect('user/screeninghimpunan');
             }    
-        }
+		}
+	}else{
+			 redirect('user/screening');
+		}
     }
 
     public function prodi()
     {
         $fakultas = $this->input->post('id');
-        $data = $this->db->query("SELECT nama_prodi FROM prodi WHERE id_fakultas_fk LIKE 
-        (SELECT id_fakultas FROM fakultas WHERE fakultas LIKE '".$fakultas."')")->result();
+        $data = $this->db->query("SELECT nama_prodi FROM prodi WHERE id_fakultas_fk LIKE (SELECT id_fakultas FROM fakultas WHERE fakultas LIKE '".$fakultas."')")->result();
         $newdata = array();
         $index = 0;
         foreach ($data as $row) {
