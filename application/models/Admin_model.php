@@ -54,4 +54,9 @@ class Admin_model extends CI_Model
         # code...
     }
     
+    public function getAdmin($id)
+    {
+        $this->db->where('id', $id);
+        return $this->db->get('admin')->result_array();
+    }
 }

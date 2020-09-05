@@ -183,5 +183,42 @@ class User extends CI_Controller
             Your Profile has been updated! </div>');
 			redirect('user');
 		}
-	}
+    }
+    
+    public function screeningpresiden()
+    {
+        $data['title'] = 'Screening Presiden';
+		$data['user'] = $this->db->get_where('user', ['nim' => $this->session->userdata('nim')])->row_array();
+
+        $this->load->view('templatesUser/header', $data);
+			$this->load->view('templatesUser/sidebar', $data);
+			$this->load->view('templatesUser/topbar', $data);
+			$this->load->view('user/screeningpresiden', $data);
+			$this->load->view('templatesUser/footer', $data);
+    }
+    public function screeninggubernur()
+    {
+        $data['title'] = 'Screening Gubernur';
+		$data['user'] = $this->db->get_where('user', ['nim' => $this->session->userdata('nim')])->row_array();
+
+        $this->load->view('templatesUser/header', $data);
+			$this->load->view('templatesUser/sidebar', $data);
+			$this->load->view('templatesUser/topbar', $data);
+			$this->load->view('user/screeninggubernur', $data);
+			$this->load->view('templatesUser/footer', $data);
+    }
+
+    public function prodi()
+    {
+        $fakultas = $this->input->post('id');
+        var_dump($fakultas);die;
+        $data = $this->db->query("SELECT nama_prodi FROM prodi WHERE id_fakultas_fk LIKE 
+        (SELECT id_fakultas FROM fakultas WHERE fakultas LIKE '".$fakultas."')")->result();
+        $newdata = array();
+        $index = 0;
+        foreach ($data as $row) {
+            $newdata[$index++]= $row;
+        }
+        echo json_encode($newdata);
+    }
 }

@@ -21,6 +21,7 @@
     <link href="<?= base_url('assets/') ?>css/sb-admin-2.min.css" rel="stylesheet">
     <link href="<?= base_url('assets/') ?>css/sweetalert.css" rel="stylesheet">
     <link href="<?= base_url('assets/') ?>js/sweetalert.min.js" rel="stylesheet">
+    <link href="<?= base_url('assets/') ?>js/jquery-3.1.0.min.js" rel="stylesheet">
 
 
 

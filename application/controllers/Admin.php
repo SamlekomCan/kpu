@@ -81,7 +81,7 @@ class Admin extends CI_Controller
         } else {
             $currentPass = $this->input->post('current_password');
             $Pass = $this->input->post('password1');
-            if (!password_verify($currentPass, $data['user']['password'])) {
+            if (!password_verify($currentPass, $data['user']['pass'])) {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
                 Wrong Current Password! </div>');
                 redirect('admin/changepassword');
@@ -154,6 +154,70 @@ class Admin extends CI_Controller
         $this->load->view('admin/screening', $data);
         $this->load->view('templatesAdmin/footer', $data);
     }
+    public function editAdmin($id)
+    {
+        $data['title'] = 'Change Password';
+        $data['sidebar'] = 'Administrator';
+        
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['admin'] = $this->admin->getAdmin($id);
+    //    var_dump($data['user']);die;
+        // $this->form_validation->set_rules('name', 'Username', 'required|trim');
+        $this->form_validation->set_rules('current_password', 'Current Password', 'required|trim');
+        $this->form_validation->set_rules(
+            'password1',
+            'New Password',
+            'required|trim|min_length[3]|matches[password2]',
+            [
+                'matches' => 'Password dont match!',
+                'min_length' => 'Password to short!'
+            ]
+        );
+        $this->form_validation->set_rules(
+            'password2',
+            'Confirm New Password',
+            'required|trim|min_length[3]|matches[password1]',
+            [
+                'matches' => 'Password dont match!',
+                'min_length' => 'Password to short!'
+            ]
+        );
+
+        if ($this->form_validation->run() == false) {
+            # code...
+            $this->load->view('templatesAdmin/header', $data);
+            $this->load->view('templatesAdmin/sidebar', $data);
+            $this->load->view('templatesAdmin/topbar', $data);
+            $this->load->view('admin/editAdmin', $data);
+            $this->load->view('templatesAdmin/footer', $data);
+        } else {
+
+            $user = $this->input->post('username');
+            // var_dump($user);die;
+            $currentPass = $this->input->post('current_password');
+            $Pass = $this->input->post('password1');
+            if (!password_verify($currentPass, $data['admin'][0]['pass'])) {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                Wrong Current Password! </div>');
+                redirect('admin/admin');
+            } else {
+                if ($currentPass == $Pass) {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                New password cannot be the same as current password! </div>');
+                redirect('admin/admin');
+                } else {
+                    $newPass = password_hash($Pass, PASSWORD_DEFAULT);
+                    $this->db->set('pass', $newPass);
+                    $this->db->set('user', $user);
+                    $this->db->where('id', $id);
+                    $this->db->update('admin');
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+                    Your Password has been updated! </div>');
+                    redirect('admin/admin');
+                }
+            }
+        }
+    }
 
     public function resetPasswordUser($id)
     {
@@ -174,16 +238,24 @@ class Admin extends CI_Controller
         $username = $this->input->post('username');
         $password = $this->input->post('password');
         $mail = $this->input->post('mail');
-        if ($this->auth->cekAdmin($username)==0) {
-            # code...
-             $data=['nama' => $nama, 'user' => $username, 'pass' => password_hash($password, PASSWORD_DEFAULT), 'mail' => $mail, 'role'=>1];
-            $this->db->insert('admin', $data);
-             redirect('admin/admin');
+
+        if ($nama==''||$username==''||$password==''||$mail=='') {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+            Data Kosong! </div>');
+            redirect('admin/admin');
         }else{
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-        Username sudah ada! </div>');
-             redirect('admin/admin');
+            if ($this->auth->cekAdmin($username)==0) {
+                # code...
+                 $data=['nama' => $nama, 'user' => $username, 'pass' => password_hash($password, PASSWORD_DEFAULT), 'mail' => $mail, 'role'=>1];
+                $this->db->insert('admin', $data);
+                 redirect('admin/admin');
+            }else{
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Username sudah ada! </div>');
+                 redirect('admin/admin');
+            }
         }
+        
        
        
     }
