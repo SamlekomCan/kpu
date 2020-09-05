@@ -6,8 +6,8 @@
 	<hr>
 	<div class="row">
 		<div class="col-lg-6">
-		Menurutmu siapakah kadidat yang cocok untuk menjadi Gubernur BEM USD periode 2020/2021 ?
-		<form method="post" action="<?php echo base_url("user/screeningpresiden") ?>">
+		Menurutmu siapakah kadidat yang cocok untuk menjadi Gubernur BEMF USD periode 2020/2021 ?
+			
 			<div class="form-group row">
 				<label for="nama" class="col-sm-2 col-form-label">Nama</label>
 				<div class="col-sm-10">
@@ -26,14 +26,9 @@
 			<div class="form-group row">
 				<label for="prodi" class="col-sm-2 col-form-label">Prodi</label>
 				<div class="col-sm-10">
-				<?php $query="SELECT * FROM prodi WHERE id_fakultas_fk LIKE 
-				(SELECT id_fakultas FROM fakultas WHERE fakultas LIKE '".$user['fakultas']."')";
-				$sql = $this->db->query($query)->result_array();?>
-					<select class="form-control" name="prodi">
-					<?php foreach ($sql as $row):?> 
-						<option> <?= $row["nama_prodi"] ?></option>
-						<?php endforeach ?>
-					</select>
+				<input type="text" class="form-control" id="prodi" name="prodi"
+						   value="<?= $user['prodi'] ?>" readonly>
+					<?= form_error('prodi', '<small class="text-danger pl-2">', '</small>') ?>
 				</div>
 			</div>
 			<div class="form-group row">
@@ -44,7 +39,7 @@
 					<?= form_error('angkatan', '<small class="text-danger pl-2">', '</small>') ?>
 				</div>
 			</div>
-			Berikan alasanmu mengapa beliau cocok untuk menjadi presiden BEM USD periode 2020/2021?
+			Berikan alasanmu mengapa beliau cocok untuk menjadi Gubernur BEMF USD periode 2020/2021?
 			<div class="form-group row">
 				<label for="alasan" class="col-sm-2 col-form-label">Alasan</label>
 				<div class="col-sm-10">
@@ -54,9 +49,8 @@
 			</div>
 			<div>
 				<a href="<?= base_url('user/screening') ?>" class="btn btn-secondary">Kembali</a>
-				<button type="submit" class="btn btn-primary">Kirim</button>
+				<a href="<?= base_url('user/simpanpresiden') ?>" class="btn btn-primary">Simpan</a>
 			</div>
-			</form>
 
 
 		</div>

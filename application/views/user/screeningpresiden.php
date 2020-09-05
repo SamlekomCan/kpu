@@ -24,7 +24,7 @@
 				<?php $query="SELECT * FROM fakultas";
 				$sql = $this->db->query($query)->result_array();?>
 					<select class="form-control" name="fakultas">
-					<option >-Pilih Fakultas Aja Anjay-</option>
+					<option >-Pilih Fakultas-</option>
 
 					<?php foreach ($sql as $row):?> 
 						<option value= "<?= $row["fakultas"] ?>"> <?= $row["fakultas"] ?></option>
@@ -39,7 +39,7 @@
 				$sql = $this->db->query($query)->result_array();?>
 
 				<select class="form-control" name="prodi">
-					<option >-Pilih Prodi Aja Anjay-</option>
+					<option >-Pilih Prodi-</option>
 					<?php foreach ($sql as $row):?> 
 						<option> <?= $row["nama_prodi"] ?></option>
 						<?php endforeach ?>

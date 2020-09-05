@@ -229,23 +229,104 @@ class User extends CI_Controller
                 Nama tidak Tersedia! </div>');
                 
                 redirect('user/screeningpresiden');
-            }
-
-            
-
-
+            }    
         }
     }
+
+
     public function screeninggubernur()
     {
         $data['title'] = 'Screening Gubernur';
-		$data['user'] = $this->db->get_where('user', ['nim' => $this->session->userdata('nim')])->row_array();
+        $data['user'] = $this->db->get_where('user', ['nim' => $this->session->userdata('nim')])->row_array();
+        
+		$this->form_validation->set_rules('nama', 'Nama', 'required');
+		$this->form_validation->set_rules('fakultas', 'Fakultas', 'required');
+		$this->form_validation->set_rules('prodi', 'Prodi', 'required');
+		$this->form_validation->set_rules('angkatan', 'Angkatan', 'required');
+		$this->form_validation->set_rules('alasan', 'Alasan', 'required');
 
-        $this->load->view('templatesUser/header', $data);
+        if ($this->form_validation->run() == false) {		
+            $this->load->view('templatesUser/header', $data);
 			$this->load->view('templatesUser/sidebar', $data);
 			$this->load->view('templatesUser/topbar', $data);
 			$this->load->view('user/screeninggubernur', $data);
-			$this->load->view('templatesUser/footer', $data);
+            $this->load->view('templatesUser/footer', $data);
+        } else {
+            $nama = $this->input->post('nama');
+            $fakultas = $this->input->post('fakultas');
+            $prodi = $this->input->post('prodi');
+            $angkatan = $this->input->post('angkatan');
+            $alasan = $this->input->post('alasan');
+
+            $cek = $this->db->query("SELECT * FROM user WHERE nama LIKE '$nama' AND fakultas LIKE '$fakultas' AND  prodi LIKE '$prodi' ")->num_rows();
+            if ($cek > 0) {
+                $dataset=['nama' => $nama, 
+                'fakultas' => $fakultas, 
+                'prodi' => $prodi, 
+                'angkatan' => $angkatan, 
+                'alasan' => $alasan,
+                'idUser' => $data['user']['id']          
+            ];
+            // print_r($dataset);die;
+                $this->db->insert('gubernur', $dataset);
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+                Derhasil! </div>');
+                
+                redirect('user/screening');
+            }else{
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                Nama tidak Tersedia! </div>');
+                
+                redirect('user/screeninggubernur');
+            }    
+        }
+    }
+    public function screeninghimpunan()
+    {
+        $data['title'] = 'Screening Himpunan';
+        $data['user'] = $this->db->get_where('user', ['nim' => $this->session->userdata('nim')])->row_array();
+        
+		$this->form_validation->set_rules('nama', 'Nama', 'required');
+		$this->form_validation->set_rules('fakultas', 'Fakultas', 'required');
+		$this->form_validation->set_rules('prodi', 'Prodi', 'required');
+		$this->form_validation->set_rules('angkatan', 'Angkatan', 'required');
+		$this->form_validation->set_rules('alasan', 'Alasan', 'required');
+
+        if ($this->form_validation->run() == false) {		
+            $this->load->view('templatesUser/header', $data);
+			$this->load->view('templatesUser/sidebar', $data);
+			$this->load->view('templatesUser/topbar', $data);
+			$this->load->view('user/screeninghimpunan', $data);
+            $this->load->view('templatesUser/footer', $data);
+        } else {
+            $nama = $this->input->post('nama');
+            $fakultas = $this->input->post('fakultas');
+            $prodi = $this->input->post('prodi');
+            $angkatan = $this->input->post('angkatan');
+            $alasan = $this->input->post('alasan');
+
+            $cek = $this->db->query("SELECT * FROM user WHERE nama LIKE '$nama' AND fakultas LIKE '$fakultas' AND  prodi LIKE '$prodi' ")->num_rows();
+            if ($cek > 0) {
+                $dataset=['nama' => $nama, 
+                'fakultas' => $fakultas, 
+                'prodi' => $prodi, 
+                'angkatan' => $angkatan, 
+                'alasan' => $alasan,
+                'idUser' => $data['user']['id']          
+            ];
+            // print_r($dataset);die;
+                $this->db->insert('himpunan', $dataset);
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+                Derhasil! </div>');
+                
+                redirect('user/screening');
+            }else{
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                Nama tidak Tersedia! </div>');
+                
+                redirect('user/screeninghimpunan');
+            }    
+        }
     }
 
     public function prodi()
