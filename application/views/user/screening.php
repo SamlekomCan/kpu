@@ -4,7 +4,11 @@
 	<!-- Page Heading -->
 	<h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
     <hr>
+    <?php 
     
+    if (condition) {
+        # code...
+    } ?>
     <a href="<?= base_url('user/screeningpresiden') ?>" class="btn btn-primary btn-user btn-block">Presiden</a>
     <a href="<?= base_url('user/screeninggubernur') ?>" class="btn btn-primary btn-user btn-block">Gubernur</a>
 

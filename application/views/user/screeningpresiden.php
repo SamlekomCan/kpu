@@ -6,6 +6,10 @@
 	<hr>
 	<div class="row">
 		<div class="col-lg-6">
+			
+		<?= $this->session->flashdata('message'); ?>
+		<form method="post" action="<?php echo base_url("user/screeningpresiden") ?>">
+		
 			Menurutmu siapakah kadidat yang cocok untuk menjadi Presiden BEM USD periode 2020/2021 ?
 			<div class="form-group row">
 				<label for="nama" class="col-sm-2 col-form-label">Nama</label>
@@ -59,9 +63,10 @@
 			</div>
 			<div>
 				<a href="<?= base_url('user/screening') ?>" class="btn btn-secondary">Kembali</a>
-				<a href="<?= base_url('user/simpanpresiden') ?>" class="btn btn-primary">Simpan</a>
-			</div>
+				<button type="submit" class="btn btn-primary">Kirim</button>
 
+			</div>
+					</form>
 
 		</div>
 	</div>
