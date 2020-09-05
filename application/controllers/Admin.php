@@ -245,6 +245,15 @@ class Admin extends CI_Controller {
         Password ' . $user['nim'] . ' has been reset! </div>');
         redirect('admin/user');
     }
+    public function deleteUser($id)
+    {
+        $this->db->where('id',$id);
+        $this->db->delete('user');
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+        Mahasiswa berhasil dihapus! </div>');
+        redirect('admin/user');
+
+    }
 
     public function tambahAdmin() {
         $nama = $this->input->post('nama');
