@@ -50,7 +50,7 @@ class Admin_model extends CI_Model
 
     public function screening()
     {
-         return $this->db->get_where('screening')->row_array();
+         return $this->db->get_where('presiden')->row_array();
         # code...
     }
     

@@ -20,19 +20,21 @@
                     <label for="fakultas" class="col-sm-2 col-form-label">Fakultas</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="fakultas" name="fakultas"
-                            value="<?= $user['fakultas'] ?>" readonly>
-                        <?= form_error('fakultas', '<small class="text-danger pl-2">', '</small>') ?>
+                               value="<?= $user['fakultas'] ?>" readonly>
+                               <?= form_error('fakultas', '<small class="text-danger pl-2">', '</small>') ?>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="prodi" class="col-sm-2 col-form-label">Prodi</label>
                     <div class="col-sm-10">
-                        <?php $query="SELECT * FROM prodi WHERE id_fakultas_fk LIKE 
-				(SELECT id_fakultas FROM fakultas WHERE fakultas LIKE '".$user['fakultas']."')";
-				$sql = $this->db->query($query)->result_array();?>
+                        <?php
+                        $query = "SELECT * FROM prodi WHERE id_fakultas_fk LIKE 
+				(SELECT id_fakultas FROM fakultas WHERE fakultas LIKE '" . $user['fakultas'] . "')";
+                        $sql = $this->db->query($query)->result_array();
+                        ?>
                         <select class="form-control" name="prodi">
-                            <?php foreach ($sql as $row):?>
-                            <option> <?= $row["nama_prodi"] ?></option>
+                            <?php foreach ($sql as $row): ?>
+                                <option> <?= $row["nama_prodi"] ?></option>
                             <?php endforeach ?>
                         </select>
                     </div>

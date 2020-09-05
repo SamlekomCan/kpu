@@ -21,13 +21,15 @@
                 <div class="form-group row">
                     <label for="fakultas" class="col-sm-2 col-form-label">Fakultas</label>
                     <div class="col-sm-10">
-                        <?php $query="SELECT * FROM fakultas";
-				$sql = $this->db->query($query)->result_array();?>
+                        <?php
+                        $query = "SELECT * FROM fakultas";
+                        $sql = $this->db->query($query)->result_array();
+                        ?>
                         <select class="form-control" name="fakultas" id="fakultas">
                             <option>-Pilih Fakultas-</option>
 
-                            <?php foreach ($sql as $row):?>
-                            <option value="<?= $row["fakultas"] ?>"> <?= $row["fakultas"] ?></option>
+                            <?php foreach ($sql as $row): ?>
+                                <option value="<?= $row["fakultas"] ?>"> <?= $row["fakultas"] ?></option>
                             <?php endforeach ?>
                         </select>
                     </div>
@@ -35,11 +37,11 @@
                 <div class="form-group row">
                     <label for="prodi" class="col-sm-2 col-form-label">Prodi</label>
                     <div class="col-sm-10">
-                        <?php $sql = $this->db->get('prodi')->result_array();?>
+                        <?php $sql = $this->db->get('prodi')->result_array(); ?>
                         <select class="form-control" name="prodi" id="prodi">
                             <option>-Pilih Prodi-</option>
-                            <?php foreach ($sql as $row):?>
-                            <option> <?= $row["nama_prodi"] ?></option>
+                            <?php foreach ($sql as $row): ?>
+                                <option> <?= $row["nama_prodi"] ?></option>
                             <?php endforeach ?>
                         </select>
                     </div>
@@ -75,30 +77,30 @@
 <!-- End of Main Content -->
 
 <script>
-$('#fakultas').change(function() {
-    var id = $(this).val();
-    prodi(id);
-});
-
-function prodi(id) {
-    $.ajax({
-        url: "<?php echo base_url(); ?>user/prodi",
-        method: "POST",
-        data: {
-            id: id
-        },
-        async: false,
-        dataType: 'json',
-        success: function(data) {
-            var html = '';
-            var i;
-            for (i = 0; i < data.length; i++) {
-                html += '<option value="' + data[i].nama_prodi + '">' + data[i].nama_prodi + '</option>';
-            }
-            html += '<option value="">-</option>';
-            $('#prodi').html(html);
-        }
+    $('#fakultas').change(function () {
+        var id = $(this).val();
+        prodi(id);
     });
 
-}
+    function prodi(id) {
+        $.ajax({
+            url: "<?php echo base_url(); ?>user/prodi",
+            method: "POST",
+            data: {
+                id: id
+            },
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+                var html = '';
+                var i;
+                for (i = 0; i < data.length; i++) {
+                    html += '<option value="' + data[i].nama_prodi + '">' + data[i].nama_prodi + '</option>';
+                }
+                html += '<option value="">-</option>';
+                $('#prodi').html(html);
+            }
+        });
+
+    }
 </script>
