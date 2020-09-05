@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 01, 2020 at 07:43 AM
+-- Generation Time: Sep 05, 2020 at 09:28 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -62,7 +62,7 @@ CREATE TABLE `calon` (
   `visi` text NOT NULL,
   `misi` text NOT NULL,
   `foto` varchar(100) NOT NULL,
-  `hasil` text NOT NULL
+  `hasil` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -70,10 +70,143 @@ CREATE TABLE `calon` (
 --
 
 INSERT INTO `calon` (`id`, `ketua`, `wakil`, `fakultasketua`, `fakultaswakil`, `organisasi`, `visi`, `misi`, `foto`, `hasil`) VALUES
-(4, 'qweqwe', 'aadw', 'FST', 'FARMASI', 'BEMU', 'wewwe', 'qqq2', 'usd3.png', '1'),
-(5, 'qweqwe', 'qwe', 'FST', 'PSIKOLOGI', 'BEMU', 'qweqw', 'asdasd', 'FvitYG8_-_Copy_(2).png', '5'),
-(6, 'qweqwe', '213qwe', 'PSIKOLOGI', 'FKIP', 'BEMU', 'asda', 'qweqw', 'FvitYG8_-_Copy_(3).png', '2'),
-(9, 'Berlin', 'Ican', 'Sains dan Teknologi', 'Sains dan Teknologi', 'BEMF', 'libur tiap hari', 'mabok tiap hari', 'FvitYG8_-_Copy_(4)1.png', '1');
+(4, 'qweqwe', 'aadw', 'FST', 'FARMASI', 'BEMU', 'wewwe', 'qqq2', 'usd3.png', 1),
+(5, 'qweqwe', 'qwe', 'FST', 'PSIKOLOGI', 'BEMU', 'qweqw', 'asdasd', 'FvitYG8_-_Copy_(2).png', 5),
+(6, 'qweqwe', '213qwe', 'PSIKOLOGI', 'FKIP', 'BEMU', 'asda', 'qweqw', 'FvitYG8_-_Copy_(3).png', 3),
+(9, 'Berlin', 'Ican', 'Sains dan Teknologi', 'Sains dan Teknologi', 'BEMF', 'libur tiap hari', 'mabok tiap hari', 'FvitYG8_-_Copy_(4)1.png', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dt_kandidat`
+--
+
+CREATE TABLE `dt_kandidat` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `nim` varchar(9) NOT NULL,
+  `nowa` varchar(15) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `fakultas` varchar(255) NOT NULL,
+  `visi` varchar(255) NOT NULL,
+  `misi` varchar(255) NOT NULL,
+  `foto` varchar(100) DEFAULT NULL,
+  `ukuran` int(11) NOT NULL,
+  `tipe` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `fakultas`
+--
+
+CREATE TABLE `fakultas` (
+  `id_fakultas` int(11) NOT NULL,
+  `fakultas` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `fakultas`
+--
+
+INSERT INTO `fakultas` (`id_fakultas`, `fakultas`) VALUES
+(1, 'Sains dan Teknologi'),
+(2, 'Farmasi'),
+(3, 'Keguruan dan Ilmu Pendidikan'),
+(4, 'Ekonomi'),
+(5, 'Teologi'),
+(6, 'Psikologi'),
+(7, 'Sastra');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gubernur`
+--
+
+CREATE TABLE `gubernur` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `fakultas` varchar(5) NOT NULL,
+  `prodi` varchar(5) NOT NULL,
+  `angkatan` varchar(10) NOT NULL,
+  `alasan` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `himpunan`
+--
+
+CREATE TABLE `himpunan` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `fakultas` varchar(5) NOT NULL,
+  `prodi` varchar(5) NOT NULL,
+  `angkatan` varchar(10) NOT NULL,
+  `alasan` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `prodi`
+--
+
+CREATE TABLE `prodi` (
+  `id_prodi` int(11) NOT NULL,
+  `id_fakultas_fk` int(11) NOT NULL,
+  `nama_prodi` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `prodi`
+--
+
+INSERT INTO `prodi` (`id_prodi`, `id_fakultas_fk`, `nama_prodi`) VALUES
+(1, 1, 'Informatika'),
+(2, 1, 'Teknik Elektro'),
+(3, 1, 'Teknik Mesin'),
+(4, 1, 'Matematika'),
+(5, 2, 'Farmasi'),
+(6, 3, 'Bimbingan dan Konseling'),
+(7, 3, 'Pendidikan Bahasa dan Sastra Indonesia'),
+(8, 3, 'Pendidikan Bahasa Inggris'),
+(9, 3, 'Pendidikan Biologi'),
+(10, 3, 'Pendidikan Ekonomi Bidang Keahlian Khusus Pendidikan Akuntasi'),
+(11, 3, 'Pendidikan Ekonomi Bidang Keahlian Khusus Pendidikan Ekonommi'),
+(12, 3, 'Pendidikan Fisika'),
+(13, 3, 'Pendidikan Guru Sekolah Dasar'),
+(14, 3, 'Pendidikan Keagamamaan Katolik'),
+(15, 3, 'Pendidikan Kimia'),
+(16, 3, 'Pendidikan Matematika'),
+(17, 3, 'Pendidikan Sejarah'),
+(18, 4, 'Akutansi'),
+(19, 4, 'Ekonomi'),
+(20, 4, 'Manajemen'),
+(21, 5, 'Filsafat Keilahian Program Sarjana'),
+(22, 6, 'Psikologi'),
+(23, 7, 'Sastra Indonesia'),
+(24, 7, 'Sastra Inggris'),
+(25, 7, 'Sejarah');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `screening`
+--
+
+CREATE TABLE `screening` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `fakultas` varchar(5) NOT NULL,
+  `prodi` varchar(5) NOT NULL,
+  `angkatan` varchar(10) NOT NULL,
+  `alasan` text NOT NULL,
+  `sebagai` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -283,9 +416,9 @@ INSERT INTO `user` (`id`, `nim`, `nama`, `password`, `fakultas`, `prodi`, `statu
 (182, '175314078', 'GUIDO DIKA FIRGUSTON', '$2y$10$XyBWWq1J0qzDpUhiYsH42.zBfcHAMw560poDFqmmMwrpsTfHgGuCO', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (183, '175314079', 'MADE ARIVANDEGA WARNAWAN', '$2y$10$VAh2U9Zh5UcDDndwrI7n4eeqmIsdh9CG17.qOgF0XDdNSsEf4sNpC', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (184, '175314080', 'HIERONIMUS FREDY MORGAN', '$2y$10$mY8XJJvAmJrQiQK/2faBsOmMUGxdjMMGWJ0rsgoSfAxSfOvv7eh42', 'Sains dan Teknologi', 'Informatika', 0, 0, 1, 0),
-(185, '175314081', 'IGNATIUS BENNY CHRISTIAN', '$2y$10$UmBqY5vFOzOBnmdqUsG9p.6A/gQQFf6Hn8vtAPlo3as6wvHoRZap2', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
+(185, '175314081', 'IGNATIUS BENNY CHRISTIAN', '$2y$10$UmBqY5vFOzOBnmdqUsG9p.6A/gQQFf6Hn8vtAPlo3as6wvHoRZap2', 'Sains dan Teknologi', 'Informatika', 0, 0, 1, 0),
 (186, '175314082', 'ALBERTUS SATRIO BAYUAJI', '$2y$10$Baut7kNKOIn9d6S0Qq7SAu1REWSz4zwmTOy3ms6GbFZjCehxP6hXu', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
-(187, '175314083', 'IDA BAGUS YUDISTIRA PRAMA PUTRA', '$2y$10$KGl8qKnokgvp21L8y7LaguIfHza2yhFhbS7ETsewlMm/mP767PvPu', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
+(187, '175314083', 'IDA BAGUS YUDISTIRA PRAMA PUTRA', '$2y$10$KGl8qKnokgvp21L8y7LaguIfHza2yhFhbS7ETsewlMm/mP767PvPu', 'Sains dan Teknologi', 'Informatika', 1, 0, 1, 0),
 (188, '175314084', 'GABRIEL RYAN PRIMA ADETIKA', '$2y$10$Qwxz2FEqi9X7zsApe6f6huLXBTAyJOoeB.r6Fsw4iSzUut7Lj5NY2', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (189, '175314085', 'ALOYSIUS ADYTYA ENDRYANA PUTRA', '$2y$10$rQ8Q6K3kJzhcdkQlsDOHP.a9BgkEXfGospy3iSGsIl7KICKndvOd6', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (190, '175314086', 'ROBERTUS YULIANTO', '$2y$10$X0xVAG.j9JuL2j9IjvZdoulfg0EhgLN7qQ/l2SKReKKmQsNThQkgS', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
@@ -325,7 +458,7 @@ INSERT INTO `user` (`id`, `nim`, `nama`, `password`, `fakultas`, `prodi`, `statu
 (224, '175314121', 'RAMA EKA PUTRANTO', '$2y$10$6ur6Ag8imJ7JmPON6wLGvu3wuZk8O1nhbTLiB.BOeV1jk81Uty2uO', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (225, '175314122', 'AMELIA PUTRI CENDRAKASIH', '$2y$10$M4Wx.2Wxq4bfk/hfXEyjleOAs7hshN1izIQBbP9286OvH.CF0Nv9O', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (226, '175314123', 'KATARINA HARYANINGTYAS', '$2y$10$wNnphwuQIhrp9oOxfDaaFO.4lzdIfPWMC5/gOpjWFvSZc3j4lcCIy', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
-(227, '175314124', 'FRANSISKA APRI WULANDARI', '$2y$10$lieKHtDv0chOyi9JoFQqd.IsC9jx46BRrsrQczLUqoJum.6fCsngq', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
+(227, '175314124', 'FRANSISKA APRI WULANDARI', '$2y$10$lieKHtDv0chOyi9JoFQqd.IsC9jx46BRrsrQczLUqoJum.6fCsngq', 'Sains dan Teknologi', 'Informatika', 0, 0, 1, 0),
 (228, '175314125', 'ARNOLDUS JANSSEN YUFIANTO', '$2y$10$IYzGmD/Gs7AUSZB0sR0uBeVk0cf82gi23Jy8PBYWrPp59AFSXR9y2', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (229, '175314126', 'THOMAS DANI KURNIAWAN', '$2y$10$WqnXL/mhRAJqkDmDk46yKeseHwVKE2GMUBnj4t5et5uWRBNft6XEm', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (230, '175314127', 'ALEXANDER ADAM BAGASKARA', '$2y$10$ImlozaiNYtrChEOLHPk7ZOBKJ2wELPlWhVY4HVO9WXqF3l5/IBZTS', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
@@ -734,6 +867,43 @@ ALTER TABLE `calon`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `dt_kandidat`
+--
+ALTER TABLE `dt_kandidat`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `fakultas`
+--
+ALTER TABLE `fakultas`
+  ADD PRIMARY KEY (`id_fakultas`);
+
+--
+-- Indexes for table `gubernur`
+--
+ALTER TABLE `gubernur`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `himpunan`
+--
+ALTER TABLE `himpunan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `prodi`
+--
+ALTER TABLE `prodi`
+  ADD PRIMARY KEY (`id_prodi`),
+  ADD KEY `id_fakultas_fk` (`id_fakultas_fk`);
+
+--
+-- Indexes for table `screening`
+--
+ALTER TABLE `screening`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -754,6 +924,42 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `calon`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `dt_kandidat`
+--
+ALTER TABLE `dt_kandidat`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `fakultas`
+--
+ALTER TABLE `fakultas`
+  MODIFY `id_fakultas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `gubernur`
+--
+ALTER TABLE `gubernur`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `himpunan`
+--
+ALTER TABLE `himpunan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `prodi`
+--
+ALTER TABLE `prodi`
+  MODIFY `id_prodi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `screening`
+--
+ALTER TABLE `screening`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
