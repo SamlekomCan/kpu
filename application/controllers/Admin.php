@@ -129,7 +129,7 @@ class Admin extends CI_Controller {
         $this->load->view('admin/kadidat', $data);
         $this->load->view('templatesAdmin/footer', $data);
     }
-    
+
     public function screening() {
         $data['title'] = 'Screening';
         $data['sidebar'] = 'Administrator';

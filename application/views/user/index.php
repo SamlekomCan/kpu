@@ -60,17 +60,17 @@
                                     <a data-toggle="modal" href="#detail<?= $row['id']; ?>" class="btn btn-info btn-sm">
                                         <span class="glyphicon glyphicon-info-sign"></span> Visi dan Misi
                                     </a>
-        <?php if ($user['statusBEMF'] != 0): ?>
+                                    <?php if ($user['statusBEMF'] != 0): ?>
                                         <a href="#" class="btn btn-info btn-sm" onclick="validate('<?= $row['id']; ?>')"
                                            value="<?php echo $row['id'] ?>"><span class="glyphicon glyphicon-info-sign"></span>
                                             Pilih </a>
-        <?php endif ?>
+                                    <?php endif ?>
                                 </div>
                             </div>
                         </center>
                     </div>
                 </div>
-    <?php endif ?>
+            <?php endif ?>
         <?php endforeach ?>
     </div>
 </div>

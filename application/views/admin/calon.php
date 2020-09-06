@@ -13,30 +13,29 @@
     </div>
     <hr>
     <div class="row">
-        <?php 
-        foreach ($data as $row): ?>
-        <div class="col-xs-12 col-md-6 col-lg-3">
-            <div class="panel panel-default">
-                <center>
-                    <div class="card">
-                        <img class="card-img-top" src="<?= base_url('assets/img/calon/').$row['foto'] ?>"
-                            style="height: 200px;">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $row['ketua'].' - '.$row['wakil']; ?></h5>
-                            <p class="card-text"><?=$row['organisasi'];?></p>
+        <?php foreach ($data as $row): ?>
+            <div class="col-xs-12 col-md-6 col-lg-3">
+                <div class="panel panel-default">
+                    <center>
+                        <div class="card">
+                            <img class="card-img-top" src="<?= base_url('assets/img/calon/') . $row['foto'] ?>"
+                                 style="height: 200px;">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $row['ketua'] . ' - ' . $row['wakil']; ?></h5>
+                                <p class="card-text"><?= $row['organisasi']; ?></p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="<?= base_url('admin/detailCalon/') . $row['id']; ?>"
+                                   class="btn btn-info btn-sm">Detail</a>
+                                <a href="<?= base_url('admin/editCalon/') . $row['id']; ?>"
+                                   class="btn btn-primary btn-sm">Edit</a>
+                                <a href="<?= base_url('admin/hapusCalon/') . $row['id']; ?>" class="btn btn-danger btn-sm"
+                                   onclick="return confirm('Are you sure you want to delete <?= $row['ketua'] . ' - ' . $row['wakil']; ?>?');">Hapus</a>
+                            </div>
                         </div>
-                        <div class="card-footer">
-                            <a href="<?= base_url('admin/detailCalon/').$row['id'];?>"
-                                class="btn btn-info btn-sm">Detail</a>
-                            <a href="<?= base_url('admin/editCalon/').$row['id'];?>"
-                                class="btn btn-primary btn-sm">Edit</a>
-                            <a href="<?= base_url('admin/hapusCalon/').$row['id'];?>" class="btn btn-danger btn-sm"
-                                onclick="return confirm('Are you sure you want to delete <?= $row['ketua'].' - '.$row['wakil'];?>?');">Hapus</a>
-                        </div>
-                    </div>
-                </center>
+                    </center>
+                </div>
             </div>
-        </div>
         <?php endforeach ?>
     </div>
 

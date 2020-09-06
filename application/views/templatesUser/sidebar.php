@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark toggled"" id=" accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?=base_url('user') ?>">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('user') ?>">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -14,13 +14,13 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item ">
-        <a class="nav-link" href="<?=base_url('user/screening') ?>">
+        <a class="nav-link" href="<?= base_url('user/screening') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Screening</span></a>
     </li>
     <!-- Nav Item - Dashboard -->
     <li class="nav-item ">
-        <a class="nav-link" href="<?=base_url('user') ?>">
+        <a class="nav-link" href="<?= base_url('user') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Pemilihan</span></a>
     </li>
@@ -30,7 +30,7 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="<?=base_url('user/profile') ?>">
+        <a class="nav-link" href="<?= base_url('user/profile') ?>">
             <i class="fas fa-fw fa-user"></i>
             <span>Profle</span>
         </a>
@@ -40,7 +40,7 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="<?=base_url('user/logout') ?>">
+        <a class="nav-link" href="<?= base_url('user/logout') ?>">
             <i class="fas fa-fw fa-sign-out-alt"></i>
             <span>Logout</span>
         </a>

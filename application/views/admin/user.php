@@ -29,29 +29,31 @@
                 <tbody>
                     <?php $i = 1; ?>
                     <?php foreach ($data as $row) : ?>
-                    <tr>
-                        <td class="text-center"><?= $i ?></td>
-                        <td><?php echo $row['nim']; ?></td>
-                        <td><?php echo $row['nama']; ?></td>
-                        <td><?php echo $row['prodi']; ?></td>
-                        <td><?php echo $row['fakultas']; ?></td>
-                        <td><?php if($row['status']==1){
+                        <tr>
+                            <td class="text-center"><?= $i ?></td>
+                            <td><?php echo $row['nim']; ?></td>
+                            <td><?php echo $row['nama']; ?></td>
+                            <td><?php echo $row['prodi']; ?></td>
+                            <td><?php echo $row['fakultas']; ?></td>
+                            <td><?php
+                                if ($row['status'] == 1) {
                                     echo 'BELUM MEMILIH';
-                                }else{
+                                } else {
                                     echo 'SUDAH MEMILIH';
-                                }; ?></td>
-                        <td>
-                            <a href="<?php echo base_url(); ?>admin/editUser/<?= $row['id']; ?>"
-                                class="badge badge-success ">Edit</a>
-                            <a href="<?php echo base_url(); ?>admin/resetPasswordUser/<?= $row['id']; ?>"
-                                class="badge badge-warning ">Reset</a>
-                            <a href="<?php echo base_url(); ?>admin/deleteUser/<?= $row['id']; ?>"
-                                class="badge badge-danger"
-                                onclick="return confirm('Are you sure you want to delete <?= $row['id']; ?>?');">Delete</a>
-                        </td>
-                    </tr>
-                    <?php $i++; ?>
-                    <?php endforeach; ?>
+                                };
+                                ?></td>
+                            <td>
+                                <a href="<?php echo base_url(); ?>admin/editUser/<?= $row['id']; ?>"
+                                   class="badge badge-success ">Edit</a>
+                                <a href="<?php echo base_url(); ?>admin/resetPasswordUser/<?= $row['id']; ?>"
+                                   class="badge badge-warning ">Reset</a>
+                                <a href="<?php echo base_url(); ?>admin/deleteUser/<?= $row['id']; ?>"
+                                   class="badge badge-danger"
+                                   onclick="return confirm('Are you sure you want to delete <?= $row['id']; ?>?');">Delete</a>
+                            </td>
+                        </tr>
+    <?php $i++; ?>
+<?php endforeach; ?>
                 </tbody>
             </table>
         </div>
@@ -61,7 +63,7 @@
 
 <!-- Modal Start -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -88,20 +90,20 @@
 <!-- End of Main Content -->
 
 <script type="text/javascript">
-$(document).ready(function() {
-    $('#tabelku').dataTable({
-        "scrollY": "400px",
-        "scrollCollapse": true,
-        "paging": true,
-        "bAutoWidth": false,
-        "bInfo": false,
-        "language": {
-            "emptyTable": "Data Kosong"
-        },
-        "lengthMenu": [
-            [10, 25, 50, 100, -1],
-            [10, 25, 50, 100, "All"]
-        ],
+    $(document).ready(function () {
+        $('#tabelku').dataTable({
+            "scrollY": "400px",
+            "scrollCollapse": true,
+            "paging": true,
+            "bAutoWidth": false,
+            "bInfo": false,
+            "language": {
+                "emptyTable": "Data Kosong"
+            },
+            "lengthMenu": [
+                [10, 25, 50, 100, -1],
+                [10, 25, 50, 100, "All"]
+            ],
+        });
     });
-});
 </script>

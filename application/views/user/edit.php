@@ -26,8 +26,8 @@
                 <label for="fakultas" class="col-sm-2 col-form-label">Fakultas</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="fakultas" name="fakultas"
-                        value="<?= $user['fakultas'] ?>">
-                    <?= form_error('fakultas', '<small class="text-danger pl-2">', '</small>') ?>
+                           value="<?= $user['fakultas'] ?>">
+                           <?= form_error('fakultas', '<small class="text-danger pl-2">', '</small>') ?>
                 </div>
             </div>
             <div class="form-group row">
@@ -40,7 +40,7 @@
 
             <div class="form-group row justify-content-end">
                 <div class="col-sm-auto">
-                    <a href="<?=base_url('user/profile');?>" class="btn btn-secondary">Back</a>
+                    <a href="<?= base_url('user/profile'); ?>" class="btn btn-secondary">Back</a>
                 </div>
                 <div class="col-sm-10">
                     <button type="submit" class="btn btn-primary">Edit</button>

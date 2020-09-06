@@ -31,24 +31,24 @@
                 <tbody>
                     <?php $i = 1; ?>
                     <?php foreach ($data as $row) : ?>
-                    <tr>
-                        <td><?= $i ?></td>
-                        <td><?php echo $row['nim']; ?></td>
-                        <td><?php echo $row['nama']; ?></td>
-                        <td><?php echo $row['nowa']; ?></td>
-                        <td><?php echo $row['email']; ?></td>
-                        <td><?php echo $row['fakultas']; ?></td>
-                        <td><?php echo $row['visi']; ?></td>
-                        <td><?php echo $row['misi']; ?></td>
-                        <td><?php echo $row['foto']; ?></td>
-                        <td>
-                            <a href="<?php echo base_url(); ?>" class="badge badge-success ">Edit</a>
-                            <a href="<?php echo base_url(); ?>" class="badge badge-warning ">Reset</a>
-                            <a href="<?php echo base_url(); ?>" class="badge badge-danger"
-                                onclick="return confirm('Are you sure you want to delete <?= $row['id']; ?>?');">Delete</a>
-                        </td>
-                    </tr>
-                    <?php $i++; ?>
+                        <tr>
+                            <td><?= $i ?></td>
+                            <td><?php echo $row['nim']; ?></td>
+                            <td><?php echo $row['nama']; ?></td>
+                            <td><?php echo $row['nowa']; ?></td>
+                            <td><?php echo $row['email']; ?></td>
+                            <td><?php echo $row['fakultas']; ?></td>
+                            <td><?php echo $row['visi']; ?></td>
+                            <td><?php echo $row['misi']; ?></td>
+                            <td><?php echo $row['foto']; ?></td>
+                            <td>
+                                <a href="<?php echo base_url(); ?>" class="badge badge-success ">Edit</a>
+                                <a href="<?php echo base_url(); ?>" class="badge badge-warning ">Reset</a>
+                                <a href="<?php echo base_url(); ?>" class="badge badge-danger"
+                                   onclick="return confirm('Are you sure you want to delete <?= $row['id']; ?>?');">Delete</a>
+                            </td>
+                        </tr>
+                        <?php $i++; ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>
@@ -59,7 +59,7 @@
 
 <!-- Modal Start -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -94,20 +94,20 @@
 <!-- End of Main Content -->
 
 <script type="text/javascript">
-$(document).ready(function() {
-    $('#tabelku').dataTable({
-        "scrollY": "400px",
-        "scrollCollapse": true,
-        "paging": true,
-        "bAutoWidth": false,
-        "bInfo": false,
-        "language": {
-            "emptyTable": "Data Kosong"
-        },
-        "lengthMenu": [
-            [10, 25, 50, 100, -1],
-            [10, 25, 50, 100, "All"]
-        ],
+    $(document).ready(function () {
+        $('#tabelku').dataTable({
+            "scrollY": "400px",
+            "scrollCollapse": true,
+            "paging": true,
+            "bAutoWidth": false,
+            "bInfo": false,
+            "language": {
+                "emptyTable": "Data Kosong"
+            },
+            "lengthMenu": [
+                [10, 25, 50, 100, -1],
+                [10, 25, 50, 100, "All"]
+            ],
+        });
     });
-});
 </script>

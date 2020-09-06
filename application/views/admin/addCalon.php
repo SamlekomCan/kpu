@@ -1,6 +1,6 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <?php $fakult= ['Sains dan Teknologi','Keguruan dan Ilmu Pendidikan','Psikologi','Farmasi','Ekonomi','Teologi','Sastra'] ;?>
+    <?php $fakult = ['Sains dan Teknologi', 'Keguruan dan Ilmu Pendidikan', 'Psikologi', 'Farmasi', 'Ekonomi', 'Teologi', 'Sastra']; ?>
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
     <div class="row">
@@ -28,8 +28,8 @@
                                             <label for="fakultas">Fakultas Ketua</label>
                                             <select class="form-control" id="fakultas1" name="fakultas1">
                                                 <option>-</option>
-                                                <?php foreach ($fakult as $row ):?>
-                                                <option><?= $row ?></option>
+                                                <?php foreach ($fakult as $row): ?>
+                                                    <option><?= $row ?></option>
                                                 <?php endforeach ?>
                                             </select>
                                         </div>
@@ -39,8 +39,8 @@
                                             <label for="fakultas">Fakultas Wakil</label>
                                             <select class="form-control" id="fakultas2" name="fakultas2">
                                                 <option>-</option>
-                                                <?php foreach ($fakult as $row ):?>
-                                                <option><?= $row ?></option>
+                                                <?php foreach ($fakult as $row): ?>
+                                                    <option><?= $row ?></option>
                                                 <?php endforeach ?>
                                             </select>
                                         </div>
@@ -55,9 +55,9 @@
                             <div class="form-group">
                                 <label for="foto">Foto</label>
                                 <input type="file" id="image" name="image" class="form-control"
-                                    onchange="loadFile1(event)">
+                                       onchange="loadFile1(event)">
                                 <img src="" id="output1" class="img-responsive" style="height: 300px;">
-                                <p style="text-justify ">Ukuran Foto 3x4, dengan format JPG. Ukuran file Pasfoto
+                                <p style="text-justify">Ukuran Foto 3x4, dengan format JPG. Ukuran file Pasfoto
                                     tidak boleh lebih
                                     dari 500 KB. Kualitas gambar harus cukup tajam dan fokus. Posisi badan dan
                                     kepala tegak sejajar menghadap kamera. Proporsi wajah antara 25% - 50% dari
@@ -70,14 +70,14 @@
                             <div class="form-group">
                                 <label for="visi">Visi</label>
                                 <textarea name="visi" class="form-control" id="visi" cols="30" rows="10"
-                                    placeholder="Visi"></textarea>
-                                <?= form_error('visi', '<small class="text-danger pl-3">', '</small>') ?>
+                                          placeholder="Visi"></textarea>
+                                          <?= form_error('visi', '<small class="text-danger pl-3">', '</small>') ?>
                             </div>
                             <div class="form-group">
                                 <label for="misi">Misi</label>
                                 <textarea name="misi" class="form-control" id="misi" cols="30" rows="10"
-                                    placeholder="Misi"></textarea>
-                                <?= form_error('misi', '<small class="text-danger pl-3">', '</small>') ?>
+                                          placeholder="Misi"></textarea>
+                                          <?= form_error('misi', '<small class="text-danger pl-3">', '</small>') ?>
                             </div>
                         </div>
                     </div>

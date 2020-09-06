@@ -24,16 +24,16 @@
                 <label for="fakultas" class="col-sm-2 col-form-label">Fakultas</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="fakultas" name="fakultas"
-                        value="<?= $user['fakultas'] ?>" readonly>
-                    <?= form_error('fakultas', '<small class="text-danger pl-2">', '</small>') ?>
+                           value="<?= $user['fakultas'] ?>" readonly>
+                           <?= form_error('fakultas', '<small class="text-danger pl-2">', '</small>') ?>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="prodi" class="col-sm-2 col-form-label">Prodi</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="prodi" name="prodi" value="<?= $user['prodi'] ?>"
-                        readonly>
-                    <?= form_error('prodi', '<small class="text-danger pl-2">', '</small>') ?>
+                           readonly>
+                           <?= form_error('prodi', '<small class="text-danger pl-2">', '</small>') ?>
                 </div>
             </div>
             <div>
