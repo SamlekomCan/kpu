@@ -79,7 +79,7 @@ window.onload = function() {
 <!-- Begin Page Content -->
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
-<div class="container-fluid">
+<div class="container">
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
 
