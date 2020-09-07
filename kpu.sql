@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 05, 2020 at 09:28 AM
+-- Generation Time: Sep 07, 2020 at 06:43 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -88,8 +88,9 @@ CREATE TABLE `dt_kandidat` (
   `nowa` varchar(15) NOT NULL,
   `email` varchar(255) NOT NULL,
   `fakultas` varchar(255) NOT NULL,
-  `visi` varchar(255) NOT NULL,
-  `misi` varchar(255) NOT NULL,
+  `prodi` varchar(255) NOT NULL,
+  `visi` text NOT NULL,
+  `misi` text NOT NULL,
   `foto` varchar(100) DEFAULT NULL,
   `ukuran` int(11) NOT NULL,
   `tipe` varchar(20) NOT NULL
@@ -128,11 +129,19 @@ INSERT INTO `fakultas` (`id_fakultas`, `fakultas`) VALUES
 CREATE TABLE `gubernur` (
   `id` int(11) NOT NULL,
   `nama` varchar(255) NOT NULL,
-  `fakultas` varchar(5) NOT NULL,
-  `prodi` varchar(5) NOT NULL,
+  `fakultas` varchar(255) NOT NULL,
+  `prodi` varchar(255) NOT NULL,
   `angkatan` varchar(10) NOT NULL,
-  `alasan` text NOT NULL
+  `alasan` text NOT NULL,
+  `idUser` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `gubernur`
+--
+
+INSERT INTO `gubernur` (`id`, `nama`, `fakultas`, `prodi`, `angkatan`, `alasan`, `idUser`) VALUES
+(1, 'HIERONIMUS FREDY MORGAN', 'Sains dan Teknologi', 'Informatika', '2018', 'sadasdasd', 184);
 
 -- --------------------------------------------------------
 
@@ -143,11 +152,42 @@ CREATE TABLE `gubernur` (
 CREATE TABLE `himpunan` (
   `id` int(11) NOT NULL,
   `nama` varchar(255) NOT NULL,
-  `fakultas` varchar(5) NOT NULL,
-  `prodi` varchar(5) NOT NULL,
+  `fakultas` varchar(255) NOT NULL,
+  `prodi` varchar(255) NOT NULL,
   `angkatan` varchar(10) NOT NULL,
-  `alasan` text NOT NULL
+  `alasan` text NOT NULL,
+  `idUser` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `himpunan`
+--
+
+INSERT INTO `himpunan` (`id`, `nama`, `fakultas`, `prodi`, `angkatan`, `alasan`, `idUser`) VALUES
+(1, 'BERLIN RAVELINO HUGO PADANG', 'Sains dan Teknologi', 'Informatika', '2018', 'werwerwr', 184);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `presiden`
+--
+
+CREATE TABLE `presiden` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `fakultas` varchar(255) NOT NULL,
+  `prodi` varchar(255) NOT NULL,
+  `angkatan` varchar(10) NOT NULL,
+  `alasan` text NOT NULL,
+  `idUser` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `presiden`
+--
+
+INSERT INTO `presiden` (`id`, `nama`, `fakultas`, `prodi`, `angkatan`, `alasan`, `idUser`) VALUES
+(1, 'HIERONIMUS FREDY MORGAN', 'Sains dan Teknologi', 'Informatika', '2018', 'asdasasdas', 184);
 
 -- --------------------------------------------------------
 
@@ -195,22 +235,6 @@ INSERT INTO `prodi` (`id_prodi`, `id_fakultas_fk`, `nama_prodi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `screening`
---
-
-CREATE TABLE `screening` (
-  `id` int(11) NOT NULL,
-  `nama` varchar(255) NOT NULL,
-  `fakultas` varchar(5) NOT NULL,
-  `prodi` varchar(5) NOT NULL,
-  `angkatan` varchar(10) NOT NULL,
-  `alasan` text NOT NULL,
-  `sebagai` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `user`
 --
 
@@ -232,7 +256,6 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `nim`, `nama`, `password`, `fakultas`, `prodi`, `status`, `statusBEMF`, `statusHM`, `role`) VALUES
-(1, '165314001', 'YAKOBUS ARIS ARVANTO', '$2y$10$OhN.JroGwfIgUehjWhWZ/e.gFFJjJZBZ.Ixolgha7OELZLYpIqRU2', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (2, '165314002', 'ALEXANDER BERNADUS SUNGKONO', '$2y$10$lLTIiA9azkRSsWm5hbnBaeqWXGDo59FvhVKeQcmNexdfo0dxGpMZ6', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (3, '165314003', 'NANANG HIMAWAN FAUZI', '$2y$10$uSakQVrRWvRfG1d.BIXcNuwvrfAyDBp8Zxugguj3FjZQB55j44DoW', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (4, '165314004', 'GEDE RIZKY BELA DHARMA RUDYARTA', '$2y$10$y7t8vBKK3LvmhgVSRHngjOL.qRqCMgBi7JKGPcpDlMw4FmaZy9GTG', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
@@ -273,7 +296,6 @@ INSERT INTO `user` (`id`, `nim`, `nama`, `password`, `fakultas`, `prodi`, `statu
 (39, '165314045', 'JOHAN SATRIA KESUMA', '$2y$10$b3BLdPdBjEv4bLsZcUWwMutWc0pIGoFwWiRCgLyNc5LznTKUWJDuC', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (40, '165314046', 'FERDINANDUS LEMBAMBANG SULA', '$2y$10$6cmAzC4CVusB2GIX78Lb5eqMRl2nG.Z/gMWtZdy17Y2u2vCgpOKJ2', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (41, '165314047', 'YANUARIUS BASILIUS', '$2y$10$QceKJ.87/odH9kdbl77Oje1dIyotSQpROdPob7oYZYJIac/NYL.ha', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
-(42, '165314048', 'HIERONYMUS PRASTAWA AGUNG', '$2y$10$IucKytrl8Zl19Fxe/TO.GeThyLnFE6P.r/OlIsA.4rncDAEO6q1fe', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (43, '165314049', 'ANINDYAJATI', '$2y$10$oRq7N7J.FsJBcHa4X5EJdOokuZs.LpvHtMXaNhyhIntqSj/2M5dLy', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (44, '165314050', 'KRISTIANUS YULI KURNIAWAN', '$2y$10$45meioh9jIsdA60YXXuAAevrUxVUsMy24.MA1KBWq4Yizernzvs6O', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (45, '165314051', 'CHRISTIANTO EGA PRASETYO', '$2y$10$HGcw8q/kxAHkd31NI2gRJuZjjCDMa6feKF5rEmD6.oYEoQjBsilvi', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
@@ -547,10 +569,10 @@ INSERT INTO `user` (`id`, `nim`, `nama`, `password`, `fakultas`, `prodi`, `statu
 (313, '155314086', 'Y. ADVENSIUS PUTRA PAMUNGKAS', '$2y$10$7/M49gCIoX0s4DfxAndMuOyVvdUFoshJTmirJmcMUnuqPg/XMAR6G', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (314, '155314088', 'VENTYA FERNITHA', '$2y$10$jDg6DuQoHNkV3ubPzczdQOo6jzXY/UCeUNwwCjIeLuIz2vMVNt.36', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (315, '155314089', 'GHERALDO SARANGNGA\' BENDON', '$2y$10$Pv6eIO4raWY.PBh3vEGi.OA1UbtFvSg.TqGQ.EsqzJr8FVRgcBt9G', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
-(316, '155314090', 'REINARDUS AJI HARISTU', '$2y$10$LDZYQl5nr2B0AWbTCXXU3uM0iXK2GbKr9h3gWo4n1zEmevhy.wtbW', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0);
-INSERT INTO `user` (`id`, `nim`, `nama`, `password`, `fakultas`, `prodi`, `status`, `statusBEMF`, `statusHM`, `role`) VALUES
+(316, '155314090', 'REINARDUS AJI HARISTU', '$2y$10$LDZYQl5nr2B0AWbTCXXU3uM0iXK2GbKr9h3gWo4n1zEmevhy.wtbW', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (317, '155314091', 'ANINDIA ADYUTAWATI NUGRAHENI', '$2y$10$E0eoEWjAODDM1T4qGKE61ecp9hvWnEDoWThd1KD1.Kopm6wLGBHgK', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
-(318, '155314092', 'LENDRA RIADY', '$2y$10$LHqM3O9C.LVdhq3OdDIJouRppX4a0byXE5Tbblbn5bBjV28cc1LMO', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
+(318, '155314092', 'LENDRA RIADY', '$2y$10$LHqM3O9C.LVdhq3OdDIJouRppX4a0byXE5Tbblbn5bBjV28cc1LMO', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0);
+INSERT INTO `user` (`id`, `nim`, `nama`, `password`, `fakultas`, `prodi`, `status`, `statusBEMF`, `statusHM`, `role`) VALUES
 (319, '155314094', 'JOSHUA BOANERGES TAMPI', '$2y$10$bsbo6HvhgvGdgt8cckK6nOBl4u5ynljg2w8kDt74V5uPMtQwx4lDC', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (320, '155314095', 'YOHANES ADI PURNOMO BATLAYERI', '$2y$10$ntQzOitA1e22b9nJx/dqoe1E4IjAZQG7.s0YpuXJkoLfUtvykXDnO', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (321, '155314097', 'TIMOTIUS AQUINO FEBRI WIDYASETYANTO', '$2y$10$wBMr9SDge3dMzKojcma8uuk648Ot0t1N9Riuvpk/C6MixCrqkav9S', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
@@ -891,17 +913,17 @@ ALTER TABLE `himpunan`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `presiden`
+--
+ALTER TABLE `presiden`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `prodi`
 --
 ALTER TABLE `prodi`
   ADD PRIMARY KEY (`id_prodi`),
   ADD KEY `id_fakultas_fk` (`id_fakultas_fk`);
-
---
--- Indexes for table `screening`
---
-ALTER TABLE `screening`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user`
@@ -929,7 +951,7 @@ ALTER TABLE `calon`
 -- AUTO_INCREMENT for table `dt_kandidat`
 --
 ALTER TABLE `dt_kandidat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `fakultas`
@@ -941,13 +963,19 @@ ALTER TABLE `fakultas`
 -- AUTO_INCREMENT for table `gubernur`
 --
 ALTER TABLE `gubernur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `himpunan`
 --
 ALTER TABLE `himpunan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `presiden`
+--
+ALTER TABLE `presiden`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `prodi`
@@ -956,16 +984,20 @@ ALTER TABLE `prodi`
   MODIFY `id_prodi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT for table `screening`
---
-ALTER TABLE `screening`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=617;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `prodi`
+--
+ALTER TABLE `prodi`
+  ADD CONSTRAINT `prodi_ibfk_1` FOREIGN KEY (`id_fakultas_fk`) REFERENCES `fakultas` (`id_fakultas`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
