@@ -173,7 +173,7 @@ class User extends CI_Controller {
     public function screeningpresiden() {
         $data['title'] = 'Screening Presiden';
         $data['user'] = $this->db->get_where('user', ['nim' => $this->session->userdata('nim')])->row_array();
-        $cek = $this->db->query(" SELECT * FROM presiden WHERE idUser LIKE '" . $data['user'][id] . "'")->num_rows();
+        $cek = $this->db->query(" SELECT * FROM presiden WHERE idUser LIKE '" . $data['user']['id'] . "'")->num_rows();
         if ($cek == 0) {
             $this->form_validation->set_rules('nama', 'Nama', 'required');
             $this->form_validation->set_rules('fakultas', 'Fakultas', 'required');
@@ -194,11 +194,11 @@ class User extends CI_Controller {
                 $angkatan = $this->input->post('angkatan');
                 $alasan = $this->input->post('alasan');
 
-                $cek = $this->db->query("SELECT * FROM user WHERE nama LIKE '$nama' AND fakultas LIKE '$fakultas' AND  prodi LIKE '$prodi' ")->num_rows();
-                if ($cek > 0) {
-                    $dataset = ['nama' => $nama,
-                        'fakultas' => $fakultas,
-                        'prodi' => $prodi,
+                $cek = $this->db->query("SELECT * FROM user WHERE nama LIKE '$nama' AND fakultas LIKE '$fakultas' AND  prodi LIKE '$prodi' ")->result_array();
+                if ($cek) {
+                    $dataset = ['nama' => $cek[0]['nama'],
+                        'fakultas' => $cek[0]['fakultas'],
+                        'prodi' => $cek[0]['prodi'],
                         'angkatan' => $angkatan,
                         'alasan' => $alasan,
                         'idUser' => $data['user']['id']
@@ -224,9 +224,8 @@ class User extends CI_Controller {
     public function screeninggubernur() {
         $data['title'] = 'Screening Gubernur';
         $data['user'] = $this->db->get_where('user', ['nim' => $this->session->userdata('nim')])->row_array();
-        $cek = $this->db->query(" SELECT * FROM presiden WHERE idUser LIKE '" . $data['user'][id] . "'")->num_rows();
+       $cek = $this->db->query(" SELECT * FROM gubernur WHERE idUser LIKE '" . $data['user']['id'] . "'")->num_rows();
         if ($cek == 0) {
-
             $this->form_validation->set_rules('nama', 'Nama', 'required');
             $this->form_validation->set_rules('fakultas', 'Fakultas', 'required');
             $this->form_validation->set_rules('prodi', 'Prodi', 'required');
@@ -245,12 +244,11 @@ class User extends CI_Controller {
                 $prodi = $this->input->post('prodi');
                 $angkatan = $this->input->post('angkatan');
                 $alasan = $this->input->post('alasan');
-                $cek = $this->db->query("SELECT * FROM user WHERE nama LIKE '$nama' AND fakultas LIKE '$fakultas' AND  prodi LIKE '$prodi' ")->num_rows();
-                if ($cek > 0) {
-
-                    $dataset = ['nama' => $nama,
-                        'fakultas' => $fakultas,
-                        'prodi' => $prodi,
+                $cek = $this->db->query("SELECT * FROM user WHERE nama LIKE '$nama' AND fakultas LIKE '$fakultas' AND  prodi LIKE '$prodi' ")->result_array();
+                if ($cek) {
+                    $dataset = ['nama' => $cek[0]['nama'],
+                        'fakultas' => $cek[0]['fakultas'],
+                        'prodi' => $cek[0]['prodi'],
                         'angkatan' => $angkatan,
                         'alasan' => $alasan,
                         'idUser' => $data['user']['id']
@@ -275,7 +273,7 @@ class User extends CI_Controller {
     public function screeninghimpunan() {
         $data['title'] = 'Screening Himpunan';
         $data['user'] = $this->db->get_where('user', ['nim' => $this->session->userdata('nim')])->row_array();
-        $cek = $this->db->query(" SELECT * FROM presiden WHERE idUser LIKE '" . $data['user'][id] . "'")->num_rows();
+        $cek = $this->db->query(" SELECT * FROM himpunan WHERE idUser LIKE '" . $data['user']['id'] . "'")->num_rows();
         if ($cek == 0) {
             $this->form_validation->set_rules('nama', 'Nama', 'required');
             $this->form_validation->set_rules('fakultas', 'Fakultas', 'required');
@@ -296,11 +294,11 @@ class User extends CI_Controller {
                 $angkatan = $this->input->post('angkatan');
                 $alasan = $this->input->post('alasan');
 
-                $cek = $this->db->query("SELECT * FROM user WHERE nama LIKE '$nama' AND fakultas LIKE '$fakultas' AND  prodi LIKE '$prodi' ")->num_rows();
-                if ($cek > 0) {
-                    $dataset = ['nama' => $nama,
-                        'fakultas' => $fakultas,
-                        'prodi' => $prodi,
+                $cek = $this->db->query("SELECT * FROM user WHERE nama LIKE '$nama' AND fakultas LIKE '$fakultas' AND  prodi LIKE '$prodi' ")->result_array();
+                if ($cek) {
+                    $dataset = ['nama' => $cek[0]['nama'],
+                        'fakultas' => $cek[0]['fakultas'],
+                        'prodi' => $cek[0]['prodi'],
                         'angkatan' => $angkatan,
                         'alasan' => $alasan,
                         'idUser' => $data['user']['id']
@@ -318,6 +316,61 @@ class User extends CI_Controller {
             }
         } else {
             redirect('user/screening');
+        }
+    }
+
+    public function kadidat() {
+        $data['title'] = 'Kandidat Terpilih';
+        $data['user'] = $this->db->get_where('user', ['nim' => $this->session->userdata('nim')])->row_array();
+        $cek = $this->db->query("SELECT * FROM dt_kandidat WHERE nim LIKE '" .$this->session->userdata('nim')."'");
+        $data['kadidat']= $cek->result_array();
+        if ($cek->num_rows() > 0) {
+            $this->form_validation->set_rules('email', 'Email', 'required');
+            $this->form_validation->set_rules('visi', 'Visi', 'required');
+            $this->form_validation->set_rules('misi', 'Misi', 'required');
+            $this->form_validation->set_rules('nowa', 'No WA', 'required');
+            if ($this->form_validation->run() == false) {
+                
+                // var_dump($this->form _validation->run());die;
+                $this->load->view('templatesUser/header', $data);
+                $this->load->view('templatesUser/sidebar', $data);
+                $this->load->view('templatesUser/topbar', $data);
+                $this->load->view('user/daftarKadidat', $data);
+                $this->load->view('templatesUser/footer', $data);
+            } else {
+                $nama = $this->input->post('nama');
+                $nim = $this->input->post('nim');
+                $fakultas = $this->input->post('fakultas');
+                $email = $this->input->post('email');
+                $visi = $this->input->post('visi');
+                $misi = $this->input->post('misi');
+                $nowa = $this->input->post('nowa');
+                $upload = $_FILES['image']['name'];
+                if ($upload) {
+                    $config['upload_path'] = './assets/img/kandidat';
+                    $config['allowed_types'] = 'gif|jpg|png';
+                    $config['max_size'] = '2048';
+                    $this->load->library('upload', $config);
+                    if ($this->upload->do_upload('image')) {
+                        $newImage = $this->upload->data('file_name');
+                        $this->db->set('foto', $newImage);
+                    }
+                }
+                $this->db->set('nama', $nama);
+                $this->db->set('fakultas', $fakultas);
+                $this->db->set('email', $email);
+                $this->db->set('visi', $visi);
+                $this->db->set('misi', $misi);
+                $this->db->set('nowa', $nowa);
+                $this->db->where('nim', $nim);                                
+                $this->db->update('dt_kandidat');
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+                Berhasil! </div>');
+                redirect('user');
+                
+            }
+        } else {
+            redirect('user');
         }
     }
 

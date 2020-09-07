@@ -20,35 +20,34 @@
                         <th>NIM</th>
                         <th>NAMA</th>
                         <th>NO WA</th>
-                        <th>EMAIL</th>
-                        <th>FAKULTAS</th>
-                        <th>VISI</th>
-                        <th>MISI</th>
-                        <th>FOTO</th>
+                        <th>INFORMASI</th>
                         <th>ACTION</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php $i = 1; ?>
                     <?php foreach ($data as $row) : ?>
-                        <tr>
-                            <td><?= $i ?></td>
-                            <td><?php echo $row['nim']; ?></td>
-                            <td><?php echo $row['nama']; ?></td>
-                            <td><?php echo $row['nowa']; ?></td>
-                            <td><?php echo $row['email']; ?></td>
-                            <td><?php echo $row['fakultas']; ?></td>
-                            <td><?php echo $row['visi']; ?></td>
-                            <td><?php echo $row['misi']; ?></td>
-                            <td><?php echo $row['foto']; ?></td>
-                            <td>
-                                <a href="<?php echo base_url(); ?>" class="badge badge-success ">Edit</a>
-                                <a href="<?php echo base_url(); ?>" class="badge badge-warning ">Reset</a>
-                                <a href="<?php echo base_url(); ?>" class="badge badge-danger"
-                                   onclick="return confirm('Are you sure you want to delete <?= $row['id']; ?>?');">Delete</a>
-                            </td>
-                        </tr>
-                        <?php $i++; ?>
+                    <tr>
+                        <td><?= $i ?></td>
+                        <td><?php echo $row['nim']; ?></td>
+                        <td><?php echo $row['nama']; ?></td>
+                        <td><?php echo $row['nowa']; ?></td>
+                        <td><?php if($row['visi']!=''&& $row['email'] != '' && $row['fakultas'] !='' &&  
+                        $row['prodi'] !='' && $row['misi']!='' && $row['foto'] !='' ){
+                            echo 'SUDAH TERISI';
+                        }else{
+                            echo 'BELUM TERISI';
+
+                        }; ?>
+                        <td>
+                            <a href="<?php echo base_url('admin/detailKadidat/').$row['id']; ?>"
+                                class="badge badge-primary">Detail</a>
+                            <a href="<?php echo base_url('admin/deleteKadidat/').$row['id']; ?>"
+                                class="badge badge-danger"
+                                onclick="return confirm('Are you sure you want to delete <?= $row['id']; ?>?');">Delete</a>
+                        </td>
+                    </tr>
+                    <?php $i++; ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>
@@ -59,7 +58,7 @@
 
 <!-- Modal Start -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -73,10 +72,6 @@
                     <div class="form-group">
                         <label for="nim" class="col-sm-2 col-form-label">NIM</label>
                         <input type="text" class="form-control" id="nim" name="nim">
-                    </div>
-                    <div class="form-group">
-                        <label for="name" class="col-sm-2 col-form-label">NAMA</label>
-                        <input type="text" class="form-control" id="nama" name="nama">
                     </div>
                     <!-- <input type="file" class="form-control-file" id="file" name="file[]" multiple> -->
                 </div>
@@ -94,20 +89,20 @@
 <!-- End of Main Content -->
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('#tabelku').dataTable({
-            "scrollY": "400px",
-            "scrollCollapse": true,
-            "paging": true,
-            "bAutoWidth": false,
-            "bInfo": false,
-            "language": {
-                "emptyTable": "Data Kosong"
-            },
-            "lengthMenu": [
-                [10, 25, 50, 100, -1],
-                [10, 25, 50, 100, "All"]
-            ],
-        });
+$(document).ready(function() {
+    $('#tabelku').dataTable({
+        "scrollY": "400px",
+        "scrollCollapse": true,
+        "paging": true,
+        "bAutoWidth": false,
+        "bInfo": false,
+        "language": {
+            "emptyTable": "Data Kosong"
+        },
+        "lengthMenu": [
+            [10, 25, 50, 100, -1],
+            [10, 25, 50, 100, "All"]
+        ],
     });
+});
 </script>

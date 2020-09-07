@@ -36,6 +36,8 @@
                 </tbody>
             </table>
         </div>
+        <a href="<?= base_url('admin/screening'); ?>" class="btn btn-secondary btn-user btn-block"> Kembali</a>
+
     </div>
 </div>
 <!-- /.container-fluid -->

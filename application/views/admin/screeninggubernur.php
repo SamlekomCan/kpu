@@ -24,19 +24,21 @@
                 <tbody>
                     <?php $i = 1; ?>
                     <?php foreach ($gubernur as $row) : ?>
-                        <tr>
-                            <td><?= $i ?></td>
-                            <td><?php echo $row['nama']; ?></td>
-                            <td><?php echo $row['fakultas']; ?></td>
-                            <td><?php echo $row['prodi']; ?></td>
-                            <td><?php echo $row['angkatan']; ?></td>
-                            <td><?php echo $row['alasan']; ?></td>
-                        </tr>
-                        <?php $i++; ?>
+                    <tr>
+                        <td><?= $i ?></td>
+                        <td><?php echo $row['nama']; ?></td>
+                        <td><?php echo $row['fakultas']; ?></td>
+                        <td><?php echo $row['prodi']; ?></td>
+                        <td><?php echo $row['angkatan']; ?></td>
+                        <td><?php echo $row['alasan']; ?></td>
+                    </tr>
+                    <?php $i++; ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
+        <a href="<?= base_url('admin/screening'); ?>" class="btn btn-secondary btn-user btn-block"> Kembali</a>
+
     </div>
 </div>
 <!-- /.container-fluid -->
@@ -45,20 +47,20 @@
 <!-- End of Main Content -->
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('#tabelku').dataTable({
-            "scrollY": "400px",
-            "scrollCollapse": true,
-            "paging": true,
-            "bAutoWidth": false,
-            "bInfo": false,
-            "language": {
-                "emptyTable": "Data Kosong"
-            },
-            "lengthMenu": [
-                [10, 25, 50, 100, -1],
-                [10, 25, 50, 100, "All"]
-            ],
-        });
+$(document).ready(function() {
+    $('#tabelku').dataTable({
+        "scrollY": "400px",
+        "scrollCollapse": true,
+        "paging": true,
+        "bAutoWidth": false,
+        "bInfo": false,
+        "language": {
+            "emptyTable": "Data Kosong"
+        },
+        "lengthMenu": [
+            [10, 25, 50, 100, -1],
+            [10, 25, 50, 100, "All"]
+        ],
     });
+});
 </script>

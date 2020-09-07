@@ -24,6 +24,15 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Pemilihan</span></a>
     </li>
+    <?php 
+    $query = "SELECT * FROM dt_kandidat WHERE nim LIKE '".$user['nim']."'";
+    if ($this->db->query($query)->num_rows()>0) : ?>
+    <li class="nav-item ">
+        <a class="nav-link" href="<?= base_url('user/kadidat') ?>">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Kandidat</span></a>
+    </li>
+    <?php endif ?>
 
     <!-- Divider -->
     <hr class="sidebar-divider">

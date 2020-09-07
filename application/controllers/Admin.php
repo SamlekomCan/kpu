@@ -464,32 +464,55 @@ class Admin extends CI_Controller {
 
     public function addKadidat() {
 
-        $nama = $this->input->post('nama');
         $nim = $this->input->post('nim');
-        $cek = $this->db->query("SELECT * FROM user WHERE nama LIKE '$nama' AND nim LIKE '$nim'")->num_rows();
+        $cek = $this->db->query("SELECT * FROM user WHERE nim LIKE '$nim'")->result_array();
+        $cekkandidat = $this->db->query("SELECT * FROM dt_kandidat WHERE nim LIKE '$nim'")->result_array();
         // print_r($cek);die;
-        if ($cek > 0) {
-            $dataset = ['nama' => $nama,
+        if ($cek) {
+            if (!$cekkandidat) {
+              $dataset = ['nama' => $cek[0]['nama'],
                 'nim' => $nim,
-                'nowa' => '-',
-                'email' => '',
-                'fakultas' => '',
-                'visi' => '',
-                'misi' => '',
-                'foto' => '',
-                'ukuran' => '',
-                'tipe' => ''
-            ];
-            // print_r($dataset);die;
-            $this->db->insert('dt_kandidat', $dataset);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-                Berhasil! </div>');
+                'fakultas' => $cek[0]['fakultas'],
+                'prodi' => $cek[0]['prodi']
+                ];
+                // print_r($dataset);die;
+                $this->db->insert('dt_kandidat', $dataset);
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+                    Berhasil! </div>');
+                redirect('admin/kadidat');
+            }else{
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+               Mahasiswa sudah terdaftar! </div>');
             redirect('admin/kadidat');
+            }
+            
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
                 Nama tidak Tersedia! </div>');
             redirect('admin/kadidat');
         }
+    }
+
+    public function detailKadidat($id)
+    {
+        $data['title'] = 'Detail Kandidat';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['kandidat'] =$this->db->get_where('dt_kandidat',['id'=>$id])->result_array();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/detailKadidat', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    public function deleteKadidat($id)
+    {
+        $this->db->where('id',$id);
+        $this->db->delete('dt_kandidat');
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                Kandidat Terhapus! </div>');
+            redirect('admin/kadidat');
     }
 
     public function logout() {
