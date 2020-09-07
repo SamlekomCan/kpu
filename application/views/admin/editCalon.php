@@ -65,7 +65,7 @@
                                        onchange="loadFile1(event)" value="<?= $data[0]['foto'] ?>">
                                 <img src="<?= base_url('assets/img/calon/') . $data[0]['foto'] ?>" id="output1"
                                      class="img-responsive" style="height: 300px;">
-                                <p style="text-justify">Ukuran Foto 3x4, dengan format JPG. Ukuran file Pasfoto
+                                <p style="text-justify">Ukuran Foto 3x4, dengan format JPG. Ukuran file foto
                                     tidak boleh lebih
                                     dari 500 KB. Kualitas gambar harus cukup tajam dan fokus. Posisi badan dan
                                     kepala tegak sejajar menghadap kamera. Proporsi wajah antara 25% - 50% dari
