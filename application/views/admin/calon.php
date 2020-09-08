@@ -7,7 +7,7 @@
             <h2 class=""><?= $title ?></h2>
         </div>
         <div class="col-auto ml-3">
-            <a class="btn btn-success pull-right" href="<?= base_url('admin/Addcalon'); ?>">
+            <a href="http://" class="btn btn-success pull-right" data-toggle="modal" data-target="#exampleModal">
                 <span class="glyphicon glyphicon-upload"></span> Tambah Calon</a>
         </div>
     </div>
@@ -21,8 +21,16 @@
                             <img class="card-img-top" src="<?= base_url('assets/img/calon/') . $row['foto'] ?>"
                                  style="height: 200px;">
                             <div class="card-body">
-                                <h5 class="card-title"><?= $row['ketua'] . ' - ' . $row['wakil']; ?></h5>
-                                <p class="card-text"><?= $row['organisasi']; ?></p>
+                                <h6 class="card-title"><?= $row['ketua'] . ' - ' . $row['wakil']; ?></h6>
+                                <p class="card-text"><?php
+                                    if ($row['organisasi'] == 'BEMU') {
+                                        echo $row['organisasi'];
+                                    } elseif ($row['organisasi'] == 'BEMF') {
+                                        echo $row['organisasi'] . ' - ' . $row['fakultasketua'];
+                                    } else {
+                                        echo $row['organisasi'] . ' - ' . $row['prodi'];
+                                    }
+                                    ?></p>
                             </div>
                             <div class="card-footer">
                                 <a href="<?= base_url('admin/detailCalon/') . $row['id']; ?>"
@@ -46,5 +54,32 @@
 </div>
 <!-- End of Main Content -->
 
-
 </div>
+
+
+<!-- Modal Start -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Calon</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <a href="<?= base_url('admin/addCalonPresiden'); ?>" class="btn btn-secondary btn-user btn-block"> Tambah Calon Presiden</a>
+                </div>
+                <div class="form-group">
+                    <a href="<?= base_url('admin/addCalonGubernur'); ?>" class="btn btn-secondary btn-user btn-block"> Tambah Calon Gubernur</a>
+                </div>
+                <div class="form-group">
+                    <a href="<?= base_url('admin/addCalonHM'); ?>" class="btn btn-secondary btn-user btn-block"> Tambah Calon Himpunan</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal End -->

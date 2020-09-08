@@ -12,14 +12,14 @@
                 <label for="nim" class="col-sm-2 col-form-label">NIM</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="nim" name="nim" value="<?= $kadidat[0]['nim'] ?>"
-                        readonly>
+                           readonly>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="nama" name="nama" value="<?= $kadidat[0]['nama'] ?>"
-                        readonly>
+                           readonly>
                 </div>
             </div>
             <div class="form-group row">
@@ -40,37 +40,37 @@
                 <label for="prodi" class="col-sm-2 col-form-label">Prodi</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="prodi" name="prodi" value="<?= $kadidat[0]['prodi'] ?>"
-                        readonly>
+                           readonly>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="fakultas" class="col-sm-2 col-form-label">Fakultas</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="fakultas" name="fakultas"
-                        value="<?= $kadidat[0]['fakultas'] ?>" readonly>
+                           value="<?= $kadidat[0]['fakultas'] ?>" readonly>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="visi" class="col-sm-2 col-form-label">Visi</label>
                 <div class="col-sm-10">
                     <textarea type="text" class="form-control" id="visi"
-                        name="visi"><?= $kadidat[0]['visi'] ?></textarea>
-                    <?= form_error('visi', '<small class="text-danger pl-2">', '</small>') ?>
+                              name="visi"><?= $kadidat[0]['visi'] ?></textarea>
+                              <?= form_error('visi', '<small class="text-danger pl-2">', '</small>') ?>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="misi" class="col-sm-2 col-form-label">Misi</label>
                 <div class="col-sm-10">
                     <textarea type="text" class="form-control" id="misi" name="misi"
-                        row="5"><?= $kadidat[0]['misi'] ?></textarea>
-                    <?= form_error('misi', '<small class="text-danger pl-2">', '</small>') ?>
+                              row="5"><?= $kadidat[0]['misi'] ?></textarea>
+                              <?= form_error('misi', '<small class="text-danger pl-2">', '</small>') ?>
                 </div>
             </div>
             <div class="form-group">
                 <label for="foto">Foto</label>
                 <input type="file" id="image" name="image" class="form-control" onchange="loadFile1(event)">
                 <img src="<?= base_url('assets/img/kandidat/') . $kadidat[0]['foto'] ?>" id="output1"
-                    class="img-responsive" style="height: 300px;">
+                     class="img-responsive" style="height: 300px;">
                 <p style="text-justify">Ukuran Foto 3x4, dengan format JPG. Ukuran file Pasfoto
                     tidak boleh lebih
                     dari 500 KB. Kualitas gambar harus cukup tajam dan fokus. Posisi badan dan

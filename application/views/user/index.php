@@ -80,21 +80,21 @@
 <!-- End of Main Content -->
 <script src="<?php echo base_url() ?>assets/js/sweetalert.min.js"></script>
 <script>
-                                function validate(a) {
-                                    var id = a;
-                                    swal({
-                                        title: "YAKIN LU?",
-                                        text: "MAU MILIH DIA " + id,
-                                        type: "warning",
-                                        showCancelButton: true,
-                                        confirmButtonColor: "#DD6B55",
-                                        confirmButtonText: "MAU, AKU MAU KOK",
-                                        closeOnConfirm: false
-                                    }, function () {
-                                        swal("YAUDAH!", "MAKASIH YAHH.", "success");
-                                        $(location).attr('href', '<?php echo base_url() ?>user/pilihBEMU/' + id);
-                                    });
-                                }
+                                            function validate(a) {
+                                                var id = a;
+                                                swal({
+                                                    title: "YAKIN LU?",
+                                                    text: "MAU MILIH DIA " + id,
+                                                    type: "warning",
+                                                    showCancelButton: true,
+                                                    confirmButtonColor: "#DD6B55",
+                                                    confirmButtonText: "MAU, AKU MAU KOK",
+                                                    closeOnConfirm: false
+                                                }, function () {
+                                                    swal("YAUDAH!", "MAKASIH YAHH.", "success");
+                                                    $(location).attr('href', '<?php echo base_url() ?>user/pilihBEMU/' + id);
+                                                });
+                                            }
 </script>
 
 <!-- BEMU -->

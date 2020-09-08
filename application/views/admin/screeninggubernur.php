@@ -19,20 +19,26 @@
                         <th>PRODI</th>
                         <th>ANGKATAN</th>
                         <th>ALASAN</th>
+                        <th>HASIL</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php $i = 1; ?>
                     <?php foreach ($gubernur as $row) : ?>
-                    <tr>
-                        <td><?= $i ?></td>
-                        <td><?php echo $row['nama']; ?></td>
-                        <td><?php echo $row['fakultas']; ?></td>
-                        <td><?php echo $row['prodi']; ?></td>
-                        <td><?php echo $row['angkatan']; ?></td>
-                        <td><?php echo $row['alasan']; ?></td>
-                    </tr>
-                    <?php $i++; ?>
+                        <tr>
+                            <td><?= $i ?></td>
+                            <td><?php echo $row['nama']; ?></td>
+                            <td><?php echo $row['fakultas']; ?></td>
+                            <td><?php echo $row['prodi']; ?></td>
+                            <td><?php echo $row['angkatan']; ?></td>
+                            <td><?php echo $row['alasan']; ?></td>
+                            <td><?php
+                                $sql = "SELECT COUNT(nama) AS nama FROM gubernur WHERE nama LIKE '" . $row['nama'] . "'";
+                                $jumlah = $this->db->query($sql)->result_array();
+                                echo $jumlah[0]['nama'];
+                                ?></td>
+                        </tr>
+                        <?php $i++; ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>
@@ -47,20 +53,20 @@
 <!-- End of Main Content -->
 
 <script type="text/javascript">
-$(document).ready(function() {
-    $('#tabelku').dataTable({
-        "scrollY": "400px",
-        "scrollCollapse": true,
-        "paging": true,
-        "bAutoWidth": false,
-        "bInfo": false,
-        "language": {
-            "emptyTable": "Data Kosong"
-        },
-        "lengthMenu": [
-            [10, 25, 50, 100, -1],
-            [10, 25, 50, 100, "All"]
-        ],
+    $(document).ready(function () {
+        $('#tabelku').dataTable({
+            "scrollY": "400px",
+            "scrollCollapse": true,
+            "paging": true,
+            "bAutoWidth": false,
+            "bInfo": false,
+            "language": {
+                "emptyTable": "Data Kosong"
+            },
+            "lengthMenu": [
+                [10, 25, 50, 100, -1],
+                [10, 25, 50, 100, "All"]
+            ],
+        });
     });
-});
 </script>

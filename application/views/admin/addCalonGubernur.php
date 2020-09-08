@@ -3,11 +3,13 @@
     <?php $fakult = ['Sains dan Teknologi', 'Keguruan dan Ilmu Pendidikan', 'Psikologi', 'Farmasi', 'Ekonomi', 'Teologi', 'Sastra']; ?>
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
+    <?= $this->session->flashdata('message'); ?>
     <div class="row">
+
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <?php echo form_open_multipart('admin/Addcalon'); ?>
+                    <?php echo form_open_multipart('admin/AddcalonGubernur'); ?>
                     <div class="row">
                         <div class="col-md-6">
 
@@ -25,7 +27,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="form-group">
-                                            <label for="fakultas">Fakultas Ketua</label>
+                                            <label for="fakultas">Fakultas</label>
                                             <select class="form-control" id="fakultas1" name="fakultas1">
                                                 <option>-</option>
                                                 <?php foreach ($fakult as $row): ?>
@@ -34,23 +36,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col">
-                                        <div class="form-group">
-                                            <label for="fakultas">Fakultas Wakil</label>
-                                            <select class="form-control" id="fakultas2" name="fakultas2">
-                                                <option>-</option>
-                                                <?php foreach ($fakult as $row): ?>
-                                                    <option><?= $row ?></option>
-                                                <?php endforeach ?>
-                                            </select>
-                                        </div>
-                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="organisasi">Organisasi</label>
-                                <input name="organisasi" type="text" class="form-control" placeholder="Organisasi">
-                                <?= form_error('organisasi', '<small class="text-danger pl-3">', '</small>') ?>
                             </div>
                             <div class="form-group">
                                 <label for="foto">Foto</label>

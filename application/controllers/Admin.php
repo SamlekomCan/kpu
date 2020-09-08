@@ -145,6 +145,8 @@ class Admin extends CI_Controller {
         $data['title'] = 'Screening Presiden';
         $data['sidebar'] = 'Administrator';
         $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $this->db->distinct();
+        $this->db->select('*');
         $data['presiden'] = $this->db->get('presiden')->result_array();
         $this->load->view('templatesAdmin/header', $data);
         $this->load->view('templatesAdmin/sidebar', $data);
@@ -157,6 +159,8 @@ class Admin extends CI_Controller {
         $data['title'] = 'Screening Gubernur';
         $data['sidebar'] = 'Administrator';
         $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $this->db->distinct();
+        $this->db->select('*');
         $data['gubernur'] = $this->db->get('gubernur')->result_array();
         $this->load->view('templatesAdmin/header', $data);
         $this->load->view('templatesAdmin/sidebar', $data);
@@ -169,6 +173,8 @@ class Admin extends CI_Controller {
         $data['title'] = 'Screening Himpunan';
         $data['sidebar'] = 'Administrator';
         $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $this->db->distinct();
+        $this->db->select('*');
         $data['himpunan'] = $this->db->get('himpunan')->result_array();
         $this->load->view('templatesAdmin/header', $data);
         $this->load->view('templatesAdmin/sidebar', $data);
@@ -408,8 +414,88 @@ class Admin extends CI_Controller {
         }
     }
 
-    public function Addcalon() {
-        $data['title'] = 'Tambah Calon';
+    public function addCalonPresiden() {
+        $data['title'] = 'Tambah Calon Presiden';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['data'] = $this->admin->allUser();
+
+
+        $this->form_validation->set_rules('nama1', 'Nama Ketua', 'required');
+        $this->form_validation->set_rules('nama2', 'Nama Wakil', 'required');
+        $this->form_validation->set_rules('fakultas1', 'Fakultas Ketua', 'required|trim');
+        $this->form_validation->set_rules('fakultas2', 'Fakultas Wakil', 'required|trim');
+        $this->form_validation->set_rules('visi', 'Visi', 'required|trim');
+        $this->form_validation->set_rules('misi', 'Misi', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templatesAdmin/header', $data);
+            $this->load->view('templatesAdmin/sidebar', $data);
+            $this->load->view('templatesAdmin/topbar', $data);
+            $this->load->view('admin/addCalonPresiden', $data);
+            $this->load->view('templatesAdmin/footer', $data);
+        } else {
+            $ketua = $this->input->post('nama1');
+            $wakil = $this->input->post('nama2');
+            $fakultasketua = $this->input->post('fakultas1');
+            $fakultaswakil = $this->input->post('fakultas2');
+            $query1 = "SELECT * FROM user WHERE nama LIKE '" . $ketua . "' AND fakultas LIKE '" . $fakultasketua . "'";
+            $cekKetua = $this->db->query($query1);
+            if ($cekKetua->num_rows() > 0) {
+                $query2 = "SELECT * FROM user WHERE nama LIKE '" . $wakil . "' AND fakultas LIKE '" . $fakultaswakil . "'";
+                $cekWakil = $this->db->query($query2);
+                if ($cekWakil->num_rows() > 0) {
+                    $visi = $this->input->post('visi');
+                    $misi = $this->input->post('misi');
+                    $upload = $_FILES['image']['name'];
+                    if ($upload) {
+                        $config['upload_path'] = './assets/img/calon';
+                        $config['allowed_types'] = 'gif|jpg|png';
+                        $config['max_size'] = '2048';
+                        $this->load->library('upload', $config);
+                        if ($this->upload->do_upload('image')) {
+                            $newImage = $this->upload->data('file_name');
+                            $this->db->set('foto', $newImage);
+                        }
+                    }
+                    $Ketua = $cekKetua->result_array();
+                    $Wakil = $cekWakil->result_array();
+                    $this->db->set('ketua', $Ketua[0]['nama']);
+                    $this->db->set('wakil', $Wakil[0]['nama']);
+                    $this->db->set('fakultasketua', $fakultasketua);
+                    $this->db->set('fakultaswakil', $fakultaswakil);
+                    $this->db->set('organisasi', "BEMU");
+                    $this->db->set('visi', $visi);
+                    $this->db->set('misi', $misi);
+                    $this->db->set('hasil', 0);
+                    $this->db->insert('calon');
+                    redirect('admin/calon');
+                } else {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                    Nama Wakil tidak terdapat di user! </div>');
+                    redirect('admin/addCalonPresiden');
+                }
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                    Nama Ketua tidak terdapat di user! </div>');
+                redirect('admin/addCalonPresiden');
+            }
+        }
+    }
+
+    public function fakultasPresiden() {
+        $fakultas = $this->input->post('id');
+        $data = $this->db->query("SELECT fakultas FROM fakultas WHERE fakultas NOT LIKE '" . $fakultas . "'")->result();
+        $newdata = array();
+        $index = 0;
+        foreach ($data as $row) {
+            $newdata[$index++] = $row;
+        }
+        echo json_encode($newdata);
+    }
+
+    public function addCalonGubernur() {
+        $data['title'] = 'Tambah Calon Gubernur';
         $data['sidebar'] = 'Administrator';
         $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
         $data['data'] = $this->admin->allUser();
@@ -418,8 +504,6 @@ class Admin extends CI_Controller {
         $this->form_validation->set_rules('nama1', 'Nama Ketua', 'required|trim');
         $this->form_validation->set_rules('nama2', 'Nama Wakil', 'required|trim');
         $this->form_validation->set_rules('fakultas1', 'Fakultas Ketua', 'required|trim');
-        $this->form_validation->set_rules('fakultas2', 'Fakultas Wakil', 'required|trim');
-        $this->form_validation->set_rules('organisasi', 'Organisasi', 'required|trim');
         $this->form_validation->set_rules('visi', 'Visi', 'required|trim');
         $this->form_validation->set_rules('misi', 'Misi', 'required|trim');
 
@@ -427,39 +511,140 @@ class Admin extends CI_Controller {
             $this->load->view('templatesAdmin/header', $data);
             $this->load->view('templatesAdmin/sidebar', $data);
             $this->load->view('templatesAdmin/topbar', $data);
-            $this->load->view('admin/addCalon', $data);
+            $this->load->view('admin/addCalonGubernur', $data);
             $this->load->view('templatesAdmin/footer', $data);
         } else {
 
             $ketua = $this->input->post('nama1');
             $wakil = $this->input->post('nama2');
             $fakultasketua = $this->input->post('fakultas1');
-            $fakultaswakil = $this->input->post('fakultas2');
-            $organisasi = $this->input->post('organisasi');
-            $visi = $this->input->post('visi');
-            $misi = $this->input->post('misi');
-            $upload = $_FILES['image']['name'];
-            if ($upload) {
-                $config['upload_path'] = './assets/img/calon';
-                $config['allowed_types'] = 'gif|jpg|png';
-                $config['max_size'] = '2048';
-                $this->load->library('upload', $config);
-                if ($this->upload->do_upload('image')) {
-                    $newImage = $this->upload->data('file_name');
-                    $this->db->set('foto', $newImage);
+            $fakultaswakil = $this->input->post('fakultas1');
+            $query1 = "SELECT * FROM user WHERE nama LIKE '" . $ketua . "' AND fakultas LIKE '" . $fakultasketua . "'";
+            $cekKetua = $this->db->query($query1);
+            if ($cekKetua->num_rows() > 0) {
+                $query2 = "SELECT * FROM user WHERE nama LIKE '" . $wakil . "' AND fakultas LIKE '" . $fakultaswakil . "'";
+                $cekWakil = $this->db->query($query2);
+                if ($cekWakil->num_rows() > 0) {
+                    $visi = $this->input->post('visi');
+                    $misi = $this->input->post('misi');
+                    $upload = $_FILES['image']['name'];
+                    if ($upload) {
+                        $config['upload_path'] = './assets/img/calon';
+                        $config['allowed_types'] = 'gif|jpg|png';
+                        $config['max_size'] = '2048';
+                        $this->load->library('upload', $config);
+                        if ($this->upload->do_upload('image')) {
+                            $newImage = $this->upload->data('file_name');
+                            $this->db->set('foto', $newImage);
+                        }
+                    }
+                    $Ketua = $cekKetua->result_array();
+                    $Wakil = $cekWakil->result_array();
+                    $this->db->set('ketua', $Ketua[0]['nama']);
+                    $this->db->set('wakil', $Wakil[0]['nama']);
+                    $this->db->set('fakultasketua', $fakultasketua);
+                    $this->db->set('fakultaswakil', $fakultaswakil);
+                    $this->db->set('organisasi', "BEMF");
+                    $this->db->set('visi', $visi);
+                    $this->db->set('misi', $misi);
+                    $this->db->set('hasil', 0);
+                    $this->db->insert('calon');
+                    redirect('admin/calon');
+                } else {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                    Nama Wakil tidak terdapat di user! </div>');
+                    redirect('admin/addCalonGubernur');
                 }
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                    Nama Ketua tidak terdapat di user! </div>');
+                redirect('admin/addCalonGubernur');
             }
-            $this->db->set('ketua', $ketua);
-            $this->db->set('wakil', $wakil);
-            $this->db->set('fakultasketua', $fakultasketua);
-            $this->db->set('fakultaswakil', $fakultaswakil);
-            $this->db->set('organisasi', $organisasi);
-            $this->db->set('visi', $visi);
-            $this->db->set('misi', $misi);
-            $this->db->set('hasil', 0);
-            $this->db->insert('calon');
-            redirect('admin/calon');
         }
+    }
+
+    public function addCalonHM() {
+        $data['title'] = 'Tambah Calon Himpunan';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['data'] = $this->admin->allUser();
+
+
+        $this->form_validation->set_rules('nama1', 'Nama Ketua', 'required|trim');
+        $this->form_validation->set_rules('nama2', 'Nama Wakil', 'required|trim');
+        $this->form_validation->set_rules('fakultas1', 'Fakultas Ketua', 'required|trim');
+        $this->form_validation->set_rules('prodi', 'Prodi', 'required|trim');
+        $this->form_validation->set_rules('visi', 'Visi', 'required|trim');
+        $this->form_validation->set_rules('misi', 'Misi', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templatesAdmin/header', $data);
+            $this->load->view('templatesAdmin/sidebar', $data);
+            $this->load->view('templatesAdmin/topbar', $data);
+            $this->load->view('admin/addCalonHM', $data);
+            $this->load->view('templatesAdmin/footer', $data);
+        } else {
+            $ketua = $this->input->post('nama1');
+            $wakil = $this->input->post('nama2');
+            $fakultasketua = $this->input->post('fakultas1');
+            $fakultaswakil = $this->input->post('fakultas1');
+            $prodi = $this->input->post('prodi');
+            $query1 = "SELECT * FROM user WHERE nama LIKE '" . $ketua . "' AND fakultas LIKE '" . $fakultasketua . "' 
+            AND prodi LIKE '" . $prodi . "'";
+            $cekKetua = $this->db->query($query1);
+            if ($cekKetua->num_rows() > 0) {
+                $query2 = "SELECT * FROM user WHERE nama LIKE '" . $wakil . "' AND fakultas LIKE '" . $fakultaswakil . "' 
+            AND prodi LIKE '" . $prodi . "'";
+                $cekWakil = $this->db->query($query2);
+                if ($cekWakil->num_rows() > 0) {
+                    $visi = $this->input->post('visi');
+                    $misi = $this->input->post('misi');
+                    $upload = $_FILES['image']['name'];
+                    if ($upload) {
+                        $config['upload_path'] = './assets/img/calon';
+                        $config['allowed_types'] = 'gif|jpg|png';
+                        $config['max_size'] = '2048';
+                        $this->load->library('upload', $config);
+                        if ($this->upload->do_upload('image')) {
+                            $newImage = $this->upload->data('file_name');
+                            $this->db->set('foto', $newImage);
+                        }
+                    }
+                    $Ketua = $cekKetua->result_array();
+                    $Wakil = $cekWakil->result_array();
+                    $this->db->set('ketua', $Ketua[0]['nama']);
+                    $this->db->set('wakil', $Wakil[0]['nama']);
+                    $this->db->set('fakultasketua', $fakultasketua);
+                    $this->db->set('fakultaswakil', $fakultaswakil);
+                    $this->db->set('organisasi', "HM");
+                    $this->db->set('prodi', $prodi);
+                    $this->db->set('visi', $visi);
+                    $this->db->set('misi', $misi);
+                    $this->db->set('hasil', 0);
+                    $this->db->insert('calon');
+                    redirect('admin/calon');
+                } else {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                    Nama Wakil tidak terdapat di user! </div>');
+                    redirect('admin/addCalonHM');
+                }
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                    Nama Ketua tidak terdapat di user! </div>');
+                redirect('admin/addCalonHM');
+            }
+        }
+    }
+
+    public function prodi() {
+        $fakultas = $this->input->post('id');
+        $data = $this->db->query("SELECT nama_prodi FROM prodi WHERE id_fakultas_fk LIKE (SELECT id_fakultas FROM fakultas WHERE fakultas LIKE '" . $fakultas . "')")->result();
+        $newdata = array();
+        $index = 0;
+        foreach ($data as $row) {
+            $newdata[$index++] = $row;
+        }
+        echo json_encode($newdata);
     }
 
     public function addKadidat() {
@@ -470,22 +655,21 @@ class Admin extends CI_Controller {
         // print_r($cek);die;
         if ($cek) {
             if (!$cekkandidat) {
-              $dataset = ['nama' => $cek[0]['nama'],
-                'nim' => $nim,
-                'fakultas' => $cek[0]['fakultas'],
-                'prodi' => $cek[0]['prodi']
+                $dataset = ['nama' => $cek[0]['nama'],
+                    'nim' => $nim,
+                    'fakultas' => $cek[0]['fakultas'],
+                    'prodi' => $cek[0]['prodi']
                 ];
                 // print_r($dataset);die;
                 $this->db->insert('dt_kandidat', $dataset);
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
                     Berhasil! </div>');
                 redirect('admin/kadidat');
-            }else{
+            } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
                Mahasiswa sudah terdaftar! </div>');
-            redirect('admin/kadidat');
+                redirect('admin/kadidat');
             }
-            
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
                 Nama tidak Tersedia! </div>');
@@ -493,12 +677,11 @@ class Admin extends CI_Controller {
         }
     }
 
-    public function detailKadidat($id)
-    {
+    public function detailKadidat($id) {
         $data['title'] = 'Detail Kandidat';
         $data['sidebar'] = 'Administrator';
         $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
-        $data['kandidat'] =$this->db->get_where('dt_kandidat',['id'=>$id])->result_array();
+        $data['kandidat'] = $this->db->get_where('dt_kandidat', ['id' => $id])->result_array();
         $this->load->view('templatesAdmin/header', $data);
         $this->load->view('templatesAdmin/sidebar', $data);
         $this->load->view('templatesAdmin/topbar', $data);
@@ -506,13 +689,12 @@ class Admin extends CI_Controller {
         $this->load->view('templatesAdmin/footer', $data);
     }
 
-    public function deleteKadidat($id)
-    {
-        $this->db->where('id',$id);
+    public function deleteKadidat($id) {
+        $this->db->where('id', $id);
         $this->db->delete('dt_kandidat');
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
                 Kandidat Terhapus! </div>');
-            redirect('admin/kadidat');
+        redirect('admin/kadidat');
     }
 
     public function logout() {

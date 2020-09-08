@@ -1,13 +1,12 @@
 <?php
+
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Autentifikasi_model extends CI_Model
-{
+class Autentifikasi_model extends CI_Model {
 
-    public function checkUser($username,$password)
-    {
-            // var_dump($this->db->get_where('user', ['nim' => $username])->num_rows());die;
-        
+    public function checkUser($username, $password) {
+        // var_dump($this->db->get_where('user', ['nim' => $username])->num_rows());die;
+
         if ($this->db->get_where('admin', ['user' => $username])->num_rows() == 1) {
             $user = $this->db->get_where('admin', ['user' => $username])->row_array();
             if (password_verify($password, $user['pass'])) {
@@ -17,20 +16,20 @@ class Autentifikasi_model extends CI_Model
                     'status' => 'admin'
                 ];
                 $this->session->set_userdata($data);
-            
-            redirect('admin');
+
+                redirect('admin');
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
                 Wrong password!
                 </div>');
                 redirect('auth');
             }
-        }elseif($this->db->get_where('user', ['nim' => $username])->num_rows() == 1 ){
+        } elseif ($this->db->get_where('user', ['nim' => $username])->num_rows() == 1) {
             $user = $this->db->get_where('user', ['nim' => $username])->row_array();
-            
-            
+
+
             if (password_verify($password, $user['password'])) {
-                
+
                 $data = [
                     'nim' => $user['nim'],
                     'role_id' => $user['role'],
@@ -38,44 +37,41 @@ class Autentifikasi_model extends CI_Model
                 ];
                 $this->session->set_userdata($data);
                 redirect('user');
-        } else {
+            } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
                 Wrong password!
                 </div>');
                 redirect('auth');
             }
-        }else{
+        } else {
             redirect('auth');
         }
     }
 
-    public function sessionCheck($status)
-    {
+    public function sessionCheck($status) {
         if ($status == 'admin') {
-            
+
             return $this->db->get_where('admin', ['user' => $this->session->userdata('username')])->row_array();
         } elseif ($status == 'user') {
             return $this->db->get_where('user', ['nim' => $this->session->userdata('username')])->row_array();
-        } 
+        }
     }
 
-    function is_logged_in()
-    {
+    function is_logged_in() {
         if (!$this->session->userdata('nim')) {
             redirect('auth');
         } else {
             $role_id = $this->session->userdata('role_id');
-            
+
             if ($role_id != 1) {
                 redirect('auth/blocked');
             };
         };
     }
 
-    public function cekAdmin($username)
-    {
-        
-        return $this->db->get_where('admin', ['user'=>$username])->num_rows();
+    public function cekAdmin($username) {
+
+        return $this->db->get_where('admin', ['user' => $username])->num_rows();
     }
 
 }

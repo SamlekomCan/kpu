@@ -52,8 +52,8 @@
                                    onclick="return confirm('Are you sure you want to delete <?= $row['id']; ?>?');">Delete</a>
                             </td>
                         </tr>
-    <?php $i++; ?>
-<?php endforeach; ?>
+                        <?php $i++; ?>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>

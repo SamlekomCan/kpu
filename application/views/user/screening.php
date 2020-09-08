@@ -17,7 +17,7 @@
     <?php endif ?>
     <?php if ($himpunan == 0) : ?>
         <a href="<?= base_url('user/screeninghimpunan') ?>" class="btn btn-primary btn-user btn-block">Himpunan</a>
-<?php endif ?>
+    <?php endif ?>
 </div>
 <!-- /.container-fluid -->
 
