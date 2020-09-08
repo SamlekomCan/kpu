@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 07, 2020 at 06:43 AM
+-- Generation Time: Sep 08, 2020 at 05:46 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -59,6 +59,7 @@ CREATE TABLE `calon` (
   `fakultasketua` varchar(50) NOT NULL,
   `fakultaswakil` varchar(255) NOT NULL,
   `organisasi` varchar(50) NOT NULL,
+  `prodi` varchar(255) NOT NULL,
   `visi` text NOT NULL,
   `misi` text NOT NULL,
   `foto` varchar(100) NOT NULL,
@@ -69,11 +70,10 @@ CREATE TABLE `calon` (
 -- Dumping data for table `calon`
 --
 
-INSERT INTO `calon` (`id`, `ketua`, `wakil`, `fakultasketua`, `fakultaswakil`, `organisasi`, `visi`, `misi`, `foto`, `hasil`) VALUES
-(4, 'qweqwe', 'aadw', 'FST', 'FARMASI', 'BEMU', 'wewwe', 'qqq2', 'usd3.png', 1),
-(5, 'qweqwe', 'qwe', 'FST', 'PSIKOLOGI', 'BEMU', 'qweqw', 'asdasd', 'FvitYG8_-_Copy_(2).png', 5),
-(6, 'qweqwe', '213qwe', 'PSIKOLOGI', 'FKIP', 'BEMU', 'asda', 'qweqw', 'FvitYG8_-_Copy_(3).png', 3),
-(9, 'Berlin', 'Ican', 'Sains dan Teknologi', 'Sains dan Teknologi', 'BEMF', 'libur tiap hari', 'mabok tiap hari', 'FvitYG8_-_Copy_(4)1.png', 2);
+INSERT INTO `calon` (`id`, `ketua`, `wakil`, `fakultasketua`, `fakultaswakil`, `organisasi`, `prodi`, `visi`, `misi`, `foto`, `hasil`) VALUES
+(8, 'HIERONIMUS FREDY MORGAN', 'SESARIA WINANDA TITIS RANI', 'Sains dan Teknologi', 'Farmasi', 'BEMU', '', 'poopi', 'uytdu', '', 2),
+(9, 'JOSE PEDRO FEBIAN', 'BENEDIKTUS RONY AGUNG KUSUMA', 'Sains dan Teknologi', 'Sains dan Teknologi', 'BEMF', '', 'Some quick example text to build on the card title and make up the bulk of the card\'s content.', 'Some quick example text to build on the card title and make up the bulk of the card\'s content.Some quick example text to build on the card title and make up the bulk of the card\'s content.Some quick example text to build on the card title and make up the bulk of the card\'s content.Some quick example text to build on the card title and make up the bulk of the card\'s content.', '', 0),
+(10, 'BENEDIKTUS RONY AGUNG KUSUMA', 'BERLIN RAVELINO HUGO PADANG', 'Sains dan Teknologi', 'Sains dan Teknologi', 'HM', 'Informatika', 'Someone famous in Source Title', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.', '', 0);
 
 -- --------------------------------------------------------
 
@@ -95,6 +95,13 @@ CREATE TABLE `dt_kandidat` (
   `ukuran` int(11) NOT NULL,
   `tipe` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dt_kandidat`
+--
+
+INSERT INTO `dt_kandidat` (`id`, `nama`, `nim`, `nowa`, `email`, `fakultas`, `prodi`, `visi`, `misi`, `foto`, `ukuran`, `tipe`) VALUES
+(8, 'HIERONIMUS FREDY MORGAN', '175314080', '', '', 'Sains dan Teknologi', 'Informatika', '', '', NULL, 0, '');
 
 -- --------------------------------------------------------
 
@@ -141,7 +148,8 @@ CREATE TABLE `gubernur` (
 --
 
 INSERT INTO `gubernur` (`id`, `nama`, `fakultas`, `prodi`, `angkatan`, `alasan`, `idUser`) VALUES
-(1, 'HIERONIMUS FREDY MORGAN', 'Sains dan Teknologi', 'Informatika', '2018', 'sadasdasd', 184);
+(1, 'JOSE PEDRO FEBIAN', 'Sains dan Teknologi', 'Informatika', '2018', 'coba 1 aja\r\n', 105),
+(2, 'JOSE PEDRO FEBIAN', 'Sains dan Teknologi', 'Informatika', '2018', 'coba 2', 106);
 
 -- --------------------------------------------------------
 
@@ -164,7 +172,9 @@ CREATE TABLE `himpunan` (
 --
 
 INSERT INTO `himpunan` (`id`, `nama`, `fakultas`, `prodi`, `angkatan`, `alasan`, `idUser`) VALUES
-(1, 'BERLIN RAVELINO HUGO PADANG', 'Sains dan Teknologi', 'Informatika', '2018', 'werwerwr', 184);
+(1, 'BERLIN RAVELINO HUGO PADANG', 'Sains dan Teknologi', 'Informatika', '2018', 'coba1aja', 105),
+(2, 'M.IKHSAN ABIMANYU', 'Sains dan Teknologi', 'Informatika', '2018', 'coba 2\r\n', 106),
+(3, 'M.IKHSAN ABIMANYU', 'Sains dan Teknologi', 'Informatika', '2018', 'coba 3\r\n', 107);
 
 -- --------------------------------------------------------
 
@@ -187,7 +197,8 @@ CREATE TABLE `presiden` (
 --
 
 INSERT INTO `presiden` (`id`, `nama`, `fakultas`, `prodi`, `angkatan`, `alasan`, `idUser`) VALUES
-(1, 'HIERONIMUS FREDY MORGAN', 'Sains dan Teknologi', 'Informatika', '2018', 'asdasasdas', 184);
+(1, 'BERLIN RAVELINO HUGO PADANG', 'Sains dan Teknologi', 'Informatika', '2018', 'coba 1 aja', 105),
+(2, 'BERLIN RAVELINO HUGO PADANG', 'Sains dan Teknologi', 'Informatika', '2018', 'coba 2', 106);
 
 -- --------------------------------------------------------
 
@@ -262,7 +273,7 @@ INSERT INTO `user` (`id`, `nim`, `nama`, `password`, `fakultas`, `prodi`, `statu
 (5, '165314006', 'ANTONIUS YOGI PRIHANTORO', '$2y$10$MmhykqQxSE0ng9HWOqs/3OlL5BdOA6q4scA2WhyRxBUR3pts7JAu.', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (6, '165314007', 'WIDI FIRMANSYAH', '$2y$10$9cJ0yaIwToMSskAwltRXfOkSFYR1ECqipl2MOU/aZc3JQTYDzHddu', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (7, '165314009', 'EVANNOAH ROLIMARCH PRATAMA', '$2y$10$qHvTjOeRvzPoj.R7OhChGunW9X1BY7ZqmvvrFZozOsCHYyyfj.Y9G', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
-(8, '165314011', 'WENSESLAUS TYAS WICAKSANA', '$2y$10$1zffSCgMb0aWh3eoucQKhe.HRcrRCf7wX3astu5bWBiWBAGnPRXIy', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
+(8, '165314011', 'WENSESLAUS TYAS WICAKSANA', '$2y$10$5lTnSZdLgGb4YGiKpLfSD.nPzll6YbwpnTuF9SLGeSpEU3belB5L2', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (9, '165314012', 'BANYU WANA AJI', '$2y$10$jhqCf7mx/x8nq0hmNk/mhejn2xqof9vyQKuu/XCMMAQu3AC6QArzq', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (10, '165314013', 'AGNES WIDIANINGSIH WULANDARI', '$2y$10$xOdGfLyftW4gdG22ftuK1eaZSetCanjLGn8N/Rrc68fT/pTOxb4VG', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (11, '165314014', 'BERNADETTE CHRESTELLA', '$2y$10$0iWWm43GVsz0Kb7qI8KP0.LCWDQRPgphm2UekyM62ocycXGqduCJW', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
@@ -437,8 +448,8 @@ INSERT INTO `user` (`id`, `nim`, `nama`, `password`, `fakultas`, `prodi`, `statu
 (181, '175314077', 'RICHARDUS ALGA ADMAJA', '$2y$10$5Wnl2BRxno2i2jP1x2pglue9o8Q5W0FpJ9tA3xqDhbcqxCmLI/r0y', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (182, '175314078', 'GUIDO DIKA FIRGUSTON', '$2y$10$XyBWWq1J0qzDpUhiYsH42.zBfcHAMw560poDFqmmMwrpsTfHgGuCO', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (183, '175314079', 'MADE ARIVANDEGA WARNAWAN', '$2y$10$VAh2U9Zh5UcDDndwrI7n4eeqmIsdh9CG17.qOgF0XDdNSsEf4sNpC', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
-(184, '175314080', 'HIERONIMUS FREDY MORGAN', '$2y$10$mY8XJJvAmJrQiQK/2faBsOmMUGxdjMMGWJ0rsgoSfAxSfOvv7eh42', 'Sains dan Teknologi', 'Informatika', 0, 0, 1, 0),
-(185, '175314081', 'IGNATIUS BENNY CHRISTIAN', '$2y$10$UmBqY5vFOzOBnmdqUsG9p.6A/gQQFf6Hn8vtAPlo3as6wvHoRZap2', 'Sains dan Teknologi', 'Informatika', 0, 0, 1, 0),
+(184, '175314080', 'HIERONIMUS FREDY MORGAN', '$2y$10$iT8/KgTEKJAqN5A/nkYqmetr/cj/2AA2zFBcX.U89PEHZfWniOUdm', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
+(185, '175314081', 'IGNATIUS BENNY CHRISTIAN', '$2y$10$UmBqY5vFOzOBnmdqUsG9p.6A/gQQFf6Hn8vtAPlo3as6wvHoRZap2', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (186, '175314082', 'ALBERTUS SATRIO BAYUAJI', '$2y$10$Baut7kNKOIn9d6S0Qq7SAu1REWSz4zwmTOy3ms6GbFZjCehxP6hXu', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (187, '175314083', 'IDA BAGUS YUDISTIRA PRAMA PUTRA', '$2y$10$KGl8qKnokgvp21L8y7LaguIfHza2yhFhbS7ETsewlMm/mP767PvPu', 'Sains dan Teknologi', 'Informatika', 1, 0, 1, 0),
 (188, '175314084', 'GABRIEL RYAN PRIMA ADETIKA', '$2y$10$Qwxz2FEqi9X7zsApe6f6huLXBTAyJOoeB.r6Fsw4iSzUut7Lj5NY2', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
@@ -480,7 +491,7 @@ INSERT INTO `user` (`id`, `nim`, `nama`, `password`, `fakultas`, `prodi`, `statu
 (224, '175314121', 'RAMA EKA PUTRANTO', '$2y$10$6ur6Ag8imJ7JmPON6wLGvu3wuZk8O1nhbTLiB.BOeV1jk81Uty2uO', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (225, '175314122', 'AMELIA PUTRI CENDRAKASIH', '$2y$10$M4Wx.2Wxq4bfk/hfXEyjleOAs7hshN1izIQBbP9286OvH.CF0Nv9O', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (226, '175314123', 'KATARINA HARYANINGTYAS', '$2y$10$wNnphwuQIhrp9oOxfDaaFO.4lzdIfPWMC5/gOpjWFvSZc3j4lcCIy', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
-(227, '175314124', 'FRANSISKA APRI WULANDARI', '$2y$10$lieKHtDv0chOyi9JoFQqd.IsC9jx46BRrsrQczLUqoJum.6fCsngq', 'Sains dan Teknologi', 'Informatika', 0, 0, 1, 0),
+(227, '175314124', 'FRANSISKA APRI WULANDARI', '$2y$10$lieKHtDv0chOyi9JoFQqd.IsC9jx46BRrsrQczLUqoJum.6fCsngq', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (228, '175314125', 'ARNOLDUS JANSSEN YUFIANTO', '$2y$10$IYzGmD/Gs7AUSZB0sR0uBeVk0cf82gi23Jy8PBYWrPp59AFSXR9y2', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (229, '175314126', 'THOMAS DANI KURNIAWAN', '$2y$10$WqnXL/mhRAJqkDmDk46yKeseHwVKE2GMUBnj4t5et5uWRBNft6XEm', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (230, '175314127', 'ALEXANDER ADAM BAGASKARA', '$2y$10$ImlozaiNYtrChEOLHPk7ZOBKJ2wELPlWhVY4HVO9WXqF3l5/IBZTS', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
@@ -867,7 +878,7 @@ INSERT INTO `user` (`id`, `nim`, `nama`, `password`, `fakultas`, `prodi`, `statu
 (610, '195314074', 'DIAN ANGELINA TEACHER', '$2y$10$hwFAT9FHGCJdILwOAGaZXup9XwLU5fAhXe8r4rfBsihSJZx15lF6.', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (611, '195314075', 'MARGARETA ROSMEINI NANGUR', '$2y$10$koazFjBzVaa.s2Tqkb0URedvWgk4lRo62nqRD1HtjFSgmeCGGqe6e', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (612, '195314076', 'PUTRA TIMBUL SASONGKO', '$2y$10$.5mN/UCEvrnuu9XxMF.nHeCu0I8aEShziID86jLA9en5bdpuWfFbK', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
-(613, '195314077', 'SESARIA WINANDA TITIS RANI', '$2y$10$4RuJxUU0Rcz3rDvGUu9M2OI01a6sK0hWZGU.vL39HjBHqAqNeISyy', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
+(613, '195314077', 'SESARIA WINANDA TITIS RANI', '$2y$10$4RuJxUU0Rcz3rDvGUu9M2OI01a6sK0hWZGU.vL39HjBHqAqNeISyy', 'Farmasi', 'Farmasi', 1, 1, 1, 0),
 (614, '195314078', 'MARCELLINUS R. K', '$2y$10$0d6sCRqe..V5SLVon61yTuehMgGvAxhZ0XMX46Uet/KXO0HWi8xfy', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (615, '195314079', 'JUAN VETRIC CHRISTIAN ARITONANG', '$2y$10$PQsL0EQ60uRCtLkhhG4SG.fcyuV58ADuh1g4iTxnZ1jDaTt3SysuK', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0),
 (616, '195314080', 'ELKANA KRISTUADJI', '$2y$10$EsFPhrkxxW.dnV2dPY9S5.PoFLjkITqxPBl1OT46fPLTUdNcKFuPe', 'Sains dan Teknologi', 'Informatika', 1, 1, 1, 0);
@@ -945,13 +956,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `calon`
 --
 ALTER TABLE `calon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `dt_kandidat`
 --
 ALTER TABLE `dt_kandidat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `fakultas`
@@ -963,19 +974,19 @@ ALTER TABLE `fakultas`
 -- AUTO_INCREMENT for table `gubernur`
 --
 ALTER TABLE `gubernur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `himpunan`
 --
 ALTER TABLE `himpunan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `presiden`
 --
 ALTER TABLE `presiden`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `prodi`

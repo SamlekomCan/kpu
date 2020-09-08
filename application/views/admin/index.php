@@ -134,7 +134,6 @@ foreach ($himpunann as $row) {
     <div id="HM"></div>
   </div>
 </div>
->>>>>>> d9323b4504679c1a2812d18c09295101be5997d1
 
 </div>
 <!-- /.container-fluid -->

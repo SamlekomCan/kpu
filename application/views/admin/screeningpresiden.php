@@ -17,24 +17,26 @@
                         <th>FAKULTAS</th>
                         <th>PRODI</th>
                         <th>ANGKATAN</th>
-                        <th>ALASAN</th>
+                        <th>DETAIL</th>
                         <th>HASIL</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php $i = 1; ?>
                     <?php foreach ($presiden as $row) : ?>
+                    <?php $sql = "SELECT * FROM presiden WHERE nama LIKE '".$row['nama']."'" ;
+                        $pre = $this->db->query($sql)->result_array();
+                    ?>
                         <tr>
                             <td><?= $i ?></td>
-                            <td><?php echo $row['nama']; ?></td>
-                            <td><?php echo $row['fakultas']; ?></td>
-                            <td><?php echo $row['prodi']; ?></td>
-                            <td><?php echo $row['angkatan']; ?></td>
-                            <td><?php echo $row['alasan']; ?></td>
+                            <td><?php echo $pre[0]['nama']; ?></td>
+                            <td><?php echo $pre[0]['fakultas']; ?></td>
+                            <td><?php echo $pre[0]['prodi']; ?></td>
+                            <td><?php echo $pre[0]['angkatan']; ?></td>
+                            <td class="text-center"><a href="<?php echo base_url(); ?>admin/alasanCalon?id=<?=$pre[0]['id'];?>&user=presiden"
+                                           class="btn btn-success ">Detail</a> </td>
                             <td><?php
-                                $sql = "SELECT COUNT(nama) AS nama FROM presiden WHERE nama LIKE '" . $row['nama'] . "'";
-                                $jumlah = $this->db->query($sql)->result_array();
-                                echo $jumlah[0]['nama'];
+                                echo $this->db->query($sql)->num_rows();
                                 ?></td>
                         </tr>
                         <?php $i++; ?>
@@ -42,7 +44,7 @@
                 </tbody>
             </table>
         </div>
-        <a href="<?= base_url('admin/screening'); ?>" class="btn btn-secondary btn-user btn-block"> Kembali</a>
+        <a href="<?= base_url('admin/screening'); ?>" class="btn btn-secondary btn-user"> Kembali</a>
 
     </div>
 </div>

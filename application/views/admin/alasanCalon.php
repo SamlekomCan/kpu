@@ -6,6 +6,7 @@
                 <h2 class=""><?= $title ?></h2>
             </div>
         </div>
+
         <hr>
         <?= $this->session->flashdata('message'); ?>
         <div class="table-responsive">
@@ -14,37 +15,36 @@
                     <tr class="text-center">
                         <th>No</th>
                         <th>NAMA</th>
-                        <th>FAKULTAS</th>
-                        <th>PRODI</th>
-                        <th>ANGKATAN</th>
-                        <th>DETAIL</th>
-                        <th>HASIL</th>
+                        <th>ALASAN</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $i = 1; ?>
-                    <?php foreach ($himpunan as $row) : ?>
-                     <?php $sql = "SELECT * FROM himpunan WHERE nama LIKE '".$row['nama']."'" ;
-                        $pre = $this->db->query($sql)->result_array();
-                    ?>
+                    <?php $i = 1;?>
+                    <?php foreach ($data as $row) : ?>
                         <tr>
                             <td><?= $i ?></td>
-                            <td><?php echo $pre[0]['nama']; ?></td>
-                            <td><?php echo $pre[0]['fakultas']; ?></td>
-                            <td><?php echo $pre[0]['prodi']; ?></td>
-                            <td><?php echo $pre[0]['angkatan']; ?></td>
-                            <td class="text-center"><a href="<?php echo base_url(); ?>admin/alasanCalon?id=<?=$pre[0]['id'];?>&user=himpunan"
-                                           class="btn btn-success ">Detail</a> </td>
-                            <td><?php
-                                echo $this->db->query($sql)->num_rows();
-                                ?></td>
+                            <td>
+                            <?php $query = "SELECT nama FROM user WHERE id = ".$row['idUser'];
+                            $users = $this->db->query($query)->result();
+                            // var_dump($users);die;
+                            print_r($users[0]->nama) ; ?></td>
+                            <td><?php echo $row['alasan']; ?></td>
                         </tr>
                         <?php $i++; ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
-        <a href="<?= base_url('admin/screening'); ?>" class="btn btn-secondary btn-user"> Kembali</a>
+        <?php if($jenis == 'presiden'): ?>
+        <a href="<?= base_url('admin/screeningpresiden'); ?>" class="btn btn-secondary btn-user"> Kembali</a>
+
+        <?php elseif($jenis == 'gubernur'): ?>
+        <a href="<?= base_url('admin/screeninggubernur'); ?>" class="btn btn-secondary btn-user"> Kembali</a>
+
+        <?php elseif($jenis == 'himpunan'): ?>
+        <a href="<?= base_url('admin/screeninghimpunan'); ?>" class="btn btn-secondary btn-user"> Kembali</a>
+
+        <?php endif ?>
 
     </div>
 </div>

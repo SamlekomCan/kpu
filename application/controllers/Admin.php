@@ -146,7 +146,7 @@ class Admin extends CI_Controller {
         $data['sidebar'] = 'Administrator';
         $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
         $this->db->distinct();
-        $this->db->select('*');
+        $this->db->select('nama');
         $data['presiden'] = $this->db->get('presiden')->result_array();
         $this->load->view('templatesAdmin/header', $data);
         $this->load->view('templatesAdmin/sidebar', $data);
@@ -159,8 +159,8 @@ class Admin extends CI_Controller {
         $data['title'] = 'Screening Gubernur';
         $data['sidebar'] = 'Administrator';
         $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
-        $this->db->distinct();
-        $this->db->select('*');
+        $this->db->distinct();        
+        $this->db->select('nama');
         $data['gubernur'] = $this->db->get('gubernur')->result_array();
         $this->load->view('templatesAdmin/header', $data);
         $this->load->view('templatesAdmin/sidebar', $data);
@@ -174,13 +174,63 @@ class Admin extends CI_Controller {
         $data['sidebar'] = 'Administrator';
         $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
         $this->db->distinct();
-        $this->db->select('*');
+        $this->db->select('nama');
         $data['himpunan'] = $this->db->get('himpunan')->result_array();
         $this->load->view('templatesAdmin/header', $data);
         $this->load->view('templatesAdmin/sidebar', $data);
         $this->load->view('templatesAdmin/topbar', $data);
         $this->load->view('admin/screeninghimpunan', $data);
         $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    public function alasanCalon()
+    {
+        $id =  $_GET['id'];
+        $cek = $_GET['user'];
+        if ($cek == 'presiden') {
+            // die;
+            $presiden = $this->db->get_where('presiden',['id'=>$id])->result_array();
+            $data['title'] = 'Alasan Calon Presiden '.$presiden[0]['nama'];
+            $data['sidebar'] = 'Administrator';
+            $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+            $this->db->select('idUser,alasan');
+            $this->db->where('nama',$presiden[0]['nama']);
+            $data['data'] = $this->db->get('presiden')->result_array();
+            $data['jenis'] = $cek;
+            $this->load->view('templatesAdmin/header', $data);
+            $this->load->view('templatesAdmin/sidebar', $data);
+            $this->load->view('templatesAdmin/topbar', $data);
+            $this->load->view('admin/alasanCalon', $data);
+            $this->load->view('templatesAdmin/footer', $data);
+        }elseif($cek == 'gubernur'){
+            $gubernur = $this->db->get_where('gubernur',['id'=>$id])->result_array();
+            $data['title'] = 'Alasan Calon Gubernur '.$gubernur[0]['nama'];
+            $data['sidebar'] = 'Administrator';
+            $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+            $this->db->select('idUser,alasan');
+            $this->db->where('nama',$gubernur[0]['nama']);
+            $data['data'] = $this->db->get('gubernur')->result_array();
+            $data['jenis'] = $cek;
+            $this->load->view('templatesAdmin/header', $data);
+            $this->load->view('templatesAdmin/sidebar', $data);
+            $this->load->view('templatesAdmin/topbar', $data);
+            $this->load->view('admin/alasanCalon', $data);
+            $this->load->view('templatesAdmin/footer', $data);
+        }elseif($cek =='himpunan'){
+            $himpunan = $this->db->get_where('himpunan',['id'=>$id])->result_array();
+            $data['title'] = 'Alasan Calon Himpunan '.$himpunan[0]['nama'];
+            $data['sidebar'] = 'Administrator';
+            $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+            $this->db->select('idUser,alasan');
+            $this->db->where('nama',$himpunan[0]['nama']);
+            $data['data'] = $this->db->get('himpunan')->result_array();
+            $data['jenis'] = $cek;
+            $this->load->view('templatesAdmin/header', $data);
+            $this->load->view('templatesAdmin/sidebar', $data);
+            $this->load->view('templatesAdmin/topbar', $data);
+            $this->load->view('admin/alasanCalon', $data);
+            $this->load->view('templatesAdmin/footer', $data);
+        }
     }
 
     public function editAdmin($id) {
