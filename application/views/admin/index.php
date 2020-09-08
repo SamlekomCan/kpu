@@ -95,7 +95,7 @@ window.onload = function() {
     <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">HM</a>
   </li>
 </ul>
-<div class="tab-content" id="myTabContent">
+<div class="tab" id="myTabContent">
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
   <div id="Presiden"></div>
   </div>
