@@ -74,4 +74,9 @@ class Autentifikasi_model extends CI_Model {
         return $this->db->get_where('admin', ['user' => $username])->num_rows();
     }
 
+    public function getCalonbyId($id) {
+        $this->db->where('id',$id);
+        return $this->db->get('calon')->result_array();
+    }
+
 }

@@ -26,7 +26,7 @@
                                         <span class="glyphicon glyphicon-info-sign"></span> Visi dan Misi
                                     </a>
                                     <?php if ($user['status'] != 0): ?>
-                                        <a href="#" class="btn btn-info btn-sm" onclick="validate('<?= $row['id']; ?>')"
+                                        <a href="#" class="btn btn-info btn-sm" onclick="validate('<?=  $row['ketua']; ?>-<?=  $row['wakil']; ?>')"
                                            value="<?php echo $row['id'] ?>"><span class="glyphicon glyphicon-info-sign"></span>
                                             Pilih </a>
                                     <?php endif ?>
@@ -114,10 +114,12 @@
 
 </div>
 <!-- End of Main Content -->
+
 <script src="<?php echo base_url() ?>assets/js/sweetalert.min.js"></script>
 <script>
-                                            function validate(a) {
-                                                var id = a;
+                                            function validate(a,b) {
+                                                
+                                            var id = a
                                                 swal({
                                                     title: "Apa anda yakin?",
                                                     text: "Memilih " + id,

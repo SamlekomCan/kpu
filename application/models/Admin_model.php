@@ -19,6 +19,7 @@ class Admin_model extends CI_Model {
     public function getCalon() {
         return $this->db->get('calon')->result_array();
     }
+    
 
     public function getCalonFakultas($fakultas) {
         $this->db->like('fakultasketua', $fakultas);

@@ -119,14 +119,18 @@ class User extends CI_Controller {
     }
 
     public function pilihBemu($id) {
-        $this->db->where('id', $id);
+        $id = urldecode($id);
+        $id = explode('-',$id);
+        // print_r($id);die;
+        $this->db->where('ketua', $id[0]);
+        $this->db->where('wakil', $id[1]);
         $this->db->from('calon');
         $calon = $this->db->get()->result_array();
         $org = $calon[0]['organisasi'];
 
         $hasil = $calon[0]['hasil'] + 1;
         $this->db->set('hasil', $hasil);
-        $this->db->where('id', $id);
+        $this->db->where('id', $calon[0]['id']);
         $this->db->update('calon');
         if (strcasecmp($org, 'BEMU') == 0) {
             # code...
