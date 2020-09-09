@@ -38,7 +38,7 @@
             </div>
             <div>
                 <a href="<?= base_url('user/changepassword') ?>" class="btn btn-primary">Change Password</a>
-                <a href="<?= base_url('user/edit') ?>" class="btn btn-success">Edit Profile</a>
+
             </div>
 
 

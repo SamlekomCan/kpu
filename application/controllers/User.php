@@ -15,6 +15,7 @@ class User extends CI_Controller {
         $data['user'] = $this->db->get_where('user', ['nim' => $this->session->userdata('nim')])->row_array();
         $data['data'] = $this->admin->getCalon();
         $data['bemf'] = $this->admin->getCalonFakultas($data['user']['fakultas']);
+        $data['hm'] = $this->admin->getCalonFakultas($data['user']['fakultas']);
         $this->load->view('templatesUser/header', $data);
         $this->load->view('templatesUser/sidebar', $data);
         $this->load->view('templatesUser/topbar', $data);

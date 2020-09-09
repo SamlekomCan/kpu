@@ -459,6 +459,7 @@ class Admin extends CI_Controller {
             $this->db->set('organisasi', $organisasi);
             $this->db->set('visi', $visi);
             $this->db->set('misi', $misi);
+            $this->db->where('id', $id);
             $this->db->update('calon');
             redirect('admin/calon');
         }

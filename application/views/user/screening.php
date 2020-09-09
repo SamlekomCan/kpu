@@ -1,5 +1,5 @@
 <!-- Begin Page Content -->
-<div class="container-fluid">
+<div class="container">
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
@@ -9,7 +9,7 @@
     $presiden = $this->db->query("SELECT * FROM presiden WHERE idUser LIKE " . $user['id'] . " ")->num_rows();
     $gubernur = $this->db->query("SELECT * FROM gubernur WHERE idUser LIKE " . $user['id'] . " ")->num_rows();
     $himpunan = $this->db->query("SELECT * FROM himpunan WHERE idUser LIKE " . $user['id'] . " ")->num_rows();
-    if ($presiden == 0) :?>
+    if ($presiden == 0) : ?>
     <div class="col">
     <div class="card" style="width: 18rem;">
        <div class="card-body">
@@ -52,7 +52,15 @@
     </div>
        
     <?php endif ?>
-
+    <?php if ($himpunan == 1 && $presiden == 1 && $gubernur == 1) : ?>
+    <div style="width: 70rem;">
+       <div class="card-body">
+            <center>
+            <h1 class="card-text">Terimakasih atas partisipasinya..</h1>
+         </center>
+        </div>
+    </div>
+    <?php endif ?>
     </div>
    
 </div>
