@@ -3,21 +3,28 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
+    <hr>
     <div class="row">
         <div class="col-lg-6">
-            <?= $this->session->flashdata('message'); ?>
-        </div>
-    </div>
-    <div class="card mb-3 col-lg-8">
-        <div class="row no-gutters">
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title"><?= $user['nama']; ?></h5>
-                    <p class="card-text"><?= $user['user']; ?></p>
+        <?= $this->session->flashdata('message'); ?>
+            <div class="form-group row">
+                <label for="nim" class="col-sm-2 col-form-label">Username</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="nim" name="nim" value="<?= $user['user'] ?>" readonly>
                 </div>
-                <a href="<?= base_url('admin/changePassword') ?>" class="btn btn-primary">Change Password</a>
-                <a href="#" class="btn btn-success">Edit Profile</a>
             </div>
+            <div class="form-group row">
+                <label for="nama" class="col-sm-2 col-form-label">Nama</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="nama" name="nama" value="<?= $user['nama'] ?>" readonly>
+                    <?= form_error('nama', '<small class="text-danger pl-2">', '</small>') ?>
+                </div>
+            </div>
+            <div>
+            <a href="<?= base_url('admin/changePassword') ?>" class="btn btn-primary">Change Password</a>
+            </div>
+
+
         </div>
     </div>
 </div>
