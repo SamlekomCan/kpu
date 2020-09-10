@@ -118,6 +118,36 @@ class Admin extends CI_Controller {
         $this->load->view('templatesAdmin/footer', $data);
     }
 
+     public function changeName($id) {
+        $data['title'] = 'Change Name';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $this->form_validation->set_rules('username', 'Username', 'required|trim');
+        $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
+        
+        if ($this->form_validation->run() == false) {
+            # code...
+            $this->load->view('templatesAdmin/header', $data);
+            $this->load->view('templatesAdmin/sidebar', $data);
+            $this->load->view('templatesAdmin/topbar', $data);
+            $this->load->view('admin/changeName', $data);
+            $this->load->view('templatesAdmin/footer', $data);
+        } else {
+
+            $user = $this->input->post('username');
+            $nama = $this->input->post('nama'); 
+
+            $this->db->set('user', $user);
+            $this->db->set('nama', $nama);
+            $this->db->where('id', $id);
+            $this->db->update('admin');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Your Name has been updated! </div>');
+            redirect('admin/profile');
+                
+        }
+    }
+
     public function kadidat() {
         $data['title'] = 'Kadidat';
         $data['sidebar'] = 'Administrator';
