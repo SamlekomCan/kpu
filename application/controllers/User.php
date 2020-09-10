@@ -6,6 +6,15 @@ class User extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
+        if ($this->session->userdata('status') != 'user') {
+            if ($data) {
+                # code...
+                redirect('auth/blocked', $data);
+            } else {
+                $data = '';
+                redirect('auth/blocked', $data);
+            }
+        }
         $this->load->library('form_validation');
         $this->load->model('Admin_model', 'admin');
     }

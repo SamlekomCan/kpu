@@ -26,7 +26,7 @@
                                         <span class="glyphicon glyphicon-info-sign"></span> Visi dan Misi
                                     </a>
                                     <?php if ($user['status'] != 0): ?>
-                                        <a href="#" class="btn btn-info btn-sm" onclick="validate('<?= $row['id']; ?>')"
+                                        <a href="#" class="btn btn-info btn-sm" onclick="validate('<?=  $row['ketua']; ?>-<?=  $row['wakil']; ?>')"
                                            value="<?php echo $row['id'] ?>"><span class="glyphicon glyphicon-info-sign"></span>
                                             Pilih </a>
                                     <?php endif ?>
@@ -61,7 +61,7 @@
                                         <span class="glyphicon glyphicon-info-sign"></span> Visi dan Misi
                                     </a>
                                     <?php if ($user['statusBEMF'] != 0): ?>
-                                        <a href="#" class="btn btn-info btn-sm" onclick="validate('<?= $row['id']; ?>')"
+                                        <a href="#" class="btn btn-info btn-sm" onclick="validate('<?=  $row['ketua']; ?>-<?=  $row['wakil']; ?>')"
                                            value="<?php echo $row['id'] ?>"><span class="glyphicon glyphicon-info-sign"></span>
                                             Pilih </a>
                                     <?php endif ?>
@@ -96,7 +96,7 @@
                                         <span class="glyphicon glyphicon-info-sign"></span> Visi dan Misi
                                     </a>
                                     <?php if ($user['statusHM'] != 0): ?>
-                                        <a href="#" class="btn btn-info btn-sm" onclick="validate('<?= $row['id']; ?>')"
+                                        <a href="#" class="btn btn-info btn-sm" onclick="validate('<?=  $row['ketua']; ?>-<?=  $row['wakil']; ?>')"
                                            value="<?php echo $row['id'] ?>"><span class="glyphicon glyphicon-info-sign"></span>
                                             Pilih </a>
                                     <?php endif ?>
