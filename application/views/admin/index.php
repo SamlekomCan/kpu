@@ -8,7 +8,7 @@ foreach ($presidenn as $row) {
 //BEMF
 //Sains dan Teknologi
 $dataPoints2 = array();
-$gubernurr2 = $this->db->get_where('calon', ['fakultasketua' => 'Sains dan Teknologi','organisasi' => 'BEMF'])->result();
+$gubernurr2 = $this->db->get_where('calon', ['fakultasketua' => 'Sains dan Teknologi', 'organisasi' => 'BEMF'])->result();
 foreach ($gubernurr2 as $row) {
     array_push($dataPoints2, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
 }
@@ -537,26 +537,21 @@ foreach ($himpunann17 as $row) {
             <div id="MM"></div>
         </div>
         <div class="tab-pane fade" id="Ekonomi1" role="tabpanel" aria-labelledby="Ekonomi1-tab">
-        ekonomi
             <div id="Ekonomi"></div>
         </div>
         <div class="tab-pane fade" id="Akuntansi" role="tabpanel" aria-labelledby="Akuntansi-tab">
-        akutansi
             <div id="Akuntansi"></div>
         </div>
         <div class="tab-pane fade" id="Manajemen" role="tabpanel" aria-labelledby="Manajemen-tab">
             <div id="Manajemen"></div>
         </div>
         <div class="tab-pane fade" id="Sasindo" role="tabpanel" aria-labelledby="Sasindo-tab">
-            Sasindo
             <div id="Sasindo"></div>
         </div>
         <div class="tab-pane fade" id="Sejarah" role="tabpanel" aria-labelledby="Sejarah-tab">
-        Sejarah
             <div id="Sejarah"></div>
         </div>
         <div class="tab-pane fade" id="Sasing" role="tabpanel" aria-labelledby="Sasing-tab">
-        Sasing
             <div id="Sasing"></div>
         </div>
     </div>
