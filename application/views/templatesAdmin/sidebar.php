@@ -6,7 +6,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">ADMIN KPU <sup></sup></div>
     </a>
 
     <!-- Divider -->
@@ -38,7 +38,7 @@
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('admin/kadidat') ?>">
             <i class="fas fa-fw fa-users"></i>
-            <span>Kadidat Terpilih</span>
+            <span>Kandidat Terpilih</span>
         </a>
     </li>
     <li class="nav-item">
