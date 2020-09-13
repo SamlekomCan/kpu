@@ -12,7 +12,7 @@
                 <a class="nav-link" href="http://www.usd.ac.id" target="_blank">
                     <img style="height: 50px" alt="USD" src="<?= base_url('assets/') ?>img/logoUSD.png">
                 </a>
-                <a class="nav-link" href="http://www.instagram.com/dpm_usd " target="_blank">
+                <a class="nav-link" href="http://www.usd.ac.id/dpmu " target="_blank">
                     <img style="height: 50px;" alt="DPMU" src="<?= base_url('assets/') ?>img/logoDPMU.png">
                 </a>
                 <a class="nav-link" href="http://www.instagram.com/kpuusd" target="_blank">

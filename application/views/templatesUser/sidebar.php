@@ -6,7 +6,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">KPU UNIVERSITAS SANATA DHARMA <sup></sup></div>
     </a>
 
     <!-- Divider -->
@@ -42,7 +42,7 @@
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('user/profile') ?>">
             <i class="fas fa-fw fa-user"></i>
-            <span>Profle</span>
+            <span>Profile</span>
         </a>
     </li>
     <!-- Divider -->
