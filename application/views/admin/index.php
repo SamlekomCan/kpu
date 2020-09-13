@@ -8,17 +8,17 @@ foreach ($presidenn as $row) {
 
 //BEMF
 $dataPoints2 = array();
-$gubernurr2 = $this->db->get_where('calon', ['fakultasketua' => 'Sains dan Teknologi'], ['organisasi' => 'BEMF'])->result();
+$gubernurr2 = $this->db->get_where('calon', ['fakultasketua' => 'Sains dan Teknologi','organisasi' => 'BEMF'])->result();
 foreach ($gubernurr2 as $row) {
     array_push($dataPoints2, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
 }
 $dataPoints3 = array();
-$gubernurr3 = $this->db->get_where('calon', ['fakultasketua' => 'Keguruan dan Ilmu Pendidikan'], ['organisasi' => 'BEMF'])->result();
+$gubernurr3 = $this->db->get_where('calon', ['fakultasketua' => 'Keguruan dan Ilmu Pendidikan', 'organisasi' => 'BEMF'])->result();
 foreach ($gubernurr3 as $row) {
     array_push($dataPoints3, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
 }
 $dataPoints4 = array();
-$gubernurr4 = $this->db->get_where('calon', ['fakultasketua' => 'Psikologi'], ['organisasi' => 'BEMF'])->result();
+$gubernurr4 = $this->db->get_where('calon', ['fakultasketua' => 'Psikologi', 'organisasi' => 'BEMF'])->result();
 foreach ($gubernurr4 as $row) {
     array_push($dataPoints4, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
 }
@@ -40,14 +40,14 @@ foreach ($gubernurr7 as $row) {
 
 //HIMPUNAN FST
 $dataPoints8 = array();
-$himpunann8 = $this->db->get_where('calon', ['prodi' => 'Informatika'], ['organisasi' => 'HM'])->result();
+$himpunann8 = $this->db->get_where('calon', ['prodi' => 'Informatika', 'organisasi' => 'HM'])->result();
 
 foreach ($himpunann8 as $row) {
     array_push($dataPoints8, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
 }
 
 $dataPoints9 = array();
-$himpunann9 = $this->db->get_where('calon', ['prodi' => 'Teknik Elektro'], ['organisasi' => 'HM'])->result();
+$himpunann9 = $this->db->get_where('calon', ['prodi' => 'Teknik Elektro', 'organisasi' => 'HM'])->result();
 
 foreach ($himpunann9 as $row) {
     array_push($dataPoints9, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
