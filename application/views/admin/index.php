@@ -118,6 +118,78 @@ foreach ($himpunann17 as $row) {
     array_push($dataPoints17, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
 }
 
+//HIMPUNAN FKIP
+// HIMAPENSI
+$dataPoints18 = array();
+$himpunann18 = $this->db->get_where('calon', ['prodi' => 'HIMAPENSI', 'organisasi' => 'HM'])->result();
+
+foreach ($himpunann18 as $row) {
+    array_push($dataPoints18, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
+}
+
+// PMAT
+$dataPoints19 = array();
+$himpunann19 = $this->db->get_where('calon', ['prodi' => 'Pendidikan Matematika', 'organisasi' => 'HM'])->result();
+
+foreach ($himpunann19 as $row) {
+    array_push($dataPoints19, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
+}
+
+//PBIO
+$dataPoints19 = array();
+$himpunann19 = $this->db->get_where('calon', ['prodi' => 'Pendidikan Biologi', 'organisasi' => 'HM'])->result();
+
+foreach ($himpunann19 as $row) {
+    array_push($dataPoints19, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
+}
+
+//PFIS
+$dataPoints20 = array();
+$himpunann20 = $this->db->get_where('calon', ['prodi' => 'Pendidikan Fisika', 'organisasi' => 'HM'])->result();
+
+foreach ($himpunann20 as $row) {
+    array_push($dataPoints20, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
+}
+
+//HIMKA
+$dataPoints21 = array();
+$himpunann21 = $this->db->get_where('calon', ['prodi' => 'HIMKA', 'organisasi' => 'HM'])->result();
+
+foreach ($himpunann21 as $row) {
+    array_push($dataPoints21, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
+}
+
+//PSEJ
+$dataPoints22 = array();
+$himpunann22 = $this->db->get_where('calon', ['prodi' => 'Pendidikan Sejarah', 'organisasi' => 'HM'])->result();
+
+foreach ($himpunann22 as $row) {
+    array_push($dataPoints22, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
+}
+
+//PBI
+$dataPoints23 = array();
+$himpunann23 = $this->db->get_where('calon', ['prodi' => 'Pendidikan Bahasa Indonesia', 'organisasi' => 'HM'])->result();
+
+foreach ($himpunann23 as $row) {
+    array_push($dataPoints23, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
+}
+
+//PBSI
+$dataPoints24 = array();
+$himpunann24 = $this->db->get_where('calon', ['prodi' => 'Pendidikan Bahasa dan Sastra Indonesia', 'organisasi' => 'HM'])->result();
+
+foreach ($himpunann24 as $row) {
+    array_push($dataPoints24, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
+}
+
+//PGSD
+$dataPoints25 = array();
+$himpunann25 = $this->db->get_where('calon', ['prodi' => 'Pendidikan Guru Sekolah Dasar', 'organisasi' => 'HM'])->result();
+
+foreach ($himpunann25 as $row) {
+    array_push($dataPoints25, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
+}
 
 ?>
 
@@ -251,7 +323,7 @@ foreach ($himpunann17 as $row) {
         });
         chart.render();
 
-        //HIMPUNAN
+        //HIMPUNAN FST
         var chart = new CanvasJS.Chart("Informatika", {
             animationEnabled: true,
             exportEnabled: true,
@@ -324,6 +396,7 @@ foreach ($himpunann17 as $row) {
         });
         chart.render();
 
+        //HIMPUNAN EKONOMI
         var chart = new CanvasJS.Chart("Manajemen", {
             animationEnabled: true,
             exportEnabled: true,
@@ -342,12 +415,12 @@ foreach ($himpunann17 as $row) {
         });
         chart.render();
 
-        var chart = new CanvasJS.Chart("Akuntasi", {
+        var chart = new CanvasJS.Chart("Akuntansi", {
             animationEnabled: true,
             exportEnabled: true,
             theme: "light1", // "light1", "light2", "dark1", "dark2"
             title: {
-                text: "Pemilihan Calon Akuntasi"
+                text: "Pemilihan Calon Akuntansi"
             },
             data: [{
                     type: "column", //change type to bar, line, area, pie, etc  
@@ -378,6 +451,7 @@ foreach ($himpunann17 as $row) {
         });
         chart.render();
 
+        //HIMPUNAN SASTRA
         var chart = new CanvasJS.Chart("Sejarah", {
             animationEnabled: true,
             exportEnabled: true,
@@ -431,6 +505,159 @@ foreach ($himpunann17 as $row) {
                 }]
         });
         chart.render();
+
+        //HIMPUNAN FKIP
+        // HIMAPENSI
+        var chart = new CanvasJS.Chart("HIMAPENSI", {
+            animationEnabled: true,
+            exportEnabled: true,
+            theme: "light1", // "light1", "light2", "dark1", "dark2"
+            title: {
+                text: "Pemilihan Calon HIMAPENSI"
+            },
+            data: [{
+                    type: "column", //change type to bar, line, area, pie, etc  
+                    yValueFormatString: "#,##0\"%\"",
+                    indexLabel: "{y}",
+                    indexLabelPlacement: "inside",
+                    indexLabelFontColor: "white",
+                    dataPoints: <?php echo json_encode($dataPoints18, JSON_NUMERIC_CHECK); ?>
+                }]
+        });
+        chart.render();
+
+        // PMAT
+        var chart = new CanvasJS.Chart("PMAT", {
+            animationEnabled: true,
+            exportEnabled: true,
+            theme: "light1", // "light1", "light2", "dark1", "dark2"
+            title: {
+                text: "Pemilihan Calon Pendidikan Matematika"
+            },
+            data: [{
+                    type: "column", //change type to bar, line, area, pie, etc  
+                    yValueFormatString: "#,##0\"%\"",
+                    indexLabel: "{y}",
+                    indexLabelPlacement: "inside",
+                    indexLabelFontColor: "white",
+                    dataPoints: <?php echo json_encode($dataPoints19, JSON_NUMERIC_CHECK); ?>
+                }]
+        });
+        chart.render();
+
+        // PBIO
+        var chart = new CanvasJS.Chart("PBIO", {
+            animationEnabled: true,
+            exportEnabled: true,
+            theme: "light1", // "light1", "light2", "dark1", "dark2"
+            title: {
+                text: "Pemilihan Calon Pendidikan Biologi"
+            },
+            data: [{
+                    type: "column", //change type to bar, line, area, pie, etc  
+                    yValueFormatString: "#,##0\"%\"",
+                    indexLabel: "{y}",
+                    indexLabelPlacement: "inside",
+                    indexLabelFontColor: "white",
+                    dataPoints: <?php echo json_encode($dataPoints20, JSON_NUMERIC_CHECK); ?>
+                }]
+        });
+        chart.render();
+
+        // PFIS
+        var chart = new CanvasJS.Chart("PFIS", {
+            animationEnabled: true,
+            exportEnabled: true,
+            theme: "light1", // "light1", "light2", "dark1", "dark2"
+            title: {
+                text: "Pemilihan Calon Pendidikan Fisika"
+            },
+            data: [{
+                    type: "column", //change type to bar, line, area, pie, etc  
+                    yValueFormatString: "#,##0\"%\"",
+                    indexLabel: "{y}",
+                    indexLabelPlacement: "inside",
+                    indexLabelFontColor: "white",
+                    dataPoints: <?php echo json_encode($dataPoints21, JSON_NUMERIC_CHECK); ?>
+                }]
+        });
+        chart.render();
+
+        // HIMKA
+        var chart = new CanvasJS.Chart("HIMKA", {
+            animationEnabled: true,
+            exportEnabled: true,
+            theme: "light1", // "light1", "light2", "dark1", "dark2"
+            title: {
+                text: "Pemilihan Calon HIMKA"
+            },
+            data: [{
+                    type: "column", //change type to bar, line, area, pie, etc  
+                    yValueFormatString: "#,##0\"%\"",
+                    indexLabel: "{y}",
+                    indexLabelPlacement: "inside",
+                    indexLabelFontColor: "white",
+                    dataPoints: <?php echo json_encode($dataPoints22, JSON_NUMERIC_CHECK); ?>
+                }]
+        });
+        chart.render();
+
+        // PSEJ
+        var chart = new CanvasJS.Chart("PSEJ", {
+            animationEnabled: true,
+            exportEnabled: true,
+            theme: "light1", // "light1", "light2", "dark1", "dark2"
+            title: {
+                text: "Pemilihan Calon Pendidikan Sejarah"
+            },
+            data: [{
+                    type: "column", //change type to bar, line, area, pie, etc  
+                    yValueFormatString: "#,##0\"%\"",
+                    indexLabel: "{y}",
+                    indexLabelPlacement: "inside",
+                    indexLabelFontColor: "white",
+                    dataPoints: <?php echo json_encode($dataPoints23, JSON_NUMERIC_CHECK); ?>
+                }]
+        });
+        chart.render();
+
+        // PBI
+        var chart = new CanvasJS.Chart("PBI", {
+            animationEnabled: true,
+            exportEnabled: true,
+            theme: "light1", // "light1", "light2", "dark1", "dark2"
+            title: {
+                text: "Pemilihan Calon Pendidikan Bahasa Indonesia"
+            },
+            data: [{
+                    type: "column", //change type to bar, line, area, pie, etc  
+                    yValueFormatString: "#,##0\"%\"",
+                    indexLabel: "{y}",
+                    indexLabelPlacement: "inside",
+                    indexLabelFontColor: "white",
+                    dataPoints: <?php echo json_encode($dataPoints24, JSON_NUMERIC_CHECK); ?>
+                }]
+        });
+        chart.render();
+
+        // PBSI
+        var chart = new CanvasJS.Chart("PBSI", {
+            animationEnabled: true,
+            exportEnabled: true,
+            theme: "light1", // "light1", "light2", "dark1", "dark2"
+            title: {
+                text: "Pemilihan Calon Pendidikan Bahasa dan Sastra Indonesia"
+            },
+            data: [{
+                    type: "column", //change type to bar, line, area, pie, etc  
+                    yValueFormatString: "#,##0\"%\"",
+                    indexLabel: "{y}",
+                    indexLabelPlacement: "inside",
+                    indexLabelFontColor: "white",
+                    dataPoints: <?php echo json_encode($dataPoints25, JSON_NUMERIC_CHECK); ?>
+                }]
+        });
+        chart.render();
     }
 </script>
 
@@ -474,13 +701,13 @@ foreach ($himpunann17 as $row) {
             <div class="dropdown-menu">
                 <a class="dropdown-item" id="Himapensi-tab" data-toggle="tab" role="tab" aria-controls="Himapensi" href="#Himapensi">Pend.Akuntansi & Pend.Ekonomi</a>
                 <a class="dropdown-item" id="PMAT-tab" data-toggle="tab" role="tab" aria-controls="PMAT" href="#PMAT">Pendidikan Matematika</a>
-                <a class="dropdown-item" href="#">Pendidikan Biologi</a>
-                <a class="dropdown-item" href="#">Pendidikan Fisika</a>
-                <a class="dropdown-item" href="#">Ilmu Pendidikan Agama Katolik</a>
-                <a class="dropdown-item" href="#">Pendidikan Sejarah</a>
-                <a class="dropdown-item" href="#">Pendidikan Bahasa Inggris</a>
-                <a class="dropdown-item" href="#">Pendidikan Bahasa dan Sastra Indonesia</a>
-                <a class="dropdown-item" href="#">Pendidikan Guru Sekolah Dasar</a>
+                <a class="dropdown-item" id="PBIO-tab" data-toggle="tab" role="tab" aria-controls="PBIO" href="#PBIO">Pendidikan Biologi</a>
+                <a class="dropdown-item" id="PFIS-tab" data-toggle="tab" role="tab" aria-controls="PFIS" href="#PFIS">Pendidikan Fisika</a>
+                <a class="dropdown-item" id="HIMKA-tab" data-toggle="tab" role="tab" aria-controls="HIMKA" href="#HIMKA">Ilmu Pendidikan Agama Katolik</a>
+                <a class="dropdown-item" id="PSEJ-tab" data-toggle="tab" role="tab" aria-controls="PSEJ" href="#PSEJ">Pendidikan Sejarah</a>
+                <a class="dropdown-item" id="PBI-tab" data-toggle="tab" role="tab" aria-controls="PBI" href="#PBI">Pendidikan Bahasa Inggris</a>
+                <a class="dropdown-item" id="PBSI-tab" data-toggle="tab" role="tab" aria-controls="PBSI" href="#PBSI">Pendidikan Bahasa dan Sastra Indonesia</a>
+                <a class="dropdown-item" id="PGSD-tab" data-toggle="tab" role="tab" aria-controls="PGSD" href="#PGSD">Pendidikan Guru Sekolah Dasar</a>
             </div>
         </li>
         <li class="nav-item dropdown">
@@ -536,6 +763,42 @@ foreach ($himpunann17 as $row) {
         <div class="tab-pane fade" id="MM" role="tabpanel" aria-labelledby="MM-tab">
             <div id="MM"></div>
         </div>
+        <div class="tab-pane fade" id="Himapensi" role="tabpanel" aria-labelledby="Himapensi-tab">
+            <div id="HIMAPENSI"></div>
+        </div>
+        <div class="tab-pane fade" id="PMAT" role="tabpanel" aria-labelledby="PMAT-tab">
+            <div id="PMAT"></div>
+        </div>
+        <div class="tab-pane fade" id="PBIO" role="tabpanel" aria-labelledby="PBIO-tab">
+            <div id="PBIO"></div>
+        </div>
+        <div class="tab-pane fade" id="PFIS" role="tabpanel" aria-labelledby="PFIS-tab">
+            <div id="PFIS"></div>
+        </div>
+        <div class="tab-pane fade" id="HIMKA" role="tabpanel" aria-labelledby="HIMKA-tab">
+            <div id="HIMKA"></div>
+        </div>
+        <div class="tab-pane fade" id="PSEJ" role="tabpanel" aria-labelledby="PSEJ-tab">
+            <div id="PSEJ"></div>
+        </div>
+        <div class="tab-pane fade" id="PBI" role="tabpanel" aria-labelledby="PBI-tab">
+            <div id="PBI"></div>
+        </div>
+        <div class="tab-pane fade" id="PBSI" role="tabpanel" aria-labelledby="PBSI-tab">
+            <div id="PBSI"></div>
+        </div>
+        <div class="tab-pane fade" id="PGSD" role="tabpanel" aria-labelledby="PGSD-tab">
+            <div id="PGSD"></div>
+        </div>
+        <div class="tab-pane fade" id="Sejarah" role="tabpanel" aria-labelledby="Sejarah-tab">
+            <div id="Sejarah"></div>
+        </div>
+        <div class="tab-pane fade" id="Sasing" role="tabpanel" aria-labelledby="Sasing-tab">
+            <div id="Sasing"></div>
+        </div>
+        <div class="tab-pane fade" id="Sasindo" role="tabpanel" aria-labelledby="Sasindo-tab">
+            <div id="Sasindo"></div>
+        </div>
         <div class="tab-pane fade" id="Ekonomi1" role="tabpanel" aria-labelledby="Ekonomi1-tab">
             <div id="Ekonomi"></div>
         </div>
@@ -544,15 +807,6 @@ foreach ($himpunann17 as $row) {
         </div>
         <div class="tab-pane fade" id="Manajemen" role="tabpanel" aria-labelledby="Manajemen-tab">
             <div id="Manajemen"></div>
-        </div>
-        <div class="tab-pane fade" id="Sasindo" role="tabpanel" aria-labelledby="Sasindo-tab">
-            <div id="Sasindo"></div>
-        </div>
-        <div class="tab-pane fade" id="Sejarah" role="tabpanel" aria-labelledby="Sejarah-tab">
-            <div id="Sejarah"></div>
-        </div>
-        <div class="tab-pane fade" id="Sasing" role="tabpanel" aria-labelledby="Sasing-tab">
-            <div id="Sasing"></div>
         </div>
     </div>
 
