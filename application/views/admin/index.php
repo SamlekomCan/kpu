@@ -1,116 +1,124 @@
 <?php
+//PRESIDEN
 $dataPoints = array();
 $presidenn = $this->db->get_where('calon', ['organisasi' => 'BEMU'])->result();
-
 foreach ($presidenn as $row) {
     array_push($dataPoints, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
 }
-
 //BEMF
+//Sains dan Teknologi
 $dataPoints2 = array();
 $gubernurr2 = $this->db->get_where('calon', ['fakultasketua' => 'Sains dan Teknologi','organisasi' => 'BEMF'])->result();
 foreach ($gubernurr2 as $row) {
     array_push($dataPoints2, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
 }
+//Keguruan dan Ilmu Pendidikan
 $dataPoints3 = array();
 $gubernurr3 = $this->db->get_where('calon', ['fakultasketua' => 'Keguruan dan Ilmu Pendidikan', 'organisasi' => 'BEMF'])->result();
 foreach ($gubernurr3 as $row) {
     array_push($dataPoints3, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
 }
+//Psikologi
 $dataPoints4 = array();
 $gubernurr4 = $this->db->get_where('calon', ['fakultasketua' => 'Psikologi', 'organisasi' => 'BEMF'])->result();
 foreach ($gubernurr4 as $row) {
     array_push($dataPoints4, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
 }
+// Farmasi
 $dataPoints5 = array();
-$gubernurr5 = $this->db->get_where('calon', ['fakultasketua' => 'Farmasi'], ['organisasi' => 'BEMF'])->result();
+$gubernurr5 = $this->db->get_where('calon', ['fakultasketua' => 'Farmasi', 'organisasi' => 'BEMF'])->result();
 foreach ($gubernurr5 as $row) {
     array_push($dataPoints5, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
 }
+// Ekonomi
 $dataPoints6 = array();
-$gubernurr6 = $this->db->get_where('calon', ['fakultasketua' => 'Ekonomi'], ['organisasi' => 'BEMF'])->result();
+$gubernurr6 = $this->db->get_where('calon', ['fakultasketua' => 'Ekonomi', 'organisasi' => 'BEMF'])->result();
 foreach ($gubernurr6 as $row) {
     array_push($dataPoints6, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
 }
+// Teologi
 $dataPoints7 = array();
-$gubernurr7 = $this->db->get_where('calon', ['fakultasketua' => 'Teologi'], ['organisasi' => 'BEMF'])->result();
+$gubernurr7 = $this->db->get_where('calon', ['fakultasketua' => 'Teologi', 'organisasi' => 'BEMF'])->result();
 foreach ($gubernurr7 as $row) {
     array_push($dataPoints7, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
 }
 
 //HIMPUNAN FST
+//Informatika
 $dataPoints8 = array();
 $himpunann8 = $this->db->get_where('calon', ['prodi' => 'Informatika', 'organisasi' => 'HM'])->result();
-
 foreach ($himpunann8 as $row) {
     array_push($dataPoints8, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
 }
-
+//Teknik Elektro
 $dataPoints9 = array();
 $himpunann9 = $this->db->get_where('calon', ['prodi' => 'Teknik Elektro', 'organisasi' => 'HM'])->result();
 
 foreach ($himpunann9 as $row) {
     array_push($dataPoints9, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
 }
-
+//Teknik Mesin
 $dataPoints10 = array();
-$himpunann10 = $this->db->get_where('calon', ['prodi' => 'Teknik Mesin'], ['organisasi' => 'HM'])->result();
+$himpunann10 = $this->db->get_where('calon', ['prodi' => 'Teknik Mesin', 'organisasi' => 'HM'])->result();
 
 foreach ($himpunann10 as $row) {
     array_push($dataPoints10, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
 }
-
+//Matematika Murni
 $dataPoints11 = array();
-$himpunann11 = $this->db->get_where('calon', ['prodi' => 'Matematika Murni'], ['organisasi' => 'HM'])->result();
+$himpunann11 = $this->db->get_where('calon', ['prodi' => 'Matematika Murni', 'organisasi' => 'HM'])->result();
 
 foreach ($himpunann11 as $row) {
     array_push($dataPoints11, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
 }
 
 //HIMPUNAN EKONOMI
+//Ekonomi
 $dataPoints12 = array();
-$himpunann12 = $this->db->get_where('calon', ['prodi' => 'Ekonomi'], ['organisasi' => 'HM'])->result();
+$himpunann12 = $this->db->get_where('calon', ['prodi' => 'Ekonomi', 'organisasi' => 'HM'])->result();
 
 foreach ($himpunann12 as $row) {
     array_push($dataPoints12, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
 }
-
+//Akuntansi
 $dataPoints13 = array();
-$himpunann13 = $this->db->get_where('calon', ['prodi' => 'Akuntansi'], ['organisasi' => 'HM'])->result();
+$himpunann13 = $this->db->get_where('calon', ['prodi' => 'Akuntansi', 'organisasi' => 'HM'])->result();
 
 foreach ($himpunann13 as $row) {
     array_push($dataPoints13, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
 }
-
+// Manajemen
 $dataPoints14 = array();
-$himpunann14 = $this->db->get_where('calon', ['prodi' => 'Manajemen'], ['organisasi' => 'HM'])->result();
+$himpunann14 = $this->db->get_where('calon', ['prodi' => 'Manajemen', 'organisasi' => 'HM'])->result();
 
 foreach ($himpunann14 as $row) {
     array_push($dataPoints14, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
 }
 
 //HIMPUNAN SASTRA
+// Sejarah
 $dataPoints15 = array();
-$himpunann15 = $this->db->get_where('calon', ['prodi' => 'Sejarah'], ['organisasi' => 'HM'])->result();
+$himpunann15 = $this->db->get_where('calon', ['prodi' => 'Sejarah', 'organisasi' => 'HM'])->result();
 
 foreach ($himpunann15 as $row) {
     array_push($dataPoints15, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
 }
-
+// Sastra Indonesia
 $dataPoints16 = array();
-$himpunann16 = $this->db->get_where('calon', ['prodi' => 'Sastra Indonesia'], ['organisasi' => 'HM'])->result();
+$himpunann16 = $this->db->get_where('calon', ['prodi' => 'Sastra Indonesia', 'organisasi' => 'HM'])->result();
 
 foreach ($himpunann16 as $row) {
     array_push($dataPoints16, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
 }
-
+// Sastra Inggris
 $dataPoints17 = array();
-$himpunann17 = $this->db->get_where('calon', ['prodi' => 'Sastra Inggris'], ['organisasi' => 'HM'])->result();
+$himpunann17 = $this->db->get_where('calon', ['prodi' => 'Sastra Inggris', 'organisasi' => 'HM'])->result();
 
 foreach ($himpunann17 as $row) {
     array_push($dataPoints17, array("label" => ($row->ketua . ' - ' . $row->wakil), "y" => $row->hasil));
 }
-// print_r($dataPoints);die;
+
+
 ?>
 
 <script>
@@ -315,6 +323,114 @@ foreach ($himpunann17 as $row) {
                 }]
         });
         chart.render();
+
+        var chart = new CanvasJS.Chart("Manajemen", {
+            animationEnabled: true,
+            exportEnabled: true,
+            theme: "light1", // "light1", "light2", "dark1", "dark2"
+            title: {
+                text: "Pemilihan Calon Manajemen"
+            },
+            data: [{
+                    type: "column", //change type to bar, line, area, pie, etc  
+                    yValueFormatString: "#,##0\"%\"",
+                    indexLabel: "{y}",
+                    indexLabelPlacement: "inside",
+                    indexLabelFontColor: "white",
+                    dataPoints: <?php echo json_encode($dataPoints14, JSON_NUMERIC_CHECK); ?>
+                }]
+        });
+        chart.render();
+
+        var chart = new CanvasJS.Chart("Akuntasi", {
+            animationEnabled: true,
+            exportEnabled: true,
+            theme: "light1", // "light1", "light2", "dark1", "dark2"
+            title: {
+                text: "Pemilihan Calon Akuntasi"
+            },
+            data: [{
+                    type: "column", //change type to bar, line, area, pie, etc  
+                    yValueFormatString: "#,##0\"%\"",
+                    indexLabel: "{y}",
+                    indexLabelPlacement: "inside",
+                    indexLabelFontColor: "white",
+                    dataPoints: <?php echo json_encode($dataPoints13, JSON_NUMERIC_CHECK); ?>
+                }]
+        });
+        chart.render();
+
+        var chart = new CanvasJS.Chart("Ekonomi", {
+            animationEnabled: true,
+            exportEnabled: true,
+            theme: "light1", // "light1", "light2", "dark1", "dark2"
+            title: {
+                text: "Pemilihan Calon Ekonomi"
+            },
+            data: [{
+                    type: "column", //change type to bar, line, area, pie, etc  
+                    yValueFormatString: "#,##0\"%\"",
+                    indexLabel: "{y}",
+                    indexLabelPlacement: "inside",
+                    indexLabelFontColor: "white",
+                    dataPoints: <?php echo json_encode($dataPoints12, JSON_NUMERIC_CHECK); ?>
+                }]
+        });
+        chart.render();
+
+        var chart = new CanvasJS.Chart("Sejarah", {
+            animationEnabled: true,
+            exportEnabled: true,
+            theme: "light1", // "light1", "light2", "dark1", "dark2"
+            title: {
+                text: "Pemilihan Calon Sejarah"
+            },
+            data: [{
+                    type: "column", //change type to bar, line, area, pie, etc  
+                    yValueFormatString: "#,##0\"%\"",
+                    indexLabel: "{y}",
+                    indexLabelPlacement: "inside",
+                    indexLabelFontColor: "white",
+                    dataPoints: <?php echo json_encode($dataPoints15, JSON_NUMERIC_CHECK); ?>
+                }]
+        });
+        chart.render();
+
+        var chart = new CanvasJS.Chart("Sasindo", {
+            animationEnabled: true,
+            exportEnabled: true,
+            theme: "light1", // "light1", "light2", "dark1", "dark2"
+            title: {
+                text: "Pemilihan Calon Sasindo"
+            },
+            data: [{
+                    type: "column", //change type to bar, line, area, pie, etc  
+                    yValueFormatString: "#,##0\"%\"",
+                    indexLabel: "{y}",
+                    indexLabelPlacement: "inside",
+                    indexLabelFontColor: "white",
+                    dataPoints: <?php echo json_encode($dataPoints16, JSON_NUMERIC_CHECK); ?>
+                }]
+        });
+        chart.render();
+
+        var chart = new CanvasJS.Chart("Sasing", {
+            animationEnabled: true,
+            exportEnabled: true,
+            theme: "light1", // "light1", "light2", "dark1", "dark2"
+            title: {
+                text: "Pemilihan Calon Sasing"
+            },
+            data: [{
+                    type: "column", //change type to bar, line, area, pie, etc  
+                    yValueFormatString: "#,##0\"%\"",
+                    indexLabel: "{y}",
+                    indexLabelPlacement: "inside",
+                    indexLabelFontColor: "white",
+                    dataPoints: <?php echo json_encode($dataPoints17, JSON_NUMERIC_CHECK); ?>
+                }]
+        });
+        chart.render();
     }
 </script>
 
@@ -335,53 +451,57 @@ foreach ($himpunann17 as $row) {
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" aria-selected="false">Gubernur</a>
             <div class="dropdown-menu">
-        <a class="dropdown-item" id="bemFST-tab" data-toggle="tab" role="tab" aria-controls="bemFST" href="#bemFST">Fakultas Sains dan Teknologi</a>
-        <a class="dropdown-item" id="bemFarmasi-tab" data-toggle="tab" role="tab" aria-controls="bemFarmasi" href="#bemFarmasi">Fakultas Farmasi</a>
-        <a class="dropdown-item" id="bemPsikologi-tab" data-toggle="tab" role="tab" aria-controls="bemPsikologi" href="#bemPsikologi">Fakultas Psikologi</a>
-        <a class="dropdown-item" id="bemEkonomi-tab" data-toggle="tab" role="tab" aria-controls="bemEkonomi" href="#bemEkonomi">Fakultas Ekonomi</a>
-        <a class="dropdown-item" id="bemFKIP-tab" data-toggle="tab" role="tab" aria-controls="bemFKIP" href="#bemFKIP">Fakultas Keguruan dan Ilmu Pendidikan</a>
-        <a class="dropdown-item" id="bemTeologi-tab" data-toggle="tab" role="tab" aria-controls="bemTeologi" href="#bemTeologi">Fakultas Teologi</a>
-        </div>
+                <a class="dropdown-item" id="bemFST-tab" data-toggle="tab" role="tab" aria-controls="bemFST" href="#bemFST">Fakultas Sains dan Teknologi</a>
+                <a class="dropdown-item" id="bemFarmasi-tab" data-toggle="tab" role="tab" aria-controls="bemFarmasi" href="#bemFarmasi">Fakultas Farmasi</a>
+                <a class="dropdown-item" id="bemPsikologi1-tab" data-toggle="tab" role="tab" aria-controls="bemPsikologi1" href="#bemPsikologi1">Fakultas Psikologi</a>
+                <a class="dropdown-item" id="bemEkonomi-tab" data-toggle="tab" role="tab" aria-controls="bemEkonomi" href="#bemEkonomi">Fakultas Ekonomi</a>
+                <a class="dropdown-item" id="bemFKIP-tab" data-toggle="tab" role="tab" aria-controls="bemFKIP" href="#bemFKIP">Fakultas Keguruan dan Ilmu Pendidikan</a>
+                <a class="dropdown-item" id="bemTeologi-tab" data-toggle="tab" role="tab" aria-controls="bemTeologi" href="#bemTeologi">Fakultas Teologi</a>
+            </div>
         </li>
         <!-- HM -->
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"  aria-selected="false">HM FST</a>
             <div class="dropdown-menu">
-        <a class="dropdown-item" id="Informatika-tab" data-toggle="tab" role="tab" aria-controls="Informatika" href="#Informatika">Informatika</a>
-        <a class="dropdown-item" id="TE-tab" data-toggle="tab" role="tab" aria-controls="TE" href="#TE">Teknik Elektro</a>
-        <a class="dropdown-item" id="TM-tab" data-toggle="tab" role="tab" aria-controls="TM" href="#TM">Teknik Mesin</a>
-        <a class="dropdown-item" id="MM-tab" data-toggle="tab" role="tab" aria-controls="MM" href="#MM">Matematika Murni</a>
-        </div>
+                <a class="dropdown-item" id="Informatika-tab" data-toggle="tab" role="tab" aria-controls="Informatika" href="#Informatika">Informatika</a>
+                <a class="dropdown-item" id="TE-tab" data-toggle="tab" role="tab" aria-controls="TE" href="#TE">Teknik Elektro</a>
+                <a class="dropdown-item" id="TM-tab" data-toggle="tab" role="tab" aria-controls="TM" href="#TM">Teknik Mesin</a>
+                <a class="dropdown-item" id="MM-tab" data-toggle="tab" role="tab" aria-controls="MM" href="#MM">Matematika Murni</a>
+            </div>
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" aria-selected="false">HM FKIP</a>
             <div class="dropdown-menu">
-        <a class="dropdown-item" id="Himapensi-tab" data-toggle="tab" role="tab" aria-controls="Himapensi" href="#Himapensi">Pend.Akuntansi & Pend.Ekonomi</a>
-        <a class="dropdown-item" id="PMAT-tab" data-toggle="tab" role="tab" aria-controls="PMAT" href="#PMAT">Pendidikan Matematika</a>
-        <a class="dropdown-item" href="#">Pendidikan Biologi</a>
-        <a class="dropdown-item" href="#">Pendidikan Fisika</a>
-        <a class="dropdown-item" href="#">Ilmu Pendidikan Agama Katolik</a>
-        <a class="dropdown-item" href="#">Pendidikan Sejarah</a>
-        <a class="dropdown-item" href="#">Pendidikan Bahasa Inggris</a>
-        <a class="dropdown-item" href="#">Pendidikan Bahasa dan Sastra Indonesia</a>
-        <a class="dropdown-item" href="#">Pendidikan Guru Sekolah Dasar</a>
-        </div>
+                <a class="dropdown-item" id="Himapensi-tab" data-toggle="tab" role="tab" aria-controls="Himapensi" href="#Himapensi">Pend.Akuntansi & Pend.Ekonomi</a>
+                <a class="dropdown-item" id="PMAT-tab" data-toggle="tab" role="tab" aria-controls="PMAT" href="#PMAT">Pendidikan Matematika</a>
+                <a class="dropdown-item" href="#">Pendidikan Biologi</a>
+                <a class="dropdown-item" href="#">Pendidikan Fisika</a>
+                <a class="dropdown-item" href="#">Ilmu Pendidikan Agama Katolik</a>
+                <a class="dropdown-item" href="#">Pendidikan Sejarah</a>
+                <a class="dropdown-item" href="#">Pendidikan Bahasa Inggris</a>
+                <a class="dropdown-item" href="#">Pendidikan Bahasa dan Sastra Indonesia</a>
+                <a class="dropdown-item" href="#">Pendidikan Guru Sekolah Dasar</a>
+            </div>
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" aria-selected="false">HM SASTRA</a>
             <div class="dropdown-menu">
-        <a class="dropdown-item" id="Sejarah-tab" data-toggle="tab" role="tab" aria-controls="Sejarah" href="#Sejarah">Sejarah</a>
-        <a class="dropdown-item" id="Sasing-tab" data-toggle="tab" role="tab" aria-controls="Sasing" href="#Sasing">Sastra Inggris</a>
-        <a class="dropdown-item" href="#">Sastra Indonesia</a></div>
+                <a class="dropdown-item" id="Sejarah-tab" data-toggle="tab" role="tab" aria-controls="Sejarah" href="#Sejarah">Sejarah</a>
+                <a class="dropdown-item" id="Sasing-tab" data-toggle="tab" role="tab" aria-controls="Sasing" href="#Sasing">Sastra Inggris</a>
+                <a class="dropdown-item" id="Sasindo-tab" data-toggle="tab" role="tab" aria-controls="Sasindo" href="#Sasindo">Sastra Indonesia</a>
+            </div>
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" aria-selected="false">HM EKONOMI</a>
             <div class="dropdown-menu">
-        <a class="dropdown-item" id="Ekonomi-tab" data-toggle="tab" role="tab" aria-controls="Ekonomi" href="#Ekonomi">Ekonomi</a>
-        <a class="dropdown-item" id="Akuntansi-tab" data-toggle="tab" role="tab" aria-controls="Akuntansi" href="#Akuntansi">Akuntansi</a>
-        <a class="dropdown-item" href="#">Manajemen</a></div>
+                <a class="dropdown-item" id="Ekonomi1-tab" data-toggle="tab" role="tab" aria-controls="Ekonomi1" href="#Ekonomi1">Ekonomi</a>
+                <a class="dropdown-item" id="Akuntansi-tab" data-toggle="tab" role="tab" aria-controls="Akuntansi" href="#Akuntansi">Akuntansi</a>
+                <a class="dropdown-item" id="Manajemen-tab" data-toggle="tab" role="tab" aria-controls="Manajemen" href="#Manajemen">Manajemen</a>
+            </div>
         </li>
     </ul>
+
+
     <div class="tab" id="myTabContent">
         <div class="tab-pane fade show active" id="Presiden" role="tabpanel" aria-labelledby="Presiden-tab">
             <div id="Presiden"></div>
@@ -392,7 +512,7 @@ foreach ($himpunann17 as $row) {
         <div class="tab-pane fade" id="bemFarmasi" role="tabpanel" aria-labelledby="bemFarmasi-tab">
             <div id="bemFarmasi"></div>
         </div>
-        <div class="tab-pane fade" id="bemPsikologi" role="tabpanel" aria-labelledby="bemPsikologi-tab">
+        <div class="tab-pane fade" id="bemPsikologi1" role="tabpanel" aria-labelledby="bemPsikologi1-tab">
             <div id="bemPsikologi"></div>
         </div>
         <div class="tab-pane fade" id="bemEkonomi" role="tabpanel" aria-labelledby="bemEkonomi-tab">
@@ -400,6 +520,9 @@ foreach ($himpunann17 as $row) {
         </div>
         <div class="tab-pane fade" id="bemFKIP" role="tabpanel" aria-labelledby="bemFKIP-tab">
             <div id="bemFKIP"></div>
+        </div>
+        <div class="tab-pane fade" id="bemTeologi" role="tabpanel" aria-labelledby="bemTeologi-tab">
+            <div id="bemTeologi"></div>
         </div>
         <div class="tab-pane fade" id="Informatika" role="tabpanel" aria-labelledby="Informatika-tab">
             <div id="Informatika"></div>
@@ -412,6 +535,29 @@ foreach ($himpunann17 as $row) {
         </div>
         <div class="tab-pane fade" id="MM" role="tabpanel" aria-labelledby="MM-tab">
             <div id="MM"></div>
+        </div>
+        <div class="tab-pane fade" id="Ekonomi1" role="tabpanel" aria-labelledby="Ekonomi1-tab">
+        ekonomi
+            <div id="Ekonomi"></div>
+        </div>
+        <div class="tab-pane fade" id="Akuntansi" role="tabpanel" aria-labelledby="Akuntansi-tab">
+        akutansi
+            <div id="Akuntansi"></div>
+        </div>
+        <div class="tab-pane fade" id="Manajemen" role="tabpanel" aria-labelledby="Manajemen-tab">
+            <div id="Manajemen"></div>
+        </div>
+        <div class="tab-pane fade" id="Sasindo" role="tabpanel" aria-labelledby="Sasindo-tab">
+            Sasindo
+            <div id="Sasindo"></div>
+        </div>
+        <div class="tab-pane fade" id="Sejarah" role="tabpanel" aria-labelledby="Sejarah-tab">
+        Sejarah
+            <div id="Sejarah"></div>
+        </div>
+        <div class="tab-pane fade" id="Sasing" role="tabpanel" aria-labelledby="Sasing-tab">
+        Sasing
+            <div id="Sasing"></div>
         </div>
     </div>
 
