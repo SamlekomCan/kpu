@@ -15,7 +15,7 @@
                 <a class="nav-link" href="http://www.usd.ac.id/dpmu " target="_blank">
                     <img style="height: 50px;" alt="DPMU" src="<?= base_url('assets/') ?>img/logoDPMU.png">
                 </a>
-                <a class="nav-link" href="http://www.instagram.com/kpuusd" target="_blank">
+                <a class="nav-link box-shadow" href="http://www.instagram.com/kpuusd" target="_blank">
                     <img style="height: 50px;" alt="KPU" src="<?= base_url('assets/') ?>img/logoKPU.png">
                 </a>
             </ul>
