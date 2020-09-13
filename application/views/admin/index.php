@@ -658,6 +658,25 @@ foreach ($himpunann25 as $row) {
                 }]
         });
         chart.render();
+
+        //PGSD
+        var chart = new CanvasJS.Chart("PGSD", {
+            animationEnabled: true,
+            exportEnabled: true,
+            theme: "light1", // "light1", "light2", "dark1", "dark2"
+            title: {
+                text: "Pemilihan Calon Pendidikan Guru Sekolah Dasar"
+            },
+            data: [{
+                    type: "column", //change type to bar, line, area, pie, etc  
+                    yValueFormatString: "#,##0\"%\"",
+                    indexLabel: "{y}",
+                    indexLabelPlacement: "inside",
+                    indexLabelFontColor: "white",
+                    dataPoints: <?php echo json_encode($dataPoints25, JSON_NUMERIC_CHECK); ?>
+                }]
+        });
+        chart.render();
     }
 </script>
 
@@ -699,7 +718,7 @@ foreach ($himpunann25 as $row) {
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" aria-selected="false">HM FKIP</a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" id="Himapensi-tab" data-toggle="tab" role="tab" aria-controls="Himapensi" href="#Himapensi">Pend.Akuntansi & Pend.Ekonomi</a>
+                <a class="dropdown-item" id="Himapensi-tab" data-toggle="tab" role="tab" aria-controls="Himapensi" href="#Himapensi">Pend.Ekonomi & Pend.Akuntansi</a>
                 <a class="dropdown-item" id="PMAT-tab" data-toggle="tab" role="tab" aria-controls="PMAT" href="#PMAT">Pendidikan Matematika</a>
                 <a class="dropdown-item" id="PBIO-tab" data-toggle="tab" role="tab" aria-controls="PBIO" href="#PBIO">Pendidikan Biologi</a>
                 <a class="dropdown-item" id="PFIS-tab" data-toggle="tab" role="tab" aria-controls="PFIS" href="#PFIS">Pendidikan Fisika</a>

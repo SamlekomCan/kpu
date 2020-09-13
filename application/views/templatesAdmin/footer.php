@@ -2,8 +2,8 @@
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>KAPEU <?= date('Y'); ?>
-                <br>Copyright &copy; Taulahh waton dulu </span>
+            <span>KPU SANATA DHARMA <?= date('Y'); ?>
+                <br>Copyright &copy; 2020 </span>
         </div>
     </div>
 </footer>
