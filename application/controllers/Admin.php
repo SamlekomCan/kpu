@@ -141,6 +141,10 @@ class Admin extends CI_Controller {
             $this->db->set('nama', $nama);
             $this->db->where('id', $id);
             $this->db->update('admin');
+            $data = [
+                'username' => $user
+            ];
+            $this->session->set_userdata($data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             Your Name has been updated! </div>');
             redirect('admin/profile');
@@ -313,6 +317,10 @@ class Admin extends CI_Controller {
                     $this->db->set('user', $user);
                     $this->db->where('id', $id);
                     $this->db->update('admin');
+                    $data = [
+                        'username' => $user
+                    ];
+                    $this->session->set_userdata($data);
                     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
                     Your Password has been updated! </div>');
                     redirect('admin/admin');
