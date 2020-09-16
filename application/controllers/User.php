@@ -129,7 +129,7 @@ class User extends CI_Controller {
 
     public function pilihBemu($id) {
         $id = urldecode($id);
-        $id = explode('-',$id);
+        $id = explode(' - ',$id);
         // print_r($id);die;
         $this->db->where('ketua', $id[0]);
         $this->db->where('wakil', $id[1]);
