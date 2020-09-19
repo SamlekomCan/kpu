@@ -10,7 +10,7 @@
        <div class="card-body">
             <center>
             <h5 class="card-title">SCREENING PRESIDEN</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <p class="card-text">Penjaringan Bakal Calon Presiden</p>
             <a href="<?= base_url('admin/screeningpresiden') ?>" class="btn btn-primary btn-user btn-block">Lihat</a>
        
          </center>
@@ -22,7 +22,7 @@
         <div class="card-body">
         <center>
             <h5 class="card-title">SCREENING GUBERNUR</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <p class="card-text">Penjaringan Bakal Calon Gubernur</p>
                 <a href="<?= base_url('admin/screeninggubernur') ?>" class="btn btn-primary btn-user btn-block">Lihat</a>
         
         </center>
@@ -35,7 +35,7 @@
         <div class="card-body">
         <center>
             <h5 class="card-title">SCREENING HIMPUNAN</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <p class="card-text">Penjaringan Bakal Calon Himpunan</p>
             <a href="<?= base_url('admin/screeninghimpunan') ?>" class="btn btn-primary btn-user btn-block">Lihat</a>
         
         </center>

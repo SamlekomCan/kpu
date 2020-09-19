@@ -4,10 +4,28 @@
 
     <!-- Logo -->
 
-
     <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class = "text-center">
+                <br>
+        <a class = "card-body p-10" href="http://www.usd.ac.id" target="_blank">
+                    <img style="height: 70px"  alt="USD" src="<?= base_url('assets/') ?>img/logoUSD.png">
+                <a class = "card-body p-10" href="http://www.usd.ac.id/dpmu " target="_blank">
+                    <img style="height: 70px;" alt="DPMU" src="<?= base_url('assets/') ?>img/logoDPMU.png">
+                <a class = "card-body p-10" href="http://www.instagram.com/kpuusd" target="_blank">
+                    <img style="height: 70px;" alt="KPU" src="<?= base_url('assets/') ?>img/logoKPU.png">
+        </a>
+      
+</div>
+</div>
 
-        <div class="col-lg-5">
+<div class ="col-lg-5">
+    <div class = "text-center">
+        <br>
+        <h1 class = "h4 text-shadow text-white">KOMISI PEMILIHAN UMUM</h1>
+        <h1 class = "h4 text-shadow text-white">UNIVERSITAS SANATA DHARMA</h1>
+
+        
 
             <div class="card o-hidden border-0 shadow-lg p-3 mb-5 bg-white rounded my-5 ">
                 <div class="card-body p-0">

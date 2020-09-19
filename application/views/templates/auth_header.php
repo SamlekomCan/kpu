@@ -24,8 +24,9 @@
     <style type="text/css">
         body {
             background-image: url(<?= base_url('assets/background/background1.png') ?>);
-            background-repeat: no-repeat;
-            background-size: auto;
+             background-repeat: no-repeat, repeat;
+             background-size: cover;
+            position: relative;
         }
 
 
