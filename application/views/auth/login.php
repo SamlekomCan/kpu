@@ -1,5 +1,6 @@
 </style>
-<div class="container">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<div lang="en" class="container">
     <!-- Outer Row -->
 
     <!-- Logo -->
@@ -22,8 +23,8 @@
 <div class ="col-lg-5">
     <div class = "text-center">
         <br>
-        <h1 class = "h4 text-shadow text-white">KOMISI PEMILIHAN UMUM</h1>
-        <h1 class = "h4 text-shadow text-white">UNIVERSITAS SANATA DHARMA</h1>
+        <h1 class = "h4 text-white font-weight-bold" style="text-shadow: 5px 5px 5px #000">KOMISI PEMILIHAN UMUM</h1>
+        <h1 class = "h4 text-white font-weight-bold" style="text-shadow: 5px 5px 5px #000">UNIVERSITAS SANATA DHARMA</h1>
 
         
 
@@ -62,10 +63,48 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
-
+            <div class="copyright text-white font-weight-bold" style="text-shadow: 2px 2px 2px #000">
+        <span>KPU SANATA DHARMA <?= date('Y'); ?>
+                <br>Copyright &copy; <?= date('Y'); ?> </span>
+                <br><br><a data-toggle="modal" href="#aboutModal">ABOUT US</a><br>
         </div>
-
+        
+        </div>
     </div>
-
+</div>
+<div class="modal fade " id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-auto" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">ABOUT US</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            <div class="row">
+  <div class="col-sm-5">Front-End Developer :</div>
+  <div class="col-sm-7"><a href = "https://www.instagram.com/elstchrts/" target="_blank">Benediktus Rony Agung Kusuma</a></div>
+</div>
+<div class="row">
+  <div class="col-sm-5"></div>
+  <div class="col-sm-7"><a href = "https://www.instagram.com/josepedrofebiannn/" target="_blank">Jose Pedro Febian</a></div>
+</div>
+<div class="row">
+  <div class="col-sm-5">Back-End Developer :</div>
+  <div class="col-sm-7"><a href = "https://www.instagram.com/samlekomcan/" target="_blank">M. Ikhsan Abimanyu</a></div>
+</div>
+<div class="row">
+  <div class="col-sm-5"></div>
+  <div class="col-sm-7"><a href = "https://www.instagram.com/ucokdai18/" target="_blank">Berlin Ravelino Hugo Padang</a></div>
+    </div>
+        </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>

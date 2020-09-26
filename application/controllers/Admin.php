@@ -330,9 +330,9 @@ class Admin extends CI_Controller {
     }
 
     public function resetPasswordUser($id) {
-        $options = ['cost' => 10];
+        
         $user = $this->admin->getUser($id);
-        $newPass = password_hash($user['nim'], PASSWORD_DEFAULT, $options);
+        $newPass = md5($user['nim']);
         $this->db->set('password', $newPass);
         $this->db->where('id', $id);
         $this->db->update('user');
@@ -482,7 +482,7 @@ class Admin extends CI_Controller {
             $upload = $_FILES['image']['name'];
             if ($upload) {
                 $config['upload_path'] = './assets/img/calon';
-                $config['allowed_types'] = 'gif|jpg|png';
+                $config['allowed_types'] = 'gif|jpg|png|jfif';
                 $config['max_size'] = '2048';
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('image')) {
@@ -539,8 +539,8 @@ class Admin extends CI_Controller {
                     $upload = $_FILES['image']['name'];
                     if ($upload) {
                         $config['upload_path'] = './assets/img/calon';
-                        $config['allowed_types'] = 'gif|jpg|png';
-                        $config['max_size'] = '2048';
+                        $config['allowed_types'] = 'gif|jpg|png|jpeg';
+                        $config['max_size'] = '5000';
                         $this->load->library('upload', $config);
                         if ($this->upload->do_upload('image')) {
                             $newImage = $this->upload->data('file_name');

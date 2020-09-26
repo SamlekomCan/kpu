@@ -43,8 +43,6 @@
                                 };
                                 ?></td>
                             <td>
-                                <a href="<?php echo base_url(); ?>admin/editUser/<?= $row['id']; ?>"
-                                   class="badge badge-success ">Edit</a>
                                 <a href="<?php echo base_url(); ?>admin/resetPasswordUser/<?= $row['id']; ?>"
                                    class="badge badge-warning ">Reset</a>
                                 <a href="<?php echo base_url(); ?>admin/deleteUser/<?= $row['id']; ?>"

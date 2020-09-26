@@ -5,7 +5,7 @@
     <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
     <hr>
     <center>
-        <h1>Pemilihan Calon BEMU</h1>
+        <h1>Pemilihan Calon BEM Universitas</h1>
     </center>
     <br>
     <div class="row">
@@ -40,7 +40,7 @@
     </div>
     <hr>
     <center>
-        <h1>Pemilihan Calon BEMF <?= $user['fakultas'] ?></h1>
+        <h1>Pemilihan Calon BEM Fakultas : <?= $user['fakultas'] ?></h1>
     </center>
     <br>
     <div class="row">
@@ -75,7 +75,7 @@
     </div>
     <hr>
     <center>
-        <h1>Pemilihan Calon HM <?= $user['fakultas'] ?></h1>
+        <h1>Pemilihan Calon Himpunan Program Studi : <?= $user['prodi'] ?></h1>
     </center>
     <br>
     <div class="row">
@@ -139,7 +139,7 @@
 <?php foreach ($data as $row): ?>
     <?php if ($row['organisasi'] == 'BEMU'): ?>
         <!-- Visi dan Misi -->
-        <div class="modal" id="detail<?= $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal fade" id="detail<?= $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -188,7 +188,7 @@
 <?php foreach ($bemf as $row): ?>
     <?php if ($row['organisasi'] == 'BEMF'): ?>
         <!-- Visi dan Misi -->
-        <div class="modal" id="detail<?= $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal fade" id="detail<?= $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -235,9 +235,9 @@
 
 <!-- HM -->
 <?php foreach ($hm as $row): ?>
-    <?php if ($row['organisasi'] == 'HM'): ?>
+    <?php if ($row['organisasi'] == 'HM' ): ?>
         <!-- Visi dan Misi -->
-        <div class="modal" id="detail<?= $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal fade" id="detail<?= $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">

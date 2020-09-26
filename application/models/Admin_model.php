@@ -26,6 +26,10 @@ class Admin_model extends CI_Model {
         $this->db->like('fakultaswakil', $fakultas);
         return $this->db->get('calon')->result_array();
     }
+    public function getCalonHM($hm) {
+        $this->db->like('prodi', $hm);
+        return $this->db->get('calon')->result_array();
+    }
 
     public function calonCari($id) {
         $this->db->where('id', $id);

@@ -24,7 +24,7 @@ class User extends CI_Controller {
         $data['user'] = $this->db->get_where('user', ['nim' => $this->session->userdata('nim')])->row_array();
         $data['data'] = $this->admin->getCalon();
         $data['bemf'] = $this->admin->getCalonFakultas($data['user']['fakultas']);
-        $data['hm'] = $this->admin->getCalonFakultas($data['user']['fakultas']);
+        $data['hm'] = $this->admin->getCalonHM($data['user']['prodi']);
         $this->load->view('templatesUser/header', $data);
         $this->load->view('templatesUser/sidebar', $data);
         $this->load->view('templatesUser/topbar', $data);
@@ -105,7 +105,7 @@ class User extends CI_Controller {
         } else {
             $currentPass = $this->input->post('current_password');
             $Pass = $this->input->post('password1');
-            if (!password_verify($currentPass, $data['user']['password'])) {
+            if (md5($currentPass) !=  $data['user']['password']) {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
                 Wrong Current Password! </div>');
                 redirect('user/changepassword');
@@ -115,7 +115,7 @@ class User extends CI_Controller {
                 New password cannot be the same as current password! </div>');
                     redirect('user/changepassword');
                 } else {
-                    $newPass = password_hash($Pass, PASSWORD_DEFAULT);
+                    $newPass = md5($Pass);
                     $this->db->set('password', $newPass);
                     $this->db->where('nim', $data['user']['nim']);
                     $this->db->update('user');

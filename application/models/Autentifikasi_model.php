@@ -26,9 +26,8 @@ class Autentifikasi_model extends CI_Model {
             }
         } elseif ($this->db->get_where('user', ['nim' => $username])->num_rows() == 1) {
             $user = $this->db->get_where('user', ['nim' => $username])->row_array();
-
-
-            if (password_verify($password, $user['password'])) {
+           
+            if (md5($password) == $user['password']) {
 
                 $data = [
                     'nim' => $user['nim'],
