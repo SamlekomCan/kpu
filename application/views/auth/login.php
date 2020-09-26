@@ -42,7 +42,7 @@
                                 <form class="user" method="POST" action="<?= base_url('auth'); ?>">
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-user" id="username"
-                                               placeholder="Username" name="username" value="<?= set_value('username') ?>">
+                                               placeholder="NIM" name="username" value="<?= set_value('username') ?>">
                                                <?= form_error('username', '<small class="text-danger pl-3">', '</small>') ?>
                                     </div>
 
