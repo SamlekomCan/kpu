@@ -15,8 +15,7 @@
                     <div class="panel panel-default ">
                         <center>
                             <div class="card">
-                                <img class="card-img-top" src="<?= base_url('assets/img/calon/') . $row['foto'] ?>"
-                                     style="height: 200px;">
+                                <img class="card-img-top " src="<?= base_url('assets/img/calon/') . $row['foto'] ?>">
                                 <div class="card-body">
                                     <h5 class="card-title"><?= $row['ketua'] . ' - ' . $row['wakil']; ?></h5>
                                     <p class="card-text"><?= $row['organisasi']; ?></p>

@@ -215,7 +215,7 @@ foreach ($himpunann25 as $row) {
         chart.render();
 
         //BEMF
-        var chart = new CanvasJS.Chart("bemFST", {
+        var chart1 = new CanvasJS.Chart("bemFST", {
             animationEnabled: true,
             exportEnabled: true,
             theme: "light1", // "light1", "light2", "dark1", "dark2"
@@ -231,9 +231,9 @@ foreach ($himpunann25 as $row) {
                     dataPoints: <?php echo json_encode($dataPoints2, JSON_NUMERIC_CHECK); ?>
                 }]
         });
-        chart.render();
+        chart1.render();
 
-        var chart = new CanvasJS.Chart("bemPsikologi", {
+        var chart2 = new CanvasJS.Chart("bemPsikologi", {
             animationEnabled: true,
             exportEnabled: true,
             theme: "light1", // "light1", "light2", "dark1", "dark2"
@@ -249,9 +249,9 @@ foreach ($himpunann25 as $row) {
                     dataPoints: <?php echo json_encode($dataPoints4, JSON_NUMERIC_CHECK); ?>
                 }]
         });
-        chart.render();
+        chart2.render();
 
-        var chart = new CanvasJS.Chart("bemEkonomi", {
+        var chart4 = new CanvasJS.Chart("bemEkonomi", {
             animationEnabled: true,
             exportEnabled: true,
             theme: "light1", // "light1", "light2", "dark1", "dark2"
@@ -267,9 +267,9 @@ foreach ($himpunann25 as $row) {
                     dataPoints: <?php echo json_encode($dataPoints6, JSON_NUMERIC_CHECK); ?>
                 }]
         });
-        chart.render();
+        chart4.render();
 
-        var chart = new CanvasJS.Chart("bemFKIP", {
+        var chart5 = new CanvasJS.Chart("bemFKIP", {
             animationEnabled: true,
             exportEnabled: true,
             theme: "light1", // "light1", "light2", "dark1", "dark2"
@@ -285,9 +285,9 @@ foreach ($himpunann25 as $row) {
                     dataPoints: <?php echo json_encode($dataPoints3, JSON_NUMERIC_CHECK); ?>
                 }]
         });
-        chart.render();
+        chart5.render();
 
-        var chart = new CanvasJS.Chart("bemTeologi", {
+        var chart6 = new CanvasJS.Chart("bemTeologi", {
             animationEnabled: true,
             exportEnabled: true,
             theme: "light1", // "light1", "light2", "dark1", "dark2"
@@ -303,9 +303,9 @@ foreach ($himpunann25 as $row) {
                     dataPoints: <?php echo json_encode($dataPoints7, JSON_NUMERIC_CHECK); ?>
                 }]
         });
-        chart.render();
+        chart6.render();
 
-        var chart = new CanvasJS.Chart("bemFarmasi", {
+        var chart7 = new CanvasJS.Chart("bemFarmasi", {
             animationEnabled: true,
             exportEnabled: true,
             theme: "light1", // "light1", "light2", "dark1", "dark2"
@@ -321,10 +321,10 @@ foreach ($himpunann25 as $row) {
                     dataPoints: <?php echo json_encode($dataPoints5, JSON_NUMERIC_CHECK); ?>
                 }]
         });
-        chart.render();
+        chart7.render();
 
         //HIMPUNAN FST
-        var chart = new CanvasJS.Chart("Informatika", {
+        var chart8 = new CanvasJS.Chart("Informatika", {
             animationEnabled: true,
             exportEnabled: true,
             theme: "light1", // "light1", "light2", "dark1", "dark2"
@@ -340,9 +340,9 @@ foreach ($himpunann25 as $row) {
                     dataPoints: <?php echo json_encode($dataPoints8, JSON_NUMERIC_CHECK); ?>
                 }]
         });
-        chart.render();
+        chart8.render();
 
-        var chart = new CanvasJS.Chart("TE", {
+        var chart9 = new CanvasJS.Chart("TE", {
             animationEnabled: true,
             exportEnabled: true,
             theme: "light1", // "light1", "light2", "dark1", "dark2"
@@ -358,9 +358,9 @@ foreach ($himpunann25 as $row) {
                     dataPoints: <?php echo json_encode($dataPoints9, JSON_NUMERIC_CHECK); ?>
                 }]
         });
-        chart.render();
+        chart9.render();
 
-        var chart = new CanvasJS.Chart("TM", {
+        var chart10 = new CanvasJS.Chart("TM", {
             animationEnabled: true,
             exportEnabled: true,
             theme: "light1", // "light1", "light2", "dark1", "dark2"
@@ -376,9 +376,9 @@ foreach ($himpunann25 as $row) {
                     dataPoints: <?php echo json_encode($dataPoints10, JSON_NUMERIC_CHECK); ?>
                 }]
         });
-        chart.render();
+        chart10.render();
 
-        var chart = new CanvasJS.Chart("MM", {
+        var chart11 = new CanvasJS.Chart("MM", {
             animationEnabled: true,
             exportEnabled: true,
             theme: "light1", // "light1", "light2", "dark1", "dark2"
@@ -394,10 +394,10 @@ foreach ($himpunann25 as $row) {
                     dataPoints: <?php echo json_encode($dataPoints11, JSON_NUMERIC_CHECK); ?>
                 }]
         });
-        chart.render();
+        chart11.render();
 
         //HIMPUNAN EKONOMI
-        var chart = new CanvasJS.Chart("Manajemen", {
+        var chart12 = new CanvasJS.Chart("Manajemen", {
             animationEnabled: true,
             exportEnabled: true,
             theme: "light1", // "light1", "light2", "dark1", "dark2"
@@ -413,9 +413,9 @@ foreach ($himpunann25 as $row) {
                     dataPoints: <?php echo json_encode($dataPoints14, JSON_NUMERIC_CHECK); ?>
                 }]
         });
-        chart.render();
+        chart12.render();
 
-        var chart = new CanvasJS.Chart("Akuntansi", {
+        var chart13 = new CanvasJS.Chart("Akuntansi", {
             animationEnabled: true,
             exportEnabled: true,
             theme: "light1", // "light1", "light2", "dark1", "dark2"
@@ -431,9 +431,9 @@ foreach ($himpunann25 as $row) {
                     dataPoints: <?php echo json_encode($dataPoints13, JSON_NUMERIC_CHECK); ?>
                 }]
         });
-        chart.render();
+        chart13.render();
 
-        var chart = new CanvasJS.Chart("Ekonomi", {
+        var chart14 = new CanvasJS.Chart("Ekonomi", {
             animationEnabled: true,
             exportEnabled: true,
             theme: "light1", // "light1", "light2", "dark1", "dark2"
@@ -449,10 +449,10 @@ foreach ($himpunann25 as $row) {
                     dataPoints: <?php echo json_encode($dataPoints12, JSON_NUMERIC_CHECK); ?>
                 }]
         });
-        chart.render();
+        chart14.render();
 
         //HIMPUNAN SASTRA
-        var chart = new CanvasJS.Chart("Sejarah", {
+        var chart15 = new CanvasJS.Chart("Sejarah", {
             animationEnabled: true,
             exportEnabled: true,
             theme: "light1", // "light1", "light2", "dark1", "dark2"
@@ -468,9 +468,9 @@ foreach ($himpunann25 as $row) {
                     dataPoints: <?php echo json_encode($dataPoints15, JSON_NUMERIC_CHECK); ?>
                 }]
         });
-        chart.render();
+        chart15.render();
 
-        var chart = new CanvasJS.Chart("Sasindo", {
+        var chart16 = new CanvasJS.Chart("Sasindo", {
             animationEnabled: true,
             exportEnabled: true,
             theme: "light1", // "light1", "light2", "dark1", "dark2"
@@ -486,9 +486,9 @@ foreach ($himpunann25 as $row) {
                     dataPoints: <?php echo json_encode($dataPoints16, JSON_NUMERIC_CHECK); ?>
                 }]
         });
-        chart.render();
+        chart16.render();
 
-        var chart = new CanvasJS.Chart("Sasing", {
+        var chart17 = new CanvasJS.Chart("Sasing", {
             animationEnabled: true,
             exportEnabled: true,
             theme: "light1", // "light1", "light2", "dark1", "dark2"
@@ -504,11 +504,11 @@ foreach ($himpunann25 as $row) {
                     dataPoints: <?php echo json_encode($dataPoints17, JSON_NUMERIC_CHECK); ?>
                 }]
         });
-        chart.render();
+        chart17.render();
 
         //HIMPUNAN FKIP
         // HIMAPENSI
-        var chart = new CanvasJS.Chart("HIMAPENSI", {
+        var chart18 = new CanvasJS.Chart("HIMAPENSI", {
             animationEnabled: true,
             exportEnabled: true,
             theme: "light1", // "light1", "light2", "dark1", "dark2"
@@ -524,10 +524,10 @@ foreach ($himpunann25 as $row) {
                     dataPoints: <?php echo json_encode($dataPoints18, JSON_NUMERIC_CHECK); ?>
                 }]
         });
-        chart.render();
+        chart18.render();
 
         // PMAT
-        var chart = new CanvasJS.Chart("PMAT", {
+        var chart19 = new CanvasJS.Chart("PMAT", {
             animationEnabled: true,
             exportEnabled: true,
             theme: "light1", // "light1", "light2", "dark1", "dark2"
@@ -543,10 +543,10 @@ foreach ($himpunann25 as $row) {
                     dataPoints: <?php echo json_encode($dataPoints19, JSON_NUMERIC_CHECK); ?>
                 }]
         });
-        chart.render();
+        chart19.render();
 
         // PBIO
-        var chart = new CanvasJS.Chart("PBIO", {
+        var chart20 = new CanvasJS.Chart("PBIO", {
             animationEnabled: true,
             exportEnabled: true,
             theme: "light1", // "light1", "light2", "dark1", "dark2"
@@ -562,10 +562,10 @@ foreach ($himpunann25 as $row) {
                     dataPoints: <?php echo json_encode($dataPoints20, JSON_NUMERIC_CHECK); ?>
                 }]
         });
-        chart.render();
+        chart20.render();
 
         // PFIS
-        var chart = new CanvasJS.Chart("PFIS", {
+        var chart21 = new CanvasJS.Chart("PFIS", {
             animationEnabled: true,
             exportEnabled: true,
             theme: "light1", // "light1", "light2", "dark1", "dark2"
@@ -581,10 +581,10 @@ foreach ($himpunann25 as $row) {
                     dataPoints: <?php echo json_encode($dataPoints21, JSON_NUMERIC_CHECK); ?>
                 }]
         });
-        chart.render();
+        chart21.render();
 
         // HIMKA
-        var chart = new CanvasJS.Chart("HIMKA", {
+        var chart22 = new CanvasJS.Chart("HIMKA", {
             animationEnabled: true,
             exportEnabled: true,
             theme: "light1", // "light1", "light2", "dark1", "dark2"
@@ -600,10 +600,10 @@ foreach ($himpunann25 as $row) {
                     dataPoints: <?php echo json_encode($dataPoints22, JSON_NUMERIC_CHECK); ?>
                 }]
         });
-        chart.render();
+        chart22.render();
 
         // PSEJ
-        var chart = new CanvasJS.Chart("PSEJ", {
+        var chart23 = new CanvasJS.Chart("PSEJ", {
             animationEnabled: true,
             exportEnabled: true,
             theme: "light1", // "light1", "light2", "dark1", "dark2"
@@ -619,10 +619,10 @@ foreach ($himpunann25 as $row) {
                     dataPoints: <?php echo json_encode($dataPoints23, JSON_NUMERIC_CHECK); ?>
                 }]
         });
-        chart.render();
+        chart23.render();
 
         // PBI
-        var chart = new CanvasJS.Chart("PBI", {
+        var chart24 = new CanvasJS.Chart("PBI", {
             animationEnabled: true,
             exportEnabled: true,
             theme: "light1", // "light1", "light2", "dark1", "dark2"
@@ -638,10 +638,10 @@ foreach ($himpunann25 as $row) {
                     dataPoints: <?php echo json_encode($dataPoints24, JSON_NUMERIC_CHECK); ?>
                 }]
         });
-        chart.render();
+        chart24.render();
 
         // PBSI
-        var chart = new CanvasJS.Chart("PBSI", {
+        var chart25 = new CanvasJS.Chart("PBSI", {
             animationEnabled: true,
             exportEnabled: true,
             theme: "light1", // "light1", "light2", "dark1", "dark2"
@@ -657,10 +657,10 @@ foreach ($himpunann25 as $row) {
                     dataPoints: <?php echo json_encode($dataPoints25, JSON_NUMERIC_CHECK); ?>
                 }]
         });
-        chart.render();
+        chart25.render();
         
         // PGSD
-        var chart = new CanvasJS.Chart("PGSD", {
+        var chart26 = new CanvasJS.Chart("PGSD", {
             animationEnabled: true,
             exportEnabled: true,
             theme: "light1", // "light1", "light2", "dark1", "dark2"
@@ -676,15 +676,15 @@ foreach ($himpunann25 as $row) {
                     dataPoints: <?php echo json_encode($dataPoints25, JSON_NUMERIC_CHECK); ?>
                 }]
         });
-        chart.render();
+        chart26.render();
     }
 </script>
 
 
 <!-- Begin Page Content -->
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
-<div class="container">
+
+<div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
 
@@ -747,8 +747,8 @@ foreach ($himpunann25 as $row) {
         </li>
     </ul>
 
-
-    <div class="tab" id="myTabContent">
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <div class="tab-content" style="height: auto;">
         <div class="tab-pane fade show active" id="Presiden" role="tabpanel" aria-labelledby="Presiden-tab">
             <div id="Presiden"></div>
         </div>
