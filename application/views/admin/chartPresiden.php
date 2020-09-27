@@ -30,12 +30,24 @@ foreach ($presidenn as $row) {
     }
 </script>
 
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
-<div class="container">
+<!-- Begin Page Content -->
+
+
+
+
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    
+    <div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
+
     <div class="content">
-    <div id="Presiden"></div>
+            <div id="Presiden"></div>
     </div>
+
 </div>
+<!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->

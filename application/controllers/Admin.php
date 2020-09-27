@@ -32,6 +32,324 @@ class Admin extends CI_Controller {
         $this->load->view('templatesAdmin/footer', $data);
     }
 
+    //CHART PRESIDEN
+    public function chartPresiden() {
+        $data['title'] = 'Dashboard';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['bar'] = $this->admin->bar();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/chartPresiden', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    //CHART BEM
+    public function chartBEMFST() {
+        $data['title'] = 'Dashboard';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['bar'] = $this->admin->bar();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/chartBEMFST', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    public function chartBEMFFarmasi() {
+        $data['title'] = 'Dashboard';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['bar'] = $this->admin->bar();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/chartBEMFFarmasi', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    public function chartBEMFPsikologi() {
+        $data['title'] = 'Dashboard';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['bar'] = $this->admin->bar();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/chartBEMFPsikologi', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    public function chartBEMFEkonomi() {
+        $data['title'] = 'Dashboard';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['bar'] = $this->admin->bar();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/chartBEMFEkonomi', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    public function chartBEMFKP() {
+        $data['title'] = 'Dashboard';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['bar'] = $this->admin->bar();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/chartBEMFKIP', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    public function chartBEMFTeologi() {
+        $data['title'] = 'Dashboard';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['bar'] = $this->admin->bar();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/chartBEMFTeologi', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    //CHART HM FST
+    public function chartHMInformatika() {
+        $data['title'] = 'Dashboard';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['bar'] = $this->admin->bar();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/chartHMInformatika', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    public function chartHMTeknikElektro() {
+        $data['title'] = 'Dashboard';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['bar'] = $this->admin->bar();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/chartHMTeknikElektro', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    public function chartHMTeknikMesin() {
+        $data['title'] = 'Dashboard';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['bar'] = $this->admin->bar();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/chartHMTeknikMesin', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    public function chartHMMatematikaMurni() {
+        $data['title'] = 'Dashboard';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['bar'] = $this->admin->bar();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/chartHMMatematikaMurni', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    //CHART HM FKIP
+    public function chartHMPendEkonomi_Akuntansi() {
+        $data['title'] = 'Dashboard';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['bar'] = $this->admin->bar();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/chartHMPendEkonomi_Akuntansi', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    public function chartHMPendMatematika() {
+        $data['title'] = 'Dashboard';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['bar'] = $this->admin->bar();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/chartHMPendMatematika', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    public function chartHMPendBiologi() {
+        $data['title'] = 'Dashboard';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['bar'] = $this->admin->bar();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/chartHMPendBiologi', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    public function chartHMPendFisika() {
+        $data['title'] = 'Dashboard';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['bar'] = $this->admin->bar();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/chartHMPendFisika', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    public function chartHMHIMKA() {
+        $data['title'] = 'Dashboard';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['bar'] = $this->admin->bar();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/chartHMHIMKA', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    public function chartHMPSEJ() {
+        $data['title'] = 'Dashboard';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['bar'] = $this->admin->bar();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/chartHMPSEJ', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    public function chartHMPBI() {
+        $data['title'] = 'Dashboard';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['bar'] = $this->admin->bar();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/chartHMPBI', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    public function chartHMPBSI() {
+        $data['title'] = 'Dashboard';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['bar'] = $this->admin->bar();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/chartHMPBSI', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    public function chartHMPGSD() {
+        $data['title'] = 'Dashboard';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['bar'] = $this->admin->bar();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/chartHMPGSD', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    //CHART HM SASTRA
+    public function chartHMSejarah() {
+        $data['title'] = 'Dashboard';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['bar'] = $this->admin->bar();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/chartHMSejarah', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    public function chartHMSASING() {
+        $data['title'] = 'Dashboard';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['bar'] = $this->admin->bar();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/chartHMSASING', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    public function chartHMSASINDO() {
+        $data['title'] = 'Dashboard';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['bar'] = $this->admin->bar();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/chartHMSASINDO', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    //CHART HM EKONOMI
+    public function chartHMEkonomi() {
+        $data['title'] = 'Dashboard';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['bar'] = $this->admin->bar();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/chartHMEkonomi', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    public function chartHMAkuntansi() {
+        $data['title'] = 'Dashboard';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['bar'] = $this->admin->bar();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/chartHMAkuntansi', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    public function chartHMManajemen() {
+        $data['title'] = 'Dashboard';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['bar'] = $this->admin->bar();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/chartHMManajemen', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
     public function profile() {
         $data['title'] = 'Profile';
         $data['sidebar'] = 'Administrator';

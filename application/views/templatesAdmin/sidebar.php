@@ -19,7 +19,7 @@
 
           <div class="collapse-item" >
             <div class="btn-group">
-            <a  href="<?= base_url('admin/chartPresiden') ?>">
+            <a class="btn btn-primary" href="<?= base_url('admin/chartPresiden') ?>">
             Presiden Univ
             </a>
              </div>
@@ -32,9 +32,9 @@
             
             <div class="collapse-item" >
             <div class="btn-group dropright">
-            <button type="button" class="btn btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="btn btn-primary"  href="<?= base_url('admin/chartBEMFST') ?>">
             FST
-            </button>
+            </a>
            <!--  <div class="dropdown-menu ">
              <a class="dropdown-item" href="#">Action</a>
              <a class="dropdown-item" href="#">Another action</a>
@@ -44,41 +44,41 @@
 
             <div class="collapse-item" >
             <div class="btn-group dropright">
-            <button type="button" class="btn btn-primary">
+            <a class="btn btn-primary"  href="<?= base_url('admin/chartBEMFFarmasi') ?>">
             Fakultas Farmasi
-            </button>
+            </a>
              </div>
              </div>
 
              <div class="collapse-item" >
             <div class="btn-group dropright">
-            <button type="button" class="btn btn-primary ">
+            <a class="btn btn-primary"  href="<?= base_url('admin/chartBEMFPsikologi') ?>">
             Fakultas Psikologi
-            </button>
+            </a>
              </div>
              </div>
 
              <div class="collapse-item" >
             <div class="btn-group dropright">
-            <button type="button" class="btn btn-primary">
+            <a class="btn btn-primary"  href="<?= base_url('admin/chartBEMFEkonomi') ?>">
             Fakultas Ekonomi
-            </button>
+            </a>
              </div>
              </div>
              
              <div class="collapse-item" >
             <div class="btn-group dropright">
-            <button type="button" class="btn btn-primary">
+            <a class="btn btn-primary"  href="<?= base_url('admin/chartBEMFKIP') ?>">
             FKIP
-            </button>
+            </a>
              </div>
              </div>
              
              <div class="collapse-item" >
             <div class="btn-group dropright">
-            <button type="button" class="btn btn-primary">
+            <a class="btn btn-primary"  href="<?= base_url('admin/chartBEMFTeologi') ?>">
             Fakultas Teologi
-            </button>
+            </a>
              </div>
              </div>
              <hr class="collapse-divider">
@@ -89,10 +89,10 @@
             FST
             </button>
              <div class="dropdown-menu ">
-             <a class="dropdown-item" href="#">Informatika</a>
-             <a class="dropdown-item" href="#">Teknik Elektro</a>
-             <a class="dropdown-item" href="#">Teknik Mesin</a>
-             <a class="dropdown-item" href="#">Matematika Murni</a>
+             <a class="dropdown-item" href="<?= base_url('admin/chartHMInformatika') ?>">Informatika</a>
+             <a class="dropdown-item" href="<?= base_url('admin/chartHMTeknikElektro') ?>">Teknik Elektro</a>
+             <a class="dropdown-item" href="<?= base_url('admin/chartHMTeknikMesin') ?>">Teknik Mesin</a>
+             <a class="dropdown-item" href="<?= base_url('admin/chartHMMatematikaMurni') ?>">Matematika Murni</a>
              </div>
              </div>
             </div>
@@ -104,15 +104,15 @@
             </button>
              <div class="dropdown-menu ">
         
-             <a class="dropdown-item" href="#">Pend.Ekonomi & Pend.Akuntansi</a>
-                <a class="dropdown-item" href="#">Pendidikan Matematika</a>
-                <a class="dropdown-item" href="#">Pendidikan Biologi</a>
-                <a class="dropdown-item" href="#">Pendidikan Fisika</a>
-                <a class="dropdown-item" href="#">Ilmu Pendidikan Agama Katolik</a>
-                <a class="dropdown-item" href="#">Pendidikan Sejarah</a>
-                <a class="dropdown-item" href="#">Pendidikan Bahasa Inggris</a>
-                <a class="dropdown-item" href="#">Pendidikan Bahasa dan Sastra Indonesia</a>
-                <a class="dropdown-item" href="#">Pendidikan Guru Sekolah Dasar</a>
+             <a class="dropdown-item" href="<?= base_url('admin/chartHMPendEkonomi_Akuntansi') ?>">Pend.Ekonomi & Pend.Akuntansi</a>
+                <a class="dropdown-item" href="<?= base_url('admin/chartHMPendMatematika') ?>">Pendidikan Matematika</a>
+                <a class="dropdown-item" href="<?= base_url('admin/chartHMPendBiologi') ?>">Pendidikan Biologi</a>
+                <a class="dropdown-item" href="<?= base_url('admin/chartHMPendFisika') ?>">Pendidikan Fisika</a>
+                <a class="dropdown-item" href="<?= base_url('admin/chartHMHIMKA') ?>">Ilmu Pendidikan Agama Katolik</a>
+                <a class="dropdown-item" href="<?= base_url('admin/chartHMPSEJ') ?>">Pendidikan Sejarah</a>
+                <a class="dropdown-item" href="<?= base_url('admin/chartHMPBI') ?>">Pendidikan Bahasa Inggris</a>
+                <a class="dropdown-item" href="<?= base_url('admin/chartHMPBSI') ?>">Pendidikan Bahasa dan Sastra Indonesia</a>
+                <a class="dropdown-item" href="<?= base_url('admin/chartHMPGSD') ?>">Pendidikan Guru Sekolah Dasar</a>
              </div>
              </div>
             </div>
@@ -123,9 +123,9 @@
             SASTRA
             </button>
              <div class="dropdown-menu ">
-             <a class="dropdown-item" href="#">Sejarah</a>
-             <a class="dropdown-item" href="#">Sastra Inggris</a>
-             <a class="dropdown-item" href="#">Sastra Indonesia</a>
+             <a class="dropdown-item" href="<?= base_url('admin/chartHMSejarah') ?>">Sejarah</a>
+             <a class="dropdown-item" href="<?= base_url('admin/chartHMSASING') ?>">Sastra Inggris</a>
+             <a class="dropdown-item" href="<?= base_url('admin/chartHMSASINDO') ?>">Sastra Indonesia</a>
              </div>
              </div>
             </div>
@@ -136,9 +136,9 @@
             EKONOMI 
             </button>
              <div class="dropdown-menu ">
-             <a class="dropdown-item" href="#">Ekonomi</a>
-             <a class="dropdown-item" href="#">Akuntansi</a>
-             <a class="dropdown-item" href="#">Manajemen</a>
+             <a class="dropdown-item" href="<?= base_url('admin/chartHMEkonomi') ?>">Ekonomi</a>
+             <a class="dropdown-item" href="<?= base_url('admin/chartHMAkuntansi') ?>">Akuntansi</a>
+             <a class="dropdown-item" href="<?= base_url('admin/chartHMManajemen') ?>">Manajemen</a>
              </div>
              </div>
             </div>
