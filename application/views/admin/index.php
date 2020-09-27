@@ -684,7 +684,7 @@ foreach ($himpunann25 as $row) {
 <!-- Begin Page Content -->
 
 
-<div class="container-fluid">
+<div class="container">
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
 
@@ -695,9 +695,9 @@ foreach ($himpunann25 as $row) {
         </li>
         <!-- GUBERNUR -->
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" aria-selected="false">Gubernur</a>
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Gubernur</a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" id="bemFST-tab" data-toggle="tab" role="tab" aria-controls="bemFST" href="#bemFST">Fakultas Sains dan Teknologi</a>
+                <a class="dropdown-item" id="bemFST-tab" data-toggle="tab"  aria-controls="bemFST" href="#bemFST" aria-selected="false">Fakultas Sains dan Teknologi</a>
                 <a class="dropdown-item" id="bemFarmasi-tab" data-toggle="tab" role="tab" aria-controls="bemFarmasi" href="#bemFarmasi">Fakultas Farmasi</a>
                 <a class="dropdown-item" id="bemPsikologi1-tab" data-toggle="tab" role="tab" aria-controls="bemPsikologi1" href="#bemPsikologi1">Fakultas Psikologi</a>
                 <a class="dropdown-item" id="bemEkonomi-tab" data-toggle="tab" role="tab" aria-controls="bemEkonomi" href="#bemEkonomi">Fakultas Ekonomi</a>
@@ -748,7 +748,7 @@ foreach ($himpunann25 as $row) {
     </ul>
 
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-    <div class="tab-content" style="height: auto;">
+    <div class="content">
         <div class="tab-pane fade show active" id="Presiden" role="tabpanel" aria-labelledby="Presiden-tab">
             <div id="Presiden"></div>
         </div>
