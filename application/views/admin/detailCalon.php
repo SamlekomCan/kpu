@@ -1,7 +1,6 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <?php $fakult = ['FST', 'FKIP', 'PSIKOLOGI', 'FARMASI', 'EKONOMI', 'TEOLOGI', 'SASTRA']; ?>
-    <!-- Page Heading -->
+   <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
     <div class="row">
         <div class="col-md-12">
@@ -26,10 +25,10 @@
                                             <label for="fakultas">Fakultas Ketua</label>
                                             <select class="form-control" id="fakultas1" name="fakultas1" readonly>
                                                 <?php foreach ($fakult as $row): ?>
-                                                    <?php if ($fakult == $data[0]['fakultasketua']): ?>
-                                                        <option selected><?= $row ?></option>
+                                                    <?php if ($row->fakultas == $data[0]['fakultasketua']): ?>
+                                                        <option selected><?= $row->fakultas ?></option>
                                                     <?php endif ?>
-                                                    <option><?= $row ?></option>
+                                                    <option><?= $row->fakultas ?></option>
                                                 <?php endforeach ?>
                                             </select>
                                         </div>
@@ -39,10 +38,10 @@
                                             <label for="fakultas">Fakultas Wakil</label>
                                             <select class="form-control" id="fakultas2" name="fakultas2" readonly>
                                                 <?php foreach ($fakult as $row): ?>
-                                                    <?php if ($fakult == $data[0]['fakultaswakil']): ?>
-                                                        <option selected><?= $row ?></option>
+                                                    <?php if ($row->fakultas == $data[0]['fakultaswakil']): ?>
+                                                        <option selected><?= $row->fakultas ?></option>
                                                     <?php endif ?>
-                                                    <option selected><?= $row ?></option>
+                                                    <option><?= $row->fakultas ?></option>
                                                 <?php endforeach ?>
                                             </select>
                                         </div>

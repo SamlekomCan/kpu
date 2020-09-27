@@ -438,6 +438,7 @@ class Admin extends CI_Controller {
         $data['sidebar'] = 'Administrator';
         $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
         $data['data'] = $this->admin->calonCari($id);
+        $data['fakult'] = $this->db->get('fakultas')->result();
         $this->load->view('templatesAdmin/header', $data);
         $this->load->view('templatesAdmin/sidebar', $data);
         $this->load->view('templatesAdmin/topbar', $data);
@@ -456,6 +457,7 @@ class Admin extends CI_Controller {
         $data['sidebar'] = 'Administrator';
         $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
         $data['data'] = $this->admin->calonCari($id);
+        $data['fakult'] = $this->db->get('fakultas')->result();
         // var_dump( $data['data']);die;
         $this->form_validation->set_rules('nama1', 'Nama Ketua', 'required|trim');
         $this->form_validation->set_rules('nama2', 'Nama Wakil', 'required|trim');
