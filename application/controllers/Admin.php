@@ -18,6 +18,7 @@ class Admin extends CI_Controller {
         $this->load->model('Autentifikasi_model', 'auth');
         $this->load->model('Admin_model', 'admin');
         $this->load->library('excel');
+        
     }
 
     public function index() {
@@ -25,6 +26,8 @@ class Admin extends CI_Controller {
         $data['sidebar'] = 'Administrator';
         $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
         $data['bar'] = $this->admin->bar();
+        $data['invalid'] = $this->admin->get_count_invalid();
+        $data['valid'] = $this->admin-> get_count_valid();
         $this->load->view('templatesAdmin/header', $data);
         $this->load->view('templatesAdmin/sidebar', $data);
         $this->load->view('templatesAdmin/topbar', $data);
@@ -417,10 +420,35 @@ class Admin extends CI_Controller {
         $data['sidebar'] = 'Administrator';
         $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
         $data['data'] = $this->admin->allUser();
+        $data['dataInvalid'] = $this->admin->invalidMahasiswa();
         $this->load->view('templatesAdmin/header', $data);
         $this->load->view('templatesAdmin/sidebar', $data);
         $this->load->view('templatesAdmin/topbar', $data);
         $this->load->view('admin/user', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    public function invalidMahasiswa() {
+        $data['title'] = 'Mahasiswa yang belum memilih';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['dataInvalid'] = $this->admin->invalidMahasiswa();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/invalidMahasiswa', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    public function validMahasiswa() {
+        $data['title'] = 'Mahasiswa yang sudah memilih';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['dataValid'] = $this->admin->validMahasiswa();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/validMahasiswa', $data);
         $this->load->view('templatesAdmin/footer', $data);
     }
 

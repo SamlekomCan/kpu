@@ -62,4 +62,24 @@ class Admin_model extends CI_Model {
         $this->db->get('presiden')->result_array();
     }
 
+    public function get_count_invalid(){
+        $sql = "SELECT count(if(statusBEMF='1', statusBEMF, NULL) AND if(statusHM='1', statusHM, NULL)AND if(status='1', status, NULL)) as invalid FROM user";
+        $result = $this->db->query($sql);
+        return $result->row();
+    }
+
+    public function get_count_valid(){
+        $sql = "SELECT count(if(statusBEMF='0', statusBEMF, NULL) AND if(statusHM='0', statusHM, NULL)AND if(status='0', status, NULL)) as valid FROM user";
+        $result = $this->db->query($sql);
+        return $result->row();
+    }
+
+    public function invalidMahasiswa() {
+        return $this->db->get_where('user',array('status'=>'1','statusBEMF'=>'1','statusHM'=>'1' ))->result_array();
+    }
+
+    public function validMahasiswa() {
+        return $this->db->get_where('user',array('status'=>'0','statusBEMF'=>'0','statusHM'=>'0' ))->result_array();
+    }
+
 }

@@ -3,7 +3,10 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin') ?>">
-        <div class="sidebar-brand-text mx-3">ADMIN KPU <sup></sup></div>
+    <div class="sidebar-brand-icon">
+          <i class="fas fa-home fa-lg"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">ADMIN KPU</div>
     </a>
 
     <!-- Divider -->
