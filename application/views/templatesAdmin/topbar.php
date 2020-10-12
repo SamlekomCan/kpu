@@ -6,7 +6,9 @@
 
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
+        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                <i class="fa fa-bars"></i>
+            </button>
             <!-- Topbar Logo -->
             <ul class="navbar-nav ml">
                 <a class="nav-link" href="http://www.usd.ac.id" target="_blank">
@@ -21,9 +23,7 @@
             </ul>
 
             <!-- Sidebar Toggle (Topbar) -->
-            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                <i class="fa fa-bars"></i>
-            </button>
+            
 
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">

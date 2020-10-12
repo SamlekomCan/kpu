@@ -12,9 +12,9 @@
         <?php foreach ($data as $row): ?>
             <?php if ($row['organisasi'] == 'BEMU'): ?>
                 <div class="col-xs-12 col-md-6 col-lg-3">
-                    <div class="panel panel-default ">
+                    <div class="panel panel-default">
                         <center>
-                            <div class="card">
+                            <div class="card shadow-sm p-3 mb-5">
                                 <img class="card-img-top " src="<?= base_url('assets/img/calon/') . $row['foto'] ?>">
                                 <div class="card-body">
                                     <h5 class="card-title"><?= $row['ketua'] . ' - ' . $row['wakil']; ?></h5>
@@ -25,7 +25,7 @@
                                         <span class="glyphicon glyphicon-info-sign"></span> Visi dan Misi
                                     </a>
                                     <?php if ($user['status'] != 0): ?>
-                                        <a href="#" class="btn btn-info btn-sm" onclick="validate('<?=  $row['ketua']; ?> - <?=  $row['wakil']; ?>')"
+                                        <a href="#" class="btn btn-danger btn-sm" onclick="validate('<?=  $row['ketua']; ?> - <?=  $row['wakil']; ?>')"
                                            value="<?php echo $row['id'] ?>"><span class="glyphicon glyphicon-info-sign"></span>
                                             Pilih </a>
                                     <?php endif ?>

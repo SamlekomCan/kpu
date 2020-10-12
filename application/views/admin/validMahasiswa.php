@@ -23,7 +23,7 @@
                 <tbody>
                     <?php $i = 1; ?>
                     <?php foreach ($dataValid as $row) : ?>
-                        <tr >
+                        <tr>
                             <td class="text-center"><?= $i ?></td>
                             <td><?php echo $row['nim']; ?></td>
                             <td><?php echo $row['nama']; ?></td>
@@ -40,7 +40,7 @@
         </div>
     </div>
 </div>
--->
+
 
 </div>
 <!-- End of Main Content -->

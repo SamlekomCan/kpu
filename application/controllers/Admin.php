@@ -828,10 +828,12 @@ class Admin extends CI_Controller {
             $visi = $this->input->post('visi');
             $misi = $this->input->post('misi');
             $upload = $_FILES['image']['name'];
+           // var_dump( $upload);die;
+
             if ($upload) {
-                $config['upload_path'] = './assets/img/calon';
-                $config['allowed_types'] = 'gif|jpg|png|jfif';
-                $config['max_size'] = '2048';
+                $config['upload_path'] = base_url().'assets/img/calon';
+                $config['allowed_types'] = 'gif|jpg|png|jfif|jpeg';
+                $config['max_size'] = '10240';
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('image')) {
                     $newImage = $this->upload->data('file_name');

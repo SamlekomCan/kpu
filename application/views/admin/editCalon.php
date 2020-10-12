@@ -90,7 +90,7 @@
                         </div>
                     </div>
                     <a href="<?= base_url('admin/calon'); ?>" class="btn btn-secondary"> Kembali </a>
-                    <button type="submit" class="btn btn-primary">Edit</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                     </form>
                 </div>
             </div>

@@ -79,7 +79,8 @@ class Admin_model extends CI_Model {
     }
 
     public function validMahasiswa() {
-        return $this->db->get_where('user',array('status'=>'0','statusBEMF'=>'0','statusHM'=>'0' ))->result_array();
+        $where = "status='0' OR statusBEMF='0' OR statusHM='0'";
+        return $this->db->get_where('user', $where)->result_array();
     }
 
 }
