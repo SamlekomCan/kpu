@@ -74,7 +74,7 @@ class Admin_model extends CI_Model {
     }
 
     public function get_count_valid(){
-        $sql = "SELECT count(if(statusBEMF='0', statusBEMF, NULL) | if(statusHM='0', statusHM, NULL) | if(status='0', status, NULL)) as valid FROM user";
+        $sql = "SELECT count(if(statusBEMF='0', statusBEMF, NULL) OR if(statusHM='0', statusHM, NULL) OR if(status='0', status, NULL)) as valid FROM user";
         $result = $this->db->query($sql);
         return $result->row();
     }
