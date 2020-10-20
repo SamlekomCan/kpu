@@ -66,7 +66,7 @@
 </div>
 <div class="row">
   <div class="col-sm-5"></div>
-  <div class="col-sm-7"><a href = "https://www.instagram.com/ucokdai18/" target="_blank">Berlin Ravelino Hugo Padang</a></div>
+  <div class="col-sm-7"><a href = "https://www.instagram.com/ucokdai18/" target="_blank">Berlin Ravelino Hugo Padang</a><a><br>(082340092048)</a></div>
 </div>
 </div>
             <div class="modal-footer">
