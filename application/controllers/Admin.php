@@ -444,6 +444,7 @@ class Admin extends CI_Controller {
         $data['title'] = 'Mahasiswa yang sudah memilih';
         $data['sidebar'] = 'Administrator';
         $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['data'] = $this->admin->allUser();
         $data['dataValid'] = $this->admin->validMahasiswa();
         $this->load->view('templatesAdmin/header', $data);
         $this->load->view('templatesAdmin/sidebar', $data);
@@ -1071,6 +1072,82 @@ class Admin extends CI_Controller {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
                     Nama Ketua tidak terdapat di user! </div>');
                 redirect('admin/addCalonHM');
+            }
+        }
+    }
+
+    public function addCalonJPMIPA() {
+        $data['title'] = 'Tambah Calon JPMIPA';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['data'] = $this->admin->allUser();
+
+
+        $this->form_validation->set_rules('nama1', 'Nama Ketua', 'required|trim');
+        $this->form_validation->set_rules('nama2', 'Nama Wakil', 'required|trim');
+        $this->form_validation->set_rules('fakultas1', 'Fakultas Ketua', 'required|trim');
+        $this->form_validation->set_rules('prodi1', 'Prodi Ketua', 'required|trim');
+        $this->form_validation->set_rules('prodi2', 'Prodi Wakil', 'required|trim');
+        $this->form_validation->set_rules('visi', 'Visi', 'required|trim');
+        $this->form_validation->set_rules('misi', 'Misi', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templatesAdmin/header', $data);
+            $this->load->view('templatesAdmin/sidebar', $data);
+            $this->load->view('templatesAdmin/topbar', $data);
+            $this->load->view('admin/addCalonJPMIPA', $data);
+            $this->load->view('templatesAdmin/footer', $data);
+        } else {
+            $ketua = $this->input->post('nama1');
+            $wakil = $this->input->post('nama2');
+            $fakultasketua = $this->input->post('fakultas1');
+            $fakultaswakil = $this->input->post('fakultas1');
+            $prodiketua = $this->input->post('prodi1');
+            $prodiwakil = $this->input->post('prodi2');
+            $query1 = "SELECT * FROM user WHERE nama LIKE '" . $ketua . "' AND fakultas LIKE '" . $fakultasketua . "' 
+            AND prodi LIKE '" . $prodiketua . "'";
+            $cekKetua = $this->db->query($query1);
+            if ($cekKetua->num_rows() > 0) {
+                $query2 = "SELECT * FROM user WHERE nama LIKE '" . $wakil . "' AND fakultas LIKE '" . $fakultaswakil . "' 
+            AND prodi LIKE '" . $prodiwakil . "'";
+                $cekWakil = $this->db->query($query2);
+                if ($cekWakil->num_rows() > 0) {
+                    $visi = $this->input->post('visi');
+                    $misi = $this->input->post('misi');
+                    $upload = $_FILES['image']['name'];
+                    if ($upload) {
+                        $config['upload_path'] = './assets/img/calon';
+                        $config['allowed_types'] = 'gif|jpg|png|jpeg';
+                        $config['max_size'] = '2048';
+                        $this->load->library('upload', $config);
+                        if ($this->upload->do_upload('image')) {
+                            $newImage = $this->upload->data('file_name');
+                            $this->db->set('foto', $newImage);
+                        }
+                    }
+                    $Ketua = $cekKetua->result_array();
+                    $Wakil = $cekWakil->result_array();
+                    $this->db->set('ketua', $Ketua[0]['nama']);
+                    $this->db->set('wakil', $Wakil[0]['nama']);
+                    $this->db->set('fakultasketua', $fakultasketua);
+                    $this->db->set('fakultaswakil', $fakultaswakil);
+                    $this->db->set('organisasi', "JPMIPA");
+                    $this->db->set('prodiketua', $prodiketua);
+                    $this->db->set('prodiwakil', $prodiwakil);
+                    $this->db->set('visi', $visi);
+                    $this->db->set('misi', $misi);
+                    $this->db->set('hasil', 0);
+                    $this->db->insert('calon');
+                    redirect('admin/calon');
+                } else {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                    Nama Wakil tidak terdapat di user! </div>');
+                    redirect('admin/addCalonJPMIPA');
+                }
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                    Nama Ketua tidak terdapat di user! </div>');
+                redirect('admin/addCalonJPMIPA');
             }
         }
     }

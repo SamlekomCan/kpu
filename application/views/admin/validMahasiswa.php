@@ -17,7 +17,10 @@
                         <th>NAMA</th>
                         <th>PRODI</th>
                         <th>FAKULTAS</th>
-                        <th>STATUS</th>
+                        <th>VOTE PRES</th>
+                        <th>VOTE BEMF</th>
+                        <th>VOTE HM</th>
+                        <th>VOTE JPMIPA</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,9 +32,48 @@
                             <td><?php echo $row['nama']; ?></td>
                             <td><?php echo $row['prodi']; ?></td>
                             <td><?php echo $row['fakultas']; ?></td>
-                            <td class="text-center"><a href="#" class="disabled btn btn-success btn-circle btn-md">
+                            
+                            
+                            <?php if ($row['status'] != 1): ?>
+                                <td class="text-center"><a href="#" class="disabled btn btn-success btn-circle btn-md">
                                 <i class="fas fa-check"></i>
                                 </a></td>
+                            <?php else: ?>
+                                <td class="text-center"><a href="#" class="disabled btn btn-danger btn-circle btn-md">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                </a></td>
+                            <?php endif; ?>
+
+                            <?php if ($row['statusBEMF'] != 1): ?>
+                                <td class="text-center"><a href="#" class="disabled btn btn-success btn-circle btn-md">
+                                <i class="fas fa-check"></i>
+                                </a></td>
+                            <?php else: ?>
+                                <td class="text-center"><a href="#" class="disabled btn btn-danger btn-circle btn-md">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                </a></td>
+                            <?php endif; ?>
+
+                            <?php if ($row['statusHM'] != 1): ?>
+                                <td class="text-center"><a href="#" class="disabled btn btn-success btn-circle btn-md">
+                                <i class="fas fa-check"></i>
+                                </a></td>
+                            <?php else: ?>
+                                <td class="text-center"><a href="#" class="disabled btn btn-danger btn-circle btn-md">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                </a></td>
+                            <?php endif; ?>
+
+                            <?php if ($row['statusJPMIPA'] != 1): ?>
+                                <td class="text-center"><a href="#" class="disabled btn btn-success btn-circle btn-md">
+                                <i class="fas fa-check"></i>
+                                </a></td>
+                            <?php else: ?>
+                                <td class="text-center"><a href="#" class="disabled btn btn-danger btn-circle btn-md">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                </a></td>
+                            <?php endif; ?>
+                            
                         </tr>
                         <?php $i++; ?>
                     <?php endforeach; ?>

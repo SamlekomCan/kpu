@@ -27,7 +27,12 @@ class Admin_model extends CI_Model {
         return $this->db->get('calon')->result_array();
     }
     public function getCalonHM($hm) {
-        $this->db->like('prodi', $hm);
+        $this->db->like('prodiketua', $hm);
+        return $this->db->get('calon')->result_array();
+    }
+
+    public function getCalonJPMIPA($jpmipa) {
+        $this->db->like('prodiketua', $jpmipa);
         return $this->db->get('calon')->result_array();
     }
 
@@ -63,23 +68,24 @@ class Admin_model extends CI_Model {
     }
 
     public function get_count_invalid(){
-        $sql = "SELECT count(if(statusBEMF='1', statusBEMF, NULL) AND if(statusHM='1', statusHM, NULL)AND if(status='1', status, NULL)) as invalid FROM user";
+        $sql = "SELECT count(if(statusBEMF='1', statusBEMF, NULL) OR if(statusHM='1', statusHM, NULL)OR if(status='1', status, NULL)) as invalid FROM user";
         $result = $this->db->query($sql);
         return $result->row();
     }
 
     public function get_count_valid(){
-        $sql = "SELECT count(if(statusBEMF='0', statusBEMF, NULL) AND if(statusHM='0', statusHM, NULL)AND if(status='0', status, NULL)) as valid FROM user";
+        $sql = "SELECT count(if(statusBEMF='0', statusBEMF, NULL) | if(statusHM='0', statusHM, NULL) | if(status='0', status, NULL)) as valid FROM user";
         $result = $this->db->query($sql);
         return $result->row();
     }
 
     public function invalidMahasiswa() {
-        return $this->db->get_where('user',array('status'=>'1','statusBEMF'=>'1','statusHM'=>'1' ))->result_array();
+        $where = "status='1' OR statusBEMF='1' OR statusHM='1' OR statusJPMIPA='1'";
+        return $this->db->get_where('user', $where)->result_array();
     }
 
     public function validMahasiswa() {
-        $where = "status='0' OR statusBEMF='0' OR statusHM='0'";
+        $where = "status='0' OR statusBEMF='0' OR statusHM='0' OR statusJPMIPA='0'";
         return $this->db->get_where('user', $where)->result_array();
     }
 

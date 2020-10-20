@@ -27,8 +27,10 @@
                                         echo $row['organisasi'];
                                     } elseif ($row['organisasi'] == 'BEMF') {
                                         echo $row['organisasi'] . ' - ' . $row['fakultasketua'];
+                                    } elseif ($row['organisasi'] == 'JPMIPA') {
+                                        echo $row['organisasi'];
                                     } else {
-                                        echo $row['organisasi'] . ' - ' . $row['prodi'];
+                                        echo $row['organisasi'] . ' - ' . $row['prodiketua'];
                                     }
                                     ?></p>
                             </div>
@@ -77,6 +79,9 @@
                 </div>
                 <div class="form-group">
                     <a href="<?= base_url('admin/addCalonHM'); ?>" class="btn btn-secondary btn-user btn-block"> Tambah Calon Himpunan</a>
+                </div>
+                <div class="form-group">
+                    <a href="<?= base_url('admin/addCalonJPMIPA'); ?>" class="btn btn-secondary btn-user btn-block"> Tambah Calon JPMIPA</a>
                 </div>
             </div>
         </div>

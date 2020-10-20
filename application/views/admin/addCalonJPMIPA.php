@@ -1,6 +1,6 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <?php $fakult = ['Sains dan Teknologi', 'Keguruan dan Ilmu Pendidikan', 'Psikologi', 'Farmasi', 'Ekonomi', 'Teologi', 'Sastra']; ?>
+    <?php $fakult = ['Keguruan dan Ilmu Pendidikan']; ?>
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
     <?= $this->session->flashdata('message'); ?>
@@ -9,25 +9,25 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <?php echo form_open_multipart('admin/AddcalonPresiden'); ?>
+                    <?php echo form_open_multipart('admin/AddcalonJPMIPA'); ?>
                     <div class="row">
                         <div class="col-md-6">
 
                             <div class="form-group">
                                 <label for="nama">Nama Ketua</label>
                                 <input name="nama1" type="text" class="form-control" placeholder="Nama Ketua">
-                                <?= form_error('nama1', '<small class="text-danger pl-3">', '</small>') ?>
+                                <?= form_error('nama', '<small class="text-danger pl-3">', '</small>') ?>
                             </div>
                             <div class="form-group">
                                 <label for="nama">Nama Wakil</label>
                                 <input name="nama2" type="text" class="form-control" placeholder="Nama Wakil">
-                                <?= form_error('nama2', '<small class="text-danger pl-3">', '</small>') ?>
+                                <?= form_error('nama', '<small class="text-danger pl-3">', '</small>') ?>
                             </div>
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col">
                                         <div class="form-group">
-                                            <label for="fakultas">Fakultas Ketua</label>
+                                            <label for="fakultas">Fakultas</label>
                                             <select class="form-control" id="fakultas1" name="fakultas1">
                                                 <option>-</option>
                                                 <?php foreach ($fakult as $row): ?>
@@ -36,17 +36,34 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col">
-                                        <div class="form-group">
-                                            <label for="fakultas">Fakultas Wakil</label>
-                                            <select class="form-control" id="fakultas2" name="fakultas2">
-                                                <option>-</option>
-                                                <?php foreach ($fakult as $row): ?>
-                                                    <option><?= $row ?></option>
-                                                <?php endforeach ?>
-                                            </select>
-                                        </div>
-                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                            <div class="row">
+                            <div class="col">
+                                <label for="prodi">Prodi Ketua</label>
+                                <select class="form-control" id="prodi1" name="prodi1">
+                                    <option>-</option>
+                                    <?php
+                                    $sql = $this->db->get('prodi')->result();
+                                    foreach ($sql as $row):
+                                        ?>
+                                        <option value="<?= $row->nama_prodi ?>"><?= $row->nama_prodi ?></option>
+                                    <?php endforeach ?>
+                                </select>
+                                </div>
+                                <div class="col">
+                                <label for="prodi">Prodi Wakil</label>
+                                <select class="form-control" id="prodi2" name="prodi2">
+                                    <option>-</option>
+                                    <?php
+                                    $sql = $this->db->get('prodi')->result();
+                                    foreach ($sql as $row):
+                                        ?>
+                                        <option value="<?= $row->nama_prodi ?>"><?= $row->nama_prodi ?></option>
+                                    <?php endforeach ?>
+                                </select>
+                                </div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -91,15 +108,16 @@
 </div>
 <!-- End of Main Content -->
 
+
 <script>
     $('#fakultas1').change(function () {
         var id = $(this).val();
-        fakultas2(id);
+        prodi(id);
     });
 
-    function fakultas2(id) {
+    function prodi(id) {
         $.ajax({
-            url: "<?php echo base_url(); ?>admin/fakultasPresiden",
+            url: "<?php echo base_url(); ?>admin/prodi",
             method: "POST",
             data: {
                 id: id
@@ -110,10 +128,10 @@
                 var html = '';
                 var i;
                 for (i = 0; i < data.length; i++) {
-                    html += '<option value="' + data[i].fakultas + '">' + data[i].fakultas + '</option>';
+                    html += '<option value="' + data[i].nama_prodi + '">' + data[i].nama_prodi + '</option>';
                 }
                 html += '<option value="">-</option>';
-                $('#fakultas2').html(html);
+                $('#prodi').html(html);
             }
         });
 

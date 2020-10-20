@@ -25,6 +25,7 @@ class User extends CI_Controller {
         $data['data'] = $this->admin->getCalon();
         $data['bemf'] = $this->admin->getCalonFakultas($data['user']['fakultas']);
         $data['hm'] = $this->admin->getCalonHM($data['user']['prodi']);
+        $data['jpmipa'] = $this->admin->getCalonJPMIPA($data['user']['prodi']);
         $this->load->view('templatesUser/header', $data);
         $this->load->view('templatesUser/sidebar', $data);
         $this->load->view('templatesUser/topbar', $data);
@@ -151,11 +152,18 @@ class User extends CI_Controller {
             $this->db->set('statusBEMF', 0);
             $this->db->where('nim', $this->session->userdata('nim'));
             $this->db->update('user');
+        } elseif (strcasecmp($org, 'JPMIPA') == 0) {
+            # code...
+            $this->db->set('statusJPMIPA', 0);
+            $this->db->where('nim', $this->session->userdata('nim'));
+            $this->db->update('user');
         } else {
             $this->db->set('statusHM', 0);
             $this->db->where('nim', $this->session->userdata('nim'));
             $this->db->update('user');
         }
+        
+        
         redirect('user');
     }
 

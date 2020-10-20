@@ -1,7 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
     <head>
+    <script>
+        alert("Sedang Rekapitulasi Data\nUntuk Sementara teman - teman tidak bisa LOGIN, Terimakasih");
+
+    </script>
+
         <link rel="shortcut icon" href="<?= base_url('assets/') ?>img/logoKPU.png">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">

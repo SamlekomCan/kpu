@@ -69,7 +69,7 @@
                     </div>
                     <a href="<?= base_url('admin/calon'); ?>" class="btn btn-secondary"> Kembali </a>
                     <input type="reset" class="btn btn-warning" value="Reset">
-                    <button type="submit" class="btn btn-primary">Import</button>
+                    <button type="submit" class="btn btn-primary">Tambah</button>
                     </form>
                 </div>
             </div>
