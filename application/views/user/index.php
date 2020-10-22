@@ -14,7 +14,7 @@
                 <div class="col-xs-12 col-md-6 col-lg-3">
                     <div class="panel panel-default">
                         <center>
-                            <div class="card shadow-sm p-3 mb-5">
+                            <div class="card shadow-sm p-2 mb-5">
                                 <img class="card-img-top " src="<?= base_url('assets/img/calon/') . $row['foto'] ?>">
                                 <div class="card-body">
                                     <h5 class="card-title"><?= $row['ketua'] . ' - ' . $row['wakil']; ?></h5>
@@ -73,7 +73,81 @@
         <?php endforeach ?>
     </div>
     <hr>
+
+    <?php 
+    if ($user['prodi'] == "Farmasi"):
+    ?>
     <center>
+        <h1>Pemilihan Calon DPMF : <?= $user['prodi'] ?></h1>
+    </center>
+    <br>
+    <div class="row">
+        <?php foreach ($hm as $row): ?>
+            <?php if ($row['organisasi'] == 'HM'): ?>
+                <div class="col-xs-12 col-md-6 col-lg-3">
+                    <div class="panel panel-default">
+                        <center>
+                        <div class="card shadow-sm p-2 mb-5">
+                                <img class="card-img-top" src="<?= base_url('assets/img/calon/') . $row['foto'] ?>"
+                                     style="height: 200px;">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?= $row['ketua'] . ' - ' . $row['wakil']; ?></h5>
+                                    <p class="card-text"><?= $row['organisasi']; ?></p>
+                                </div>
+                                <div class="card-footer">
+                                    <a data-toggle="modal" href="#detail<?= $row['id']; ?>" class="btn btn-info btn-sm">
+                                        <span class="glyphicon glyphicon-info-sign"></span> Visi dan Misi
+                                    </a>
+                                    <?php if ($user['statusHM'] != 0): ?>
+                                        <a href="#" class="btn btn-primary btn-sm" onclick="validate('<?=  $row['ketua']; ?> - <?=  $row['wakil']; ?>')"
+                                           value="<?php echo $row['id'] ?>"><span class="glyphicon glyphicon-info-sign"></span>
+                                            Pilih </a>
+                                    <?php endif ?>
+                                </div>
+                            </div>
+                        </center>
+                    </div>
+                </div>
+            <?php endif ?>
+        <?php endforeach ?>
+    </div>
+    <?php elseif( $user['prodi'] == "Psikologi"): ?>
+    <center>
+        <h1>Pemilihan Calon DPMF : <?= $user['prodi'] ?></h1>
+    </center>
+    <br>
+    <div class="row">
+        <?php foreach ($hm as $row): ?>
+            <?php if ($row['organisasi'] == 'HM'): ?>
+                <div class="col-xs-12 col-md-6 col-lg-3">
+                    <div class="panel panel-default">
+                        <center>
+                        <div class="card shadow-sm p-2 mb-5">
+                                <img class="card-img-top" src="<?= base_url('assets/img/calon/') . $row['foto'] ?>"
+                                     style="height: 200px;">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?= $row['ketua'] . ' - ' . $row['wakil']; ?></h5>
+                                    <p class="card-text"><?= $row['organisasi']; ?></p>
+                                </div>
+                                <div class="card-footer">
+                                    <a data-toggle="modal" href="#detail<?= $row['id']; ?>" class="btn btn-info btn-sm">
+                                        <span class="glyphicon glyphicon-info-sign"></span> Visi dan Misi
+                                    </a>
+                                    <?php if ($user['statusHM'] != 0): ?>
+                                        <a href="#" class="btn btn-primary btn-sm" onclick="validate('<?=  $row['ketua']; ?> - <?=  $row['wakil']; ?>')"
+                                           value="<?php echo $row['id'] ?>"><span class="glyphicon glyphicon-info-sign"></span>
+                                            Pilih </a>
+                                    <?php endif ?>
+                                </div>
+                            </div>
+                        </center>
+                    </div>
+                </div>
+            <?php endif ?>
+        <?php endforeach ?>
+    </div>
+    <?php else: ?>
+        <center>
         <h1>Pemilihan Calon Himpunan Program Studi : <?= $user['prodi'] ?></h1>
     </center>
     <br>
@@ -108,6 +182,8 @@
         <?php endforeach ?>
     </div>
 <hr>
+    <?php endif; ?>
+
     <?php 
 
     if ($user['prodi'] == "Pendidikan Matematika" | $user['prodi'] == "Pendidikan Kimia" | $user['prodi'] == "Pendidikan Biologi" | $user['prodi'] == "Pendidikan Fisika" ): ?>

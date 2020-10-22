@@ -17,7 +17,7 @@
             <div class="col-xs-12 col-md-6 col-lg-3">
                 <div class="panel panel-default">
                     <center>
-                        <div class="card">
+                        <div class="card shadow-sm p-2 mb-5">
                             <img class="card-img-top" src="<?= base_url('assets/img/calon/') . $row['foto'] ?>"
                                  style="height: 200px;">
                             <div class="card-body">

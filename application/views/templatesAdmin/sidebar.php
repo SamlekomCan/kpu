@@ -84,11 +84,44 @@
             </a>
              </div>
              </div>
+
+             <hr class="collapse-divider">
+            <h6 class="collapse-header">DPM:</h6>
+        
+            <!--<a class="collapse-item active" href="#" data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
+            Buttons</a> collapse-item -->
+            
+            <div class="collapse-item" >
+            <div class="btn-group dropright">
+            <a class="btn btn-primary"  href="<?= base_url('admin/chartDPMFarmasi') ?>">
+            Fakultas Farmasi
+            </a>
+           <!--  <div class="dropdown-menu ">
+             <a class="dropdown-item" href="#">Action</a>
+             <a class="dropdown-item" href="#">Another action</a>
+             </div> -->
+             </div>
+            </div>
+
+            <div class="collapse-item" >
+            <div class="btn-group dropright">
+            <a class="btn btn-primary"  href="<?= base_url('admin/chartDPMPsikologi') ?>">
+            Fakultas Psikologi
+            </a>
+           <!--  <div class="dropdown-menu ">
+             <a class="dropdown-item" href="#">Action</a>
+             <a class="dropdown-item" href="#">Another action</a>
+             </div> -->
+             </div>
+            </div>
+
+
              <hr class="collapse-divider">
             <h7 class="collapse-header">HIMPUNAN MAHASISWA:</h7>
             <div class="collapse-item" >
             <div class="btn-group dropright">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
             FST
             </button>
              <div class="dropdown-menu ">

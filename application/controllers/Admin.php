@@ -353,6 +353,30 @@ class Admin extends CI_Controller {
         $this->load->view('templatesAdmin/footer', $data);
     }
 
+    public function chartDPMFarmasi() {
+        $data['title'] = 'Dashboard';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['bar'] = $this->admin->bar();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/chartDPMFarmasi', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
+    public function chartDPMPsikologi() {
+        $data['title'] = 'Dashboard';
+        $data['sidebar'] = 'Administrator';
+        $data['user'] = $this->auth->sessionCheck($this->session->userdata('status'));
+        $data['bar'] = $this->admin->bar();
+        $this->load->view('templatesAdmin/header', $data);
+        $this->load->view('templatesAdmin/sidebar', $data);
+        $this->load->view('templatesAdmin/topbar', $data);
+        $this->load->view('admin/chartDPMPsikologi', $data);
+        $this->load->view('templatesAdmin/footer', $data);
+    }
+
     public function profile() {
         $data['title'] = 'Profile';
         $data['sidebar'] = 'Administrator';
@@ -1042,7 +1066,7 @@ class Admin extends CI_Controller {
                     $upload = $_FILES['image']['name'];
                     if ($upload) {
                         $config['upload_path'] = './assets/img/calon';
-                        $config['allowed_types'] = 'gif|jpg|png';
+                        $config['allowed_types'] = 'gif|jpg|png|jpeg';
                         $config['max_size'] = '2048';
                         $this->load->library('upload', $config);
                         if ($this->upload->do_upload('image')) {
@@ -1057,7 +1081,8 @@ class Admin extends CI_Controller {
                     $this->db->set('fakultasketua', $fakultasketua);
                     $this->db->set('fakultaswakil', $fakultaswakil);
                     $this->db->set('organisasi', "HM");
-                    $this->db->set('prodi', $prodi);
+                    $this->db->set('prodiketua', $prodi);
+                    $this->db->set('prodiwakil', $prodi);
                     $this->db->set('visi', $visi);
                     $this->db->set('misi', $misi);
                     $this->db->set('hasil', 0);
