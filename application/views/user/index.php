@@ -4,6 +4,7 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
     <hr>
+    <?php if( $user['prodi'] == "Informatika"): ?>
     <center>
         <h1>Pemilihan Calon BEM Universitas</h1>
     </center>
@@ -25,7 +26,7 @@
                                         <span class="glyphicon glyphicon-info-sign"></span> Visi dan Misi
                                     </a>
                                     <?php if ($user['status'] != 0): ?>
-                                        <a href="#" class="btn btn-primary btn-sm" onclick="validate('<?=  $row['ketua']; ?> - <?=  $row['wakil']; ?>')"
+                                        <a href="#" class="disabled btn btn-primary btn-sm" onclick="validate('<?=  $row['ketua']; ?> - <?=  $row['wakil']; ?>')"
                                            value="<?php echo $row['id'] ?>"><span class="glyphicon glyphicon-info-sign"></span>
                                             Pilih </a>
                                     <?php endif ?>
@@ -37,6 +38,7 @@
             <?php endif ?>
         <?php endforeach ?>
     </div>
+    <?php endif ?>
     <hr>
     <center>
         <h1>Pemilihan Calon BEM Fakultas : <?= $user['fakultas'] ?></h1>
@@ -170,7 +172,7 @@
                                     </a>
                                     <?php if ($user['statusHM'] != 0): ?>
                                         <a href="#" class="btn btn-primary btn-sm" onclick="validate('<?=  $row['ketua']; ?> - <?=  $row['wakil']; ?>')"
-                                           value="<?php echo $row['id'] ?>"><span class="glyphicon glyphicon-info-sign"></span>
+                                           value="<?php echo $row['id'] ?>"><span class="glyphicon glyphicon-info-sign" disabled></span>
                                             Pilih </a>
                                     <?php endif ?>
                                 </div>
