@@ -15,7 +15,7 @@
        <div class="card-body">
             <center>
             <h5 class="card-title">SCREENING PRESIDEN</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <p class="card-text">Klik tombol dibawah untuk pengisian data bakal calon yang kalian rekomendasikan</p>
             <a href="<?= base_url('user/screeningpresiden') ?>" class="btn btn-primary btn-user btn-block">Presiden</a>       
          </center>
         </div>
@@ -29,7 +29,7 @@
        <div class="card-body">
             <center>
             <h5 class="card-title">SCREENING GUBERNUR</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <p class="card-text">Klik tombol dibawah untuk pengisian data bakal calon yang kalian rekomendasikan</p>
             <a href="<?= base_url('user/screeninggubernur') ?>" class="btn btn-primary btn-user btn-block">Gubernur</a>     
          </center>
         </div>
@@ -44,7 +44,7 @@
        <div class="card-body">
             <center>
             <h5 class="card-title">SCREENING HIMPUNAN</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <p class="card-text">Klik tombol dibawah untuk pengisian data bakal calon yang kalian rekomendasikan</p>
              <a href="<?= base_url('user/screeninghimpunan') ?>" class="btn btn-primary btn-user btn-block">Himpunan</a>    
          </center>
         </div>

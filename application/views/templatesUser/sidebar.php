@@ -13,18 +13,18 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <!-- <li class="nav-item ">
+    <li class="nav-item ">
         <a class="nav-link" href="<?= base_url('user/screening') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Screening</span></a>
-    </li> -->
+    </li>
     <!-- Nav Item - Dashboard -->
     <li class="nav-item ">
         <a class="nav-link" href="<?= base_url('user') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Pemilihan</span></a>
     </li>
-    <!-- <?php
+     <?php
     $query = "SELECT * FROM dt_kandidat WHERE nim LIKE '" . $user['nim'] . "'";
     if ($this->db->query($query)->num_rows() > 0) :
         ?>
@@ -33,7 +33,7 @@
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Kandidat</span></a>
         </li>
-    <?php endif ?> -->
+    <?php endif ?>
 
     <!-- Divider -->
     <hr class="sidebar-divider">

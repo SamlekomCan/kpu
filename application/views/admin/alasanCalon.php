@@ -24,10 +24,10 @@
                         <tr>
                             <td><?= $i ?></td>
                             <td>
-                            <?php $query = "SELECT nama FROM user WHERE id = ".$row['idUser'];
-                            $users = $this->db->query($query)->result();
-                            // var_dump($users);die;
-                            print_r($users[0]->nama) ; ?></td>
+                            <?php $query = "SELECT nama FROM user WHERE id LIKE'".$row["idUser"]."'";
+                            $users = $this->db->query($query)->result_array();
+                            var_dump($users);die;
+                            print($users->nama); ?></td>
                             <td><?php echo $row['alasan']; ?></td>
                         </tr>
                         <?php $i++; ?>

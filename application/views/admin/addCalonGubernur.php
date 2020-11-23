@@ -1,3 +1,4 @@
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <?php $fakult = ['Sains dan Teknologi', 'Keguruan dan Ilmu Pendidikan', 'Psikologi', 'Farmasi', 'Ekonomi', 'Teologi', 'Sastra']; ?>

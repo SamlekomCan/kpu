@@ -171,7 +171,7 @@ class User extends CI_Controller {
         $data['title'] = 'Screening';
         $data['user'] = $this->db->get_where('user', ['nim' => $this->session->userdata('nim')])->row_array();
 
-        // $this->form_validation->set_rules('nama', 'Name', 'required');
+        $this->form_validation->set_rules('nama', 'Name', 'required');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templatesUser/header', $data);
